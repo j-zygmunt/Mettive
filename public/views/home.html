@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
+    <title>HOME PAGE</title>
+</head>
+<body>
+    <div class="base-container">
+        <nav>
+            <img src="../img/logo.svg">
+            <ul>
+                <li>
+                    <i class="fas fa-home"></i>
+                    <a href="#" class="button"></a>
+                </li>
+                <li>
+                    <i class="fas fa-user"></i>
+                    <a href="#" class="button"></a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <section class="search-panel">
+                <div class="search">
+                    <form>
+                        <input placeholder="search profile">
+                    </form>
+                    <div class="search-button">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="langauge-select">
+                    <select id="langauge" name="langauge" data-placeholder="langauge">
+                        <option value="english">English</option>
+                        <option value="spanish">Spanish</option>
+                        <option value="polish">Polish</option>
+                        <option value="german">German</option>
+                    </select>
+                </div>
+                <div class="country-select">
+                    <select id="country" name="country" data-placeholder="country">
+                        <option value="poland">Poland</option>
+                    </select>
+                </div>
+                <div class="city-select">
+                    <select id="city" name="city" data-placeholder="city">
+                        <option value="krakow">Krakow</option>
+                    </select>
+                </div>
+                <div class="date">
+                    <form>
+                        <label>date:</label>
+                        <input type="date" id="from">
+                        <input type="date" id="to">
+                    </form>
+                </div>
+            </section>
+            <section class="profiles">
+                <div>profile 1</div>
+                <div>profile 2</div>
+                <div>profile 3</div>
+                <div>profile 4</div>
+            </section>
+        </main>
+    </div>
+</body>

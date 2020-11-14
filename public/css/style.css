@@ -46,7 +46,7 @@ body{
     border: 10px solid #00000000;
 }
 
-button{
+#login-button,#register-button{
     background: #E943FE 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 15px;    
@@ -57,7 +57,7 @@ button{
     padding-bottom: 0.7em;
     font-family: 'Questrial', sans-serif;
     font-size: larger;
-    margin: 2em;
+    margin: 1em;
 }
 
 #login-button{
@@ -68,7 +68,7 @@ button{
     width: 50%;
 }
 
-input{
+input[name="email"],[name="password"]{
     background: #FFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border: none;
