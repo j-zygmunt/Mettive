@@ -172,7 +172,7 @@ main {
 
 .profiles-panel {
     display: grid;
-    grid-template-columns: 3;
+    grid-template-columns: repeat(3, 1fr);
     width: 75vw;
     background: transparent linear-gradient(180deg, #EC43FF 0%, #0090E3 100%) 0% 0% no-repeat padding-box;
     opacity: 0.35;
