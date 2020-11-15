@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background-color: #ffffff;
 }
 .container{
     width: 100vw;
@@ -23,7 +24,7 @@ body{
     width: 50%;
 }
 
-.login{
+.login{ 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,13 +38,10 @@ body{
 }
 
 .register{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;    
-    align-items: center;
     width: 80%;
     height: 10vh;
     border: 10px solid #00000000;
+    text-align: center;
 }
 
 #login-button,#register-button{
@@ -118,4 +116,64 @@ input[name="email"],[name="password"]{
         height: 7em;
         margin: 2em;
     }
+}
+
+
+nav {
+    position: fixed;
+    top: 0px;
+    width: 100vw;
+    height: 10vh;
+    background: #D549FB 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+
+    display: flex;
+}
+
+nav > img {
+    height: 70%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 3em;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    list-style-type: none;
+    color: #ffffff;
+}
+
+li {
+    align-self: center;
+}
+
+.button {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 2em;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    margin-top: 10vh;
+}
+
+.search-panel {
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    background: transparent linear-gradient(180deg, #D749FC 0%, #018FE3 100%) 0% 0% no-repeat padding-box;
+    opacity: 0.69;
+}
+
+.profiles-panel {
+    display: grid;
+    grid-template-columns: 3;
+    width: 75vw;
+    background: transparent linear-gradient(180deg, #EC43FF 0%, #0090E3 100%) 0% 0% no-repeat padding-box;
+    opacity: 0.35;
 }
