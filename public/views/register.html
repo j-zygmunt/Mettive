@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/registerStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <title>REGITER PAGE</title>
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <img src="public/img/logo.svg">
+            <img src="../img/logo.svg">
         </div>
         <div class="register-container">
-            <form>
-                <div class="login">
+            <form class="register">
                     <input name="name" type="text" placeholder="name">
                     <input name="surname" type="text" placeholder="surname">
                     <input name="email" type="text" placeholder="email@email.com">
                     <input name="password" type="password" placeholder="password">
-                    <input name="repeat-password" type="password" placeholder="repeat-password">
-                    <input type="checkbox" id="accept" name="accept" value="Accept">
-                    <label for="accept"> I accept the terms and conditions </label>
+                    <input name="repeat-password" type="password" placeholder="password">
+                    <div class="checkbox">
+                        <input type="checkbox" id="accept" name="accept" value="Accept">
+                        <label for="accept"> I accept the terms and conditions </label>
+                    </div>
                     <button id="register-button">register</button>
-                </div>
             </form>
         </div>
     </div>
