@@ -47,17 +47,159 @@ main {
 }
 
 .search-panel {
+    position: fixed;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     width: 25vw;
-    background: transparent linear-gradient(180deg, #D749FC 0%, #018FE3 100%) 0% 0% no-repeat padding-box;
-    opacity: 0.69;
+    height: 90%;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0% 0% no-repeat padding-box;
 }
 
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3em;
+    padding: 3em 5em 3em 3em;
     width: 75vw;
-    background: transparent linear-gradient(180deg, #EC43FF 0%, #0090E3 100%) 0% 0% no-repeat padding-box;
-    opacity: 0.35;
+    margin-left: 25vw;
+    overflow-y: auto;
+    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0% 0% no-repeat padding-box;
+}
+
+
+.search{
+    display: flex;
+    margin: 20% 0em;
+    width: 75%;
+}
+
+.search input{ 
+    padding: 0.7em 3em 0.7em 1em;
+    color: #525252;
+    font-size: 1em;
+    font-weight: 100;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    width: 75%;
+    background: #F6DAFE 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 4px solid #FFFFFF;
+    outline: none;
+}
+
+.search button {
+    color: #8233C5;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+    height: 50%;
+    margin: auto;
+    margin-left: -2.4em;
+}
+
+[class*="-select"] {
+    width: 75%;
+}
+
+select {
+    font-size: 1em;
+    font-weight: 100;
+    letter-spacing: 2px;
+    color: #525252;
+    padding: 0.7em 1em;
+    background: #FFFFFF80 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 4px solid #FFFFFF;
+    border-radius: 8px;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url(../img/arrow.svg);
+    background-position: right 0.1em top 100%;
+    background-size: 2.5em;
+
+    margin: 10% 0em;
+}
+
+select option{
+    background: #FFFFFF80 0% 0% no-repeat padding-box;
+}
+
+label {
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-left: 0.5em;
+}
+
+.date{
+    width: 75%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    padding: 0.5em;
+}
+
+.date > form{
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="date"]{
+    background: #FFFFFF80;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 4px solid #FFFFFF;
+    border-radius: 8px;
+    width: 42%;
+    padding: 0.8em 0em;
+}
+
+.profiles-panel > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFF99;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 7px;
+}
+
+.profiles-panel > div > img {
+    clip-path: circle(50% at center);
+    width: 60%;
+    height: auto;
+    margin-top: 2%;
+}
+
+div > h2, p{
+    color: #888888;
+    margin: 5% 0em;
+}
+
+.message-button, .follow-button{
+    background: #E943FE;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 12px;    
+    border: none;
+    color: #ffffff;
+    width: 5em;
+    height: 3em;
+    margin-bottom: 5%;
+}
+
+.social> button > i{
+    font-size: 2em;
+}
+
+.social {
+    display: flex;
+    justify-content: space-between;
+    width: 120%
+}
+
+div[id*="profile"] > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
