@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/registerStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/registerStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <title>REGISTER PAGE</title>
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <img src="../img/logo.svg">
+            <img src="public/img/logo.svg">
         </div>
         <div class="register-container">
             <form class="register">

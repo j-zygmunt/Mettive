@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/homeStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/homeStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <title>HOME PAGE</title>
@@ -8,16 +8,16 @@
 <body>
     <div class="base-container">
         <nav>
-            <img src="../img/logo.svg">
+            <img src="public/img/logo.svg">
             <ul>
                 <li>
                     <a href="#" class="button">
-                        <img src="../img/home.svg">
+                        <img src="public/img/home.svg">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="button">
-                        <img src="../img/user.svg">
+                        <img src="public/img/user.svg">
                     </a>
                 </li>
             </ul>
@@ -61,7 +61,7 @@
             </section>
             <section class="profiles-panel">
                 <div id="profile-1">
-                    <img src="../img/uploads/indeks.jpg">
+                    <img src="public/img/uploads/indeks.jpg">
                     <div>
                         <h2>Name Surname</h2>
                         <p>Country City Langauge</p>
@@ -75,122 +75,62 @@
                         </div>
                     </div>
                 </div>
-                <div id="profile-2">
-                    <img src="../img/uploads/indeks.jpg">
+                <div id="profile-1">
+                    <img src="public/img/uploads/indeks.jpg">
                     <div>
                         <h2>Name Surname</h2>
                         <p>Country City Langauge</p>
                         <div class="social">
                             <button class="message-button">
-                                <img src="../img/message.svg">
+                                <i class="fas fa-envelope"></i>
                             </button>
                             <button class="follow-button">
-                                <img src="../img/add.svg">
+                                <i class="fas fa-plus-circle"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div id="profile-3">
-                    <img src="../img/uploads/indeks.jpg">
+                <div id="profile-1">
+                    <img src="public/img/uploads/indeks.jpg">
                     <div>
                         <h2>Name Surname</h2>
                         <p>Country City Langauge</p>
                         <div class="social">
                             <button class="message-button">
-                                <img src="../img/message.svg">
+                                <i class="fas fa-envelope"></i>
                             </button>
                             <button class="follow-button">
-                                <img src="../img/add.svg">
+                                <i class="fas fa-plus-circle"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div id="profile-4">
-                    <img src="../img/uploads/indeks.jpg">
+                <div id="profile-1">
+                    <img src="public/img/uploads/indeks.jpg">
                     <div>
                         <h2>Name Surname</h2>
                         <p>Country City Langauge</p>
                         <div class="social">
                             <button class="message-button">
-                                <img src="../img/message.svg">
+                                <i class="fas fa-envelope"></i>
                             </button>
                             <button class="follow-button">
-                                <img src="../img/add.svg">
+                                <i class="fas fa-plus-circle"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div id="profile-4">
-                    <img src="../img/uploads/indeks.jpg">
+                <div id="profile-1">
+                    <img src="public/img/uploads/indeks.jpg">
                     <div>
                         <h2>Name Surname</h2>
                         <p>Country City Langauge</p>
                         <div class="social">
                             <button class="message-button">
-                                <img src="../img/message.svg">
+                                <i class="fas fa-envelope"></i>
                             </button>
                             <button class="follow-button">
-                                <img src="../img/add.svg">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-4">
-                    <img src="../img/uploads/indeks.jpg">
-                    <div>
-                        <h2>Name Surname</h2>
-                        <p>Country City Langauge</p>
-                        <div class="social">
-                            <button class="message-button">
-                                <img src="../img/message.svg">
-                            </button>
-                            <button class="follow-button">
-                                <img src="../img/add.svg">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-4">
-                    <img src="../img/uploads/indeks.jpg">
-                    <div>
-                        <h2>Name Surname</h2>
-                        <p>Country City Langauge</p>
-                        <div class="social">
-                            <button class="message-button">
-                                <img src="../img/message.svg">
-                            </button>
-                            <button class="follow-button">
-                                <img src="../img/add.svg">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                 <div id="profile-4">
-                    <img src="../img/uploads/indeks.jpg">
-                    <div>
-                        <h2>Name Surname</h2>
-                        <p>Country City Langauge</p>
-                        <div class="social">
-                            <button class="message-button">
-                                <img src="../img/message.svg">
-                            </button>
-                            <button class="follow-button">
-                                <img src="../img/add.svg">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="profile-4">
-                    <img src="../img/uploads/indeks.jpg">
-                    <div>
-                        <h2>Name Surname</h2>
-                        <p>Country City Langauge</p>
-                        <div class="social">
-                            <button class="message-button">
-                                <img src="../img/message.svg">
-                            </button>
-                            <button class="follow-button">
-                                <img src="../img/add.svg">
+                                <i class="fas fa-plus-circle"></i>
                             </button>
                         </div>
                     </div>

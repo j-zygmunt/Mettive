@@ -60,8 +60,9 @@ main {
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-gap: 3em;
-    padding: 3em 5em 3em 3em;
+    padding: 3em;
     width: 75vw;
     margin-left: 25vw;
     overflow-y: auto;
@@ -73,6 +74,7 @@ main {
     display: flex;
     margin: 20% 0em;
     width: 75%;
+    max-width: 75%;
 }
 
 .search input{ 
@@ -82,7 +84,8 @@ main {
     font-weight: 100;
     letter-spacing: 2px;
     border-radius: 8px;
-    width: 75%;
+    max-width: 75%;
+
     background: #F6DAFE 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border: 4px solid #FFFFFF;

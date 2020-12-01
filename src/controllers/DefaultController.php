@@ -14,6 +14,16 @@ class DefaultController extends AppController {
         $this->render('home');
     }
 
+    public function profile(){
+
+        $this->render('profile');
+    }
+
+    public function my_profile(){
+
+        $this->render('my_profile');
+    }
+
     public function register() {
 
         $this->render('register');
