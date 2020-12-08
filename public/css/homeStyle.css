@@ -3,6 +3,10 @@ body{
     background-color: #ffffff;
 }
 
+.base-container{
+    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0% 0% no-repeat padding-box;
+}
+
 nav {
     position: fixed;
     top: 0px;
@@ -52,6 +56,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    transition: all .3s;
     width: 25vw;
     height: 90%;
     background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0% 0% no-repeat padding-box;
@@ -66,7 +71,6 @@ main {
     width: 75vw;
     margin-left: 25vw;
     overflow-y: auto;
-    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0% 0% no-repeat padding-box;
 }
 
 
@@ -198,11 +202,23 @@ div > h2, p{
 .social {
     display: flex;
     justify-content: space-between;
-    width: 120%
+    width: 100%
 }
 
 div[id*="profile"] > div{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media only screen and (max-width: 1100px) {
+    .profiles-panel { 
+        width: 100vw;
+        margin-left: 0vw;
+    }
+
+    .search-panel{
+        transform: translateX(-100%);
+        position: absolute;
+    }
 }
