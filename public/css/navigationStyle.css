@@ -1,0 +1,45 @@
+nav {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 10vh;
+    background: #D549FB 0 0 no-repeat padding-box;
+    box-shadow: 0 3px 6px #00000029;
+
+    display: flex;
+}
+
+nav > img {
+    height: 70%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 3em;
+}
+
+ul {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    list-style-type: none;
+    color: #ffffff;
+}
+
+li {
+    align-self: center;
+}
+
+.button {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 2em;
+}
+
+@media only screen and (max-device-width: 420px) {
+    nav > img {
+        width: 40vw;
+    }
+
+    .button > img {
+        width: 10vw;
+    }
+}

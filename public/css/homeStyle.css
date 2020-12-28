@@ -1,47 +1,17 @@
+* {
+    font-family: sans-serif;
+}
+
 body{
     margin: 0;
     background-color: #ffffff;
 }
 
 .base-container{
-    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0 0 no-repeat padding-box;
 }
 
-nav {
-    position: fixed;
-    top: 0px;
-    width: 100vw;
-    height: 10vh;
-    background: #D549FB 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
 
-    display: flex;
-}
-
-nav > img {
-    height: 70%;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 3em;
-}
-
-ul {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    list-style-type: none;
-    color: #ffffff;
-}
-
-li {
-    align-self: center;
-}
-
-.button {
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 2em;
-}
 
 main {
     display: flex;
@@ -59,13 +29,12 @@ main {
     transition: all .3s;
     width: 25vw;
     height: 90%;
-    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat padding-box;
 }
 
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
     grid-gap: 3em;
     padding: 3em;
     width: 75vw;
@@ -73,12 +42,10 @@ main {
     overflow-y: auto;
 }
 
-
 .search{
     display: flex;
-    margin: 20% 0em;
+    margin: 20% 0;
     width: 75%;
-    max-width: 75%;
 }
 
 .search input{ 
@@ -88,10 +55,10 @@ main {
     font-weight: 100;
     letter-spacing: 2px;
     border-radius: 8px;
-    max-width: 75%;
+    width: calc(100% - 2.4em - 33px);
 
-    background: #F6DAFE 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+    background: #F6DAFE 0 0 no-repeat padding-box;
+    box-shadow: 0 3px 6px #00000029;
     border: 4px solid #FFFFFF;
     outline: none;
 }
@@ -102,8 +69,7 @@ main {
     background: none;
     font-size: 1.2em;
     height: 50%;
-    margin: auto;
-    margin-left: -2.4em;
+    margin: auto auto auto -2.4em;
 }
 
 [class*="-select"] {
@@ -116,23 +82,21 @@ select {
     letter-spacing: 2px;
     color: #525252;
     padding: 0.7em 1em;
-    background: #FFFFFF80 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: 0 3px 6px #00000029;
     border: 4px solid #FFFFFF;
     border-radius: 8px;
     width: 100%;
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-image: url(../img/arrow.svg);
-    background-position: right 0.1em top 100%;
+    background: #FFFFFF80 url(../img/arrow.svg) no-repeat right 0.1em top 100%;
     background-size: 2.5em;
 
-    margin: 10% 0em;
+    margin: 10% 0;
 }
 
 select option{
-    background: #FFFFFF80 0% 0% no-repeat padding-box;
+    background: #FFFFFF80 0 0 no-repeat padding-box;
 }
 
 label {
@@ -155,11 +119,11 @@ label {
 
 input[type="date"]{
     background: #FFFFFF80;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: 0 3px 6px #00000029;
     border: 4px solid #FFFFFF;
     border-radius: 8px;
     width: 42%;
-    padding: 0.8em 0em;
+    padding: 0.8em 0;
 }
 
 .profiles-panel > div {
@@ -168,7 +132,7 @@ input[type="date"]{
     justify-content: center;
     align-items: center;
     background: #FFFFFF99;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: 0 3px 6px #00000029;
     border-radius: 7px;
 }
 
@@ -181,16 +145,24 @@ input[type="date"]{
 
 div > h2, p{
     color: #888888;
-    margin: 5% 0em;
+    margin: 5% 0;
+}
+
+div > p{
+    font-size: 1.1em;
+}
+
+div > h2{
+    font-size: 1.5em;
 }
 
 .message-button, .follow-button{
     background: #E943FE;
-    box-shadow: 0px 3px 6px #00000029;
+    box-shadow: 0 3px 6px #00000029;
     border-radius: 12px;    
     border: none;
     color: #ffffff;
-    width: 5em;
+    width: 6em;
     height: 3em;
     margin-bottom: 5%;
 }
@@ -201,7 +173,7 @@ div > h2, p{
 
 .social {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%
 }
 
@@ -209,16 +181,108 @@ div[id*="profile"] > div{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 80%;
+}
+
+@media only screen and (max-width: 2000px) {
+    div > p{
+        font-size: 1.4em;
+    }
+
+    div > h2{
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    div > p{
+        font-size: 1.2em;
+    }
+
+    div > h2{
+        font-size: 1.6em;
+    }
+
+    .message-button, .follow-button{
+        width: 5em;
+        height: 2.5em;
+    }
+
+    .social> button > i{
+        font-size: 1.6em;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    div > p{
+        font-size: 1em;
+    }
+
+    div > h2{
+        font-size: 1.4em;
+    }
+
+    .message-button, .follow-button{
+        width: 4em;
+        height: 2em;
+    }
+
+    .social> button > i{
+        font-size: 1.4em;
+    }
 }
 
 @media only screen and (max-width: 1100px) {
-    .profiles-panel { 
+    div > p{
+        font-size: 1.1em;
+    }
+
+    .message-button, .follow-button{
+        width: 5em;
+        height: 2.5em;
+    }
+
+    .social> button > i{
+        font-size: 1.6em;
+    }
+
+    .profiles-panel {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-device-width: 420px) {
+    * {
+        font-size: 35px;
+    }
+
+    .profiles-panel {
         width: 100vw;
-        margin-left: 0vw;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5em;
+        padding: 1.5em;
+        margin: auto;
+    }
+
+    .profiles-panel > div {
+        border-radius: 20px;
+    }
+
+    div > p{
+        font-size: 0.9em;
+    }
+
+    div > h2{
+        font-size: 1.2em;
+    }
+
+    .message-button, .follow-button{
+        font-size: 0.7em;
     }
 
     .search-panel{
         transform: translateX(-100%);
         position: absolute;
     }
+
 }
