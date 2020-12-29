@@ -1,0 +1,82 @@
+.profile-panel{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90%;
+    width: 24vw;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat fixed;
+}
+
+.info, .ratings{
+    background: #FFFFFF99 0 0 no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info, .ratings, .profile-panel > img, .edit-profile-button {
+    width: 76%;
+    box-shadow: 0 3px 6px #00000029;
+    border-radius: 9px;
+}
+
+
+.info > h2 {
+    margin: 2% 0 5% 0;
+    font-size: 1.3em;
+}
+
+.info > .stats {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-row-gap: -2em;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    width: 90%;
+}
+
+.info > .stats > h2 {
+    font-size: 1.8em;
+    margin: 20% 10% 0 10%;
+}
+
+.info > .stats > p {
+    font-size: 0.7em;
+    margin: 0;
+}
+
+.edit-profile-button {
+    background: #E943FE;
+    border-radius: 18px;
+    border: none;
+    font-size: 1.15em;
+    font-weight: normal;
+    color: #ffffff;
+    height: 6%;
+}
+
+.ratings > h2 {
+    margin: 2% 0 2% 0;
+    font-size: 1.3em;
+}
+
+.ratings > .star-rating {
+    font-weight: normal;
+    font-size: 1.05em;
+    margin: 0 0 4% 4%;
+    padding-right: 5%;
+    max-height: 15vh;
+    overflow-y: auto;
+}
+
+span {
+    font-size: 1.3em;
+    padding-left: 0.5em;
+    background: -webkit-linear-gradient(270deg, #EC43FF 0%, #0090E3 100%) 0% 0% no-repeat padding-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

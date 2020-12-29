@@ -8,10 +8,8 @@ body{
 }
 
 .base-container{
-    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0 0 no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
 }
-
-
 
 main {
     display: flex;
@@ -26,18 +24,17 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    transition: all .3s;
     width: 25vw;
     height: 90%;
-    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) no-repeat fixed 0 0;
 }
 
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 3em;
-    padding: 3em;
-    width: 75vw;
+    padding: 2em;
+    width: 68vw;
     margin-left: 25vw;
     overflow-y: auto;
 }
@@ -91,7 +88,6 @@ select {
     -moz-appearance: none;
     background: #FFFFFF80 url(../img/arrow.svg) no-repeat right 0.1em top 100%;
     background-size: 2.5em;
-
     margin: 10% 0;
 }
 
@@ -257,11 +253,11 @@ div[id*="profile"] > div{
     }
 
     .profiles-panel {
-        width: 100vw;
+        width: 100%;
+        margin-left: 0;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5em;
         padding: 1.5em;
-        margin: auto;
     }
 
     .profiles-panel > div {
@@ -280,9 +276,11 @@ div[id*="profile"] > div{
         font-size: 0.7em;
     }
 
-    .search-panel{
-        transform: translateX(-100%);
-        position: absolute;
+    .search-panel {
+        display: none;
     }
 
+    ::-webkit-scrollbar {
+        display: none;
+    }
 }

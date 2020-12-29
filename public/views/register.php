@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" type="text/css" href="../css/scrollbarStyle.css">
     <link rel="stylesheet" type="text/css" href="public/css/registerStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <title>REGISTER PAGE</title>

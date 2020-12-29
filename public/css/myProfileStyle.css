@@ -1,5 +1,7 @@
 * {
-    font-family: sans-serif;
+    font-family: Segoe UI;
+    font-weight: bold;
+    color: #888888;
 }
 
 body{
@@ -8,41 +10,179 @@ body{
 }
 
 .base-container{
-    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
 }
 
-nav {
+main {
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    margin-top: 10vh;
+}
+
+.about-panel{
     position: fixed;
-    top: 0px;
-    width: 100vw;
-    height: 10vh;
-    background: #D549FB 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90%;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat fixed;
 }
 
-nav > img {
-    height: 70%;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 3em;
-}
-
-ul {
+.available-dates, .about-me ,div[class*="message"]{
+    background: #FFFFFF99 0 0 no-repeat padding-box;
     display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    list-style-type: none;
-    color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 76%;
+    box-shadow: 0 3px 6px #00000029;
+    border-radius: 9px;
 }
 
-li {
-    align-self: center;
+.messages-panel {
+    width: 48vw;
+    margin-left: 24vw;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.button {
-    text-decoration: none;
-    display: inline-block;
-    margin-right: 2em;
+.messages-panel > div[class*="message"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 22vh;
+    margin-bottom: 2em;
+}
+
+.msginfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+}
+
+.messages-panel > div[class*="message"] > p {
+    font-weight: normal;
+    width: 95%;
+    overflow-y: auto;
+}
+
+.reply-button {
+    background: #E943FE;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 3px 6px #00000029;
+    margin-bottom: 0.8em;
+    padding: 0.5em 1em;
+}
+
+.reply-button > i, .edit-button > i  {
+    color: #FFFFFF;
+    font-size: 1.4em;
+}
+
+.msginfo > img {
+    width: 3em;
+    height: 3em;
+    box-shadow: 0 3px 6px #00000029;
+    border: 1px solid #707070;
+    border-radius: 8px;
+    margin-top: 2%;
+}
+
+.sender-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sender-info > p {
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+.sender-info > h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.about-panel {
+    margin-left: 73vw;
+    width: 27vw;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width:40vw;
+    margin-left: 4vw;
+}
+
+.header > .new-msg-button {
+    background: #E943FE;
+    border-radius: 2em;
+    border: none;
+    height: 4em;
+    width: 4em;
+    box-shadow: 0 3px 6px #00000029;
+}
+
+.new-msg-button > i{
+    color: #FFFFFF;
+    font-size: 2em;
+}
+
+.header > h2 {
+    font-size: 1.8em;
+}
+
+.available-dates > h2, .about-me > h2{
+    font-size: 1.8em;
+    margin: 4% 0 4% 0;
+}
+
+.available-dates > .date {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2em;
+    max-height: 20vh;
+    overflow-y: auto;
+    margin: 0 0 1em 1em;
+    padding-right: 2em;
+}
+
+.available-dates > .edit-button {
+    background: #E943FE;
+    border-radius: 8px;
+    border: none;
+    height: 2.5em;
+    width: 3.5em;
+    box-shadow: 0 3px 6px #00000029;
+    margin-bottom: 0.8em;
+}
+
+.date > p {
+    margin: 0.2em 0;
+    font-weight: normal;
+}
+
+.about-me {
+    max-height: 40vh;
+}
+
+.about-me > p {
+    margin: 0 1.7em 0 0;
+    font-weight: normal;
+    padding: 0 2em;
+    overflow-y: auto;
 }
