@@ -68,7 +68,19 @@
             <button class="edit-profile-button" type="submit">save changes</button>
         </section>
         <section class="edit-panel">
-
+            <h1>Edit profile</h1>
+            <form action="editProfile" method="POST" ENCTYPE="multipart/form-data">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                <input name="new-date" type="datetime-local" placeholder="date">
+                <textarea name="new-about-me" rows="5" placeholder="about me"></textarea>
+                <input type="file" name="photo">
+            </form>
         </section>
         <section class="about-panel">
             <div class="available-dates">

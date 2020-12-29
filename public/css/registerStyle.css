@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+    font-family: Segoe UI;
 }
 
 body{
@@ -54,7 +54,6 @@ form.register{
     line-height: 2em;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
-    font-family: 'Questrial', sans-serif;
     font-size: larger;
     margin: 1em;
     width: 50%;
@@ -71,7 +70,6 @@ form > input {
     line-height: 2em;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
-    font-family: 'Questrial', sans-serif;
     font-size: larger;
     margin: 0.5em;
 }

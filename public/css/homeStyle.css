@@ -1,5 +1,5 @@
 * {
-    font-family: sans-serif;
+    font-family: Segoe UI;
 }
 
 body{
@@ -49,7 +49,6 @@ main {
     padding: 0.7em 3em 0.7em 1em;
     color: #525252;
     font-size: 1em;
-    font-weight: 100;
     letter-spacing: 2px;
     border-radius: 8px;
     width: calc(100% - 2.4em - 33px);
@@ -75,7 +74,6 @@ main {
 
 select {
     font-size: 1em;
-    font-weight: 100;
     letter-spacing: 2px;
     color: #525252;
     padding: 0.7em 1em;
@@ -113,13 +111,19 @@ label {
     justify-content: space-between;
 }
 
-input[type="date"]{
+.date > form > input[type="date"], .date > form > input[type="text"]{
     background: #FFFFFF80;
     box-shadow: 0 3px 6px #00000029;
     border: 4px solid #FFFFFF;
     border-radius: 8px;
-    width: 42%;
-    padding: 0.8em 0;
+    width: 35%;
+    color: #525252;
+    padding: 0.7em 1em;
+}
+
+.date > form > input[type="text"] {
+    font-size: 1em;
+    letter-spacing: 2px;
 }
 
 .profiles-panel > div {

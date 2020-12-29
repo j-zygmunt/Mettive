@@ -12,5 +12,6 @@ Router::get('profile', 'DefaultController');
 Router::get('my_profile', 'DefaultController');
 Router::get('register', 'DefaultController');
 Router::post('login', 'SecurityController');
+Router::post('editProfile', 'EditController');
 
 Router::run($path);
