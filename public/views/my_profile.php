@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/navigationStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/myProfileStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/profilePanel.css">
+    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/navigationStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/myProfileStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/profilePanel.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <title>MY PROFILE</title>
@@ -11,23 +11,23 @@
 <body>
 <div class="base-container">
     <nav>
-        <img class="logo" src="../img/logo.svg">
+        <img class="logo" src="public/img/logo.svg">
         <ul>
             <li>
                 <a href="#" class="button">
-                    <img src="../img/home.svg">
+                    <img src="public/img/home.svg">
                 </a>
             </li>
             <li>
                 <a href="#" class="button">
-                    <img src="../img/user.svg">
+                    <img src="public/img/user.svg">
                 </a>
             </li>
         </ul>
     </nav>
     <main>
         <section class="profile-panel">
-            <img src="../img/uploads/indeks.jpg">
+            <img src="public/img/uploads/indeks.jpg">
             <div class="info">
                 <div class="stats">
                     <h2>19</h2>
@@ -68,6 +68,15 @@
             <button class="edit-profile-button" type="submit">edit profile</button>
         </section>
         <section class="messages-panel">
+            <div class="messages">
+                <?php
+                if(isset($messages)){
+                    foreach($messages as $message){
+                        echo $message;
+                    }
+                }
+                ?>
+            </div>
             <div class="header">
                 <h2>messages</h2>
                 <button class="new-msg-button">
@@ -80,7 +89,7 @@
                         <p>22 11 2020</p>
                         <h2>Name Surname</h2>
                     </div>
-                    <img src="../img/uploads/indeks.jpg">
+                    <img src="public/img/uploads/indeks.jpg">
                 </div>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
@@ -99,7 +108,7 @@
                         <p>22 11 2020</p>
                         <h2>Name Surname</h2>
                     </div>
-                    <img src="../img/uploads/indeks.jpg">
+                    <img src="public/img/uploads/indeks.jpg">
                 </div>
                 <p>
                     Lorem orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
@@ -122,7 +131,7 @@
                         <p>22 11 2020</p>
                         <h2>Name Surname</h2>
                     </div>
-                    <img src="../img/uploads/indeks.jpg">
+                    <img src="public/img/uploads/indeks.jpg">
                 </div>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
@@ -139,7 +148,7 @@
                         <p>22 11 2020</p>
                         <h2>Name Surname</h2>
                     </div>
-                    <img src="../img/uploads/indeks.jpg">
+                    <img src="public/img/uploads/indeks.jpg">
                 </div>
                 <p>
                     aute irure dolor in reprehenderit in voluptate velit esse

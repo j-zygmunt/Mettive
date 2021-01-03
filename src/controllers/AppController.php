@@ -4,13 +4,11 @@ class AppController{
 
     private $request;
 
-    public function __constructor(){
-
+    public function __construct(){
         $this->request = $_SERVER['REQUEST_METHOD'];
     }
     
     protected function isPost(): bool{
-        
         return $this->request === 'POST';
     }
 
@@ -24,7 +22,6 @@ class AppController{
         $templatePath = 'public/views/'.$template.'.php';
         $output = 'File not found';
 
-
         if (file_exists($templatePath)) {
             extract($variables);
 
@@ -32,7 +29,6 @@ class AppController{
             include $templatePath;
             $output = ob_get_clean();
         }
-
         print $output;
     }
 }

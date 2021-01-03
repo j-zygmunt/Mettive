@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/navigationStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/myProfileStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/profilePanel.css">
+    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/navigationStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/myProfileStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/profilePanel.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
-    <title>MY PROFILE</title>
+    <title>EDIT PROFILE</title>
 </head>
 <body>
 <div class="base-container">
     <nav>
-        <img class="logo" src="../img/logo.svg">
+        <img class="logo" src="public/img/logo.svg">
         <ul>
             <li>
                 <a href="#" class="button">
-                    <img src="../img/home.svg">
+                    <img src="public/img/home.svg">
                 </a>
             </li>
             <li>
                 <a href="#" class="button">
-                    <img src="../img/user.svg">
+                    <img src="public/img/user.svg">
                 </a>
             </li>
         </ul>
     </nav>
     <main>
         <section class="profile-panel">
-            <img src="../img/uploads/indeks.jpg">
+            <img src="public/img/uploads/indeks.jpg">
             <div class="info">
                 <div class="stats">
                     <h2>19</h2>
@@ -65,21 +65,23 @@
                     <br>
                 </div>
             </div>
-            <button class="edit-profile-button" type="submit">save changes</button>
+
         </section>
         <section class="edit-panel">
-            <h1>Edit profile</h1>
-            <form action="editProfile" method="POST" ENCTYPE="multipart/form-data">
+            <h1>edit profile</h1>
+            <form action="editProfile" enctype="multipart/form-data" method="POST">
+                <div class="messages">
                     <?php
-                    if(isset($messages)){
-                        foreach($messages as $message){
-                            echo $message;
+                        if(isset($messages)){
+                            foreach($messages as $message){
+                                echo $message;
+                            }
                         }
-                    }
                     ?>
-                <input name="new-date" type="datetime-local" placeholder="date">
+                </div>
                 <textarea name="new-about-me" rows="5" placeholder="about me"></textarea>
-                <input type="file" name="photo">
+                <input type="file" name='file'><br/>
+                <button class="save-profile-button" type="submit">save changes</button>
             </form>
         </section>
         <section class="about-panel">

@@ -41,7 +41,7 @@ main {
     border-radius: 9px;
 }
 
-.messages-panel {
+.messages-panel, .edit-panel {
     width: 48vw;
     margin-left: 24vw;
     overflow-y: auto;
@@ -185,4 +185,23 @@ main {
     font-weight: normal;
     padding: 0 2em;
     overflow-y: auto;
+}
+
+.edit-panel > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+.edit-panel > form > textarea{
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid gray;
+    width: 100%;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    font-weight: normal;
+    resize: none;
 }

@@ -29,4 +29,8 @@ class DefaultController extends AppController {
         $this->render('register');
     }
 
+    public function edit_profile(){
+        $this->render('edit_profile');
+    }
+
 }

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/scrollbarStyle.css">    <link rel="stylesheet" type="text/css" href="../css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="../css/loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/loginStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <title>LOGIN PAGE</title>
 </head>
@@ -11,7 +12,7 @@
             <img src="public/img/logo.svg">
         </div>
         <div class="login-container">
-            <form class="login" action="login" method= "POST">
+            <form class="login" action="login" method="POST">
                 <div class="messages">
                     <?php 
                     if(isset($messages)){
