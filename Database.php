@@ -52,4 +52,9 @@ class Database
 
         return self::$instance;
     }
+
+    public function __clone()
+    {
+        //TODO add exception throwing
+    }
 }
