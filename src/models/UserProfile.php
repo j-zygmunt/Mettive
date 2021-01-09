@@ -1,7 +1,8 @@
 <?php
 
 
-class UserProfile{
+class UserProfile
+{
     private $email;
     private $photo;
     private $name;
