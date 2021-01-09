@@ -27,7 +27,7 @@
     </nav>
     <main>
         <section class="profile-panel">
-            <img src="public/img/uploads/indeks.jpg">
+            <img src="public/uploads/<?= $userProfile->getPhoto()?>">
             <div class="info">
                 <div class="stats">
                     <h2>19</h2>
@@ -181,11 +181,7 @@
             <div class="about-me">
                 <h2>about me</h2>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
+                    <?= $userProfile->getAboutMe()?>
                 </p>
                 <h2>country, city</h2>
             </div>

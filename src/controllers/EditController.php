@@ -1,6 +1,8 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../models/UserProfile.php';
 
 class EditController extends AppController{
 
@@ -17,10 +19,10 @@ class EditController extends AppController{
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $userProfile = new UserProfile("temp", $_FILES['file']['tmp_name'], "temp", "temp", "temp");
+            $userProfile = new UserProfile("temp", $_FILES['file']['name'], "temp", "temp", $_POST['new-about-me']);
 
             $this->message[] = 'Profile successfully changed';
-            return $this->render('my_profile', ['messages' => $this->message]);
+            return $this->render('my_profile', ['messages' => $this->message, 'userProfile' => $userProfile]);
 
         }
         $this->render('edit_profile', ['messages' => $this->message]);

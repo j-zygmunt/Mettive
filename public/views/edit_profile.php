@@ -80,7 +80,7 @@
                     ?>
                 </div>
                 <textarea name="new-about-me" rows="5" placeholder="about me"></textarea>
-                <input type="file" name='file'><br/>
+                <input type="file" accept="image/png, image/jpeg" name='file'><br/>
                 <button class="save-profile-button" type="submit">save changes</button>
             </form>
         </section>

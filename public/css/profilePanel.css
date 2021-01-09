@@ -23,6 +23,10 @@
     border-radius: 9px;
 }
 
+.profile-panel > img {
+    height: 32%;
+    object-fit: cover;
+}
 
 .info > h2 {
     margin: 2% 0 5% 0;
