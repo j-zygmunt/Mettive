@@ -6,19 +6,19 @@ require_once 'src/controllers/EditController.php';
 
 class Router
 {
-    public static $routes;
+    public static array $routes;
 
-    public static function get ($url, $view)
+    public static function get (string $url, string $view)
     {
         self::$routes[$url] = $view;
     }
 
-    public static function post ($url, $view)
+    public static function post (string $url, string $view)
     {
         self::$routes[$url] = $view;
     }
 
-    public static function run ($url)
+    public static function run (string $url)
     {
         $action = explode("/", $url)[0];
 

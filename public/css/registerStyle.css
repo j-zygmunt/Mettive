@@ -38,11 +38,16 @@ form.register{
     box-shadow: 0 3px 6px #00000029;
     border: 10px solid #E6E0FC;
     border-radius: 48px;
-
+    padding: 0.5em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+form > .messages {
+    width: 80%;
+    text-align: center;
 }
 
 #register-button{

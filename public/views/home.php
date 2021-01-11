@@ -10,22 +10,7 @@
 <body>
     <div class="base-container">
         <nav>
-            <img class="logo" src="public/img/logo.svg">
-            <button class="toggle">
-                <i class="fas fa-search"></i>
-            </button>
-            <ul>
-                <li>
-                    <a href="#" class="button">
-                        <img src="public/img/home.svg">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="button">
-                        <img src="public/img/user.svg">
-                    </a>
-                </li>
-            </ul>
+            <?php include("header.php")?>
         </nav>
         <main>
             <section class="search-panel">

@@ -2,7 +2,7 @@
 
 class AppController
 {
-    private $request;
+    private string $request;
 
     public function __construct()
     {
@@ -19,7 +19,7 @@ class AppController
         return $this->request === 'GET';
     }
 
-    protected function render(string $template = null, array $variables = [])
+    protected function render(string $template = null, array $variables = []): void
     {
         
         $templatePath = 'public/views/'.$template.'.php';

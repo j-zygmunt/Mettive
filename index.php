@@ -10,7 +10,7 @@ Router::get('', 'DefaultController');
 Router::get('home', 'DefaultController');
 Router::get('profile', 'DefaultController');
 Router::get('my_profile', 'DefaultController');
-Router::get('register', 'DefaultController');
+Router::get('register', 'SecurityController');
 Router::post('login', 'SecurityController');
 Router::post('editProfile', 'EditController');
 

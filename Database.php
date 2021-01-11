@@ -4,13 +4,13 @@ require_once 'config.php';
 
 class Database
 {
-    private static $instance = null;
-    private $connection = null;
+    private static ?Database $instance = null;
+    private ?PDO $connection = null;
 
-    private $username;
-    private $password;
-    private $host;
-    private $database;
+    private string $username;
+    private string $password;
+    private string $host;
+    private string $database;
 
     private function __construct()
     {

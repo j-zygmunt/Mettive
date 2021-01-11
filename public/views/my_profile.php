@@ -11,19 +11,7 @@
 <body>
 <div class="base-container">
     <nav>
-        <img class="logo" src="public/img/logo.svg">
-        <ul>
-            <li>
-                <a href="#" class="button">
-                    <img src="public/img/home.svg">
-                </a>
-            </li>
-            <li>
-                <a href="#" class="button">
-                    <img src="public/img/user.svg">
-                </a>
-            </li>
-        </ul>
+        <?php include("header.php")?>
     </nav>
     <main>
         <section class="profile-panel">

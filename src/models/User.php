@@ -1,33 +1,33 @@
 <?php
 
-class User{
+class User
+{
+    private string $email;
+    private string $password;
 
-    private $email;
-    private $password;
-
-    public function __construct(string $email, string $password){
-        
+    public function __construct(string $email, string $password)
+    {
         $this->email = $email;
         $this->password = $password;
     }
 
-    public function getEmail(): string{
-
+    public function getEmail(): string
+    {
         return $this->email;
     }
 
-    public function setEmail(string $email){
-        
+    public function setEmail(string $email)
+    {
         $this->email = $email;
     }
 
-    public function getPassword(): string{
-
+    public function getPassword(): string
+    {
         return $this->password;
     }
 
-    public function setPassword(string $password){
-
+    public function setPassword(string $password)
+    {
         $this->password = $password;
     }
 }

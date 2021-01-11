@@ -11,7 +11,7 @@ class EditController extends AppController
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
-    private $message = [];
+    private array $message = [];
 
     public function editProfile()
     {
@@ -22,7 +22,15 @@ class EditController extends AppController
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $userProfile = new UserProfile("temp", $_FILES['file']['name'], "temp", "temp", $_POST['new-about-me']);
+            $userProfile = new UserProfile(
+                "temp",
+                $_FILES['file']['name'],
+                "temp",
+                "temp",
+                $_POST['new-about-me'],
+                "temp",
+                "temp"
+            );
 
             $this->message[] = 'Profile successfully changed';
             return $this->render('my_profile', ['messages' => $this->message, 'userProfile' => $userProfile]);

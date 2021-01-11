@@ -11,17 +11,26 @@
             <img src="public/img/logo.svg">
         </div>
         <div class="register-container">
-            <form class="register">
-                    <input name="name" type="text" placeholder="name">
-                    <input name="surname" type="text" placeholder="surname">
-                    <input name="email" type="text" placeholder="email@email.com">
-                    <input name="password" type="password" placeholder="password">
-                    <input name="repeat-password" type="password" placeholder="password">
-                    <div class="checkbox">
-                        <input type="checkbox" id="accept" name="accept" value="Accept">
-                        <label for="accept"> I accept the terms and conditions </label>
-                    </div>
-                    <button id="register-button">register</button>
+            <form class="register" action="register" method="POST">
+                <div class="messages">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message){
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <input name="name" type="text" placeholder="name">
+                <input name="surname" type="text" placeholder="surname">
+                <input name="email" type="text" placeholder="email@email.com">
+                <input name="password" type="password" placeholder="password">
+                <input name="repeat-password" type="password" placeholder="password">
+                <div class="checkbox">
+                    <input type="checkbox" id="accept" name="accept" value="Accept">
+                    <label for="accept"> I accept the terms and conditions </label>
+                </div>
+                <button id="register-button">register</button>
             </form>
         </div>
     </div>

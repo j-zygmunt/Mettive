@@ -3,30 +3,24 @@
 
 class UserProfile
 {
-    private $email;
-    private $photo;
-    private $name;
-    private $surname;
-    private $aboutMe;
-    private $availableDates = [];
+    private string $email;
+    private string $photo;
+    private string $name;
+    private string $surname;
+    private ?string $aboutMe;
+    private ?int $followers_amount;
+    private ?int $following_amount;
+    private array $availableDates = [];
 
-    public function __construct($email, $photo, $name, $surname, $about_me)
+    public function __construct($email, $photo, $name, $surname, $about_me, $followers_amount, $following_amount)
     {
         $this->email = $email;
         $this->photo = $photo;
         $this->name = $name;
         $this->surname = $surname;
         $this->aboutMe = $about_me;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email)
-    {
-        $this->email = $email;
+        $this->followers_amount = $followers_amount;
+        $this->following_amount = $following_amount;
     }
 
     public function getPhoto(): string
@@ -59,7 +53,7 @@ class UserProfile
         $this->surname = $surname;
     }
 
-    public function getAboutMe(): string
+    public function getAboutMe(): ?string
     {
         return $this->aboutMe;
     }
@@ -77,6 +71,36 @@ class UserProfile
     public function deleteAvailableDate($availableDate)
     {
         $this->availableDates = array_diff($this->availableDates, $availableDate);
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getFollowersAmount(): ?int
+    {
+        return $this->followers_amount;
+    }
+
+    public function setFollowersAmount($followers_amount)
+    {
+        $this->followers_amount = $followers_amount;
+    }
+
+    public function getFollowingAmount(): ?int
+    {
+        return $this->following_amount;
+    }
+
+    public function setFollowingAmount($following_amount)
+    {
+        $this->following_amount = $following_amount;
     }
 
 }
