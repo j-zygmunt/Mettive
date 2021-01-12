@@ -27,7 +27,7 @@
                 <button id="login-button" type ="submit">login</button>
             </form>
                 <div class="register">
-                    <button id="register-button">not registered yet?</button>  
+                    <button id="register-button">not registered yet?</button>
                 </div>
         </div>
     </div>

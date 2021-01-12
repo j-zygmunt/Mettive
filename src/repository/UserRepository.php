@@ -2,6 +2,7 @@
 
 require_once 'Repository.php';
 require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../models/UserProfile.php';
 
 class UserRepository extends Repository
 {
@@ -31,7 +32,7 @@ class UserRepository extends Repository
     public function getUserProfile(string $email): ?UserProfile
     {
         $statement = $this->database->connect()->prepare('
-            SELECT * FROM v_users_profiles WHERE email = :email
+            SELECT * FROM public.v_users_profiles WHERE email = :email
         ');
         $statement->bindParam(':email', $email, PDO::PARAM_INT);
         $statement->execute();
@@ -45,19 +46,22 @@ class UserRepository extends Repository
         }
 
         return new UserProfile(
-            $userProfile['email'],
             $userProfile['image'],
             $userProfile['name'],
             $userProfile['surname'],
             $userProfile['about_me'],
+            $userProfile['mainLanguage'],
+            $userProfile['country'],
+            $userProfile['city'],
             $userProfile['followers_amount'],
             $userProfile['following_amount']
         );
     }
 
-    public function addUserProfile(User $user, UserProfile $userProfile)
+    public function addUserProfile(User $user, UserProfile $userProfile): void
     {
         $db = $this->database->connect();
+
         try {
             $statement = $db->prepare('
             INSERT INTO public.users_details (name, surname, about_me, image)
@@ -94,5 +98,34 @@ class UserRepository extends Repository
             }
             throw $error;
         }
+    }
+
+    public function getUsersProfiles(): array
+    {
+        $result = [];
+
+        $statement = $this->database->connect()->prepare('
+            SELECT * FROM public.v_users_profiles
+        ');
+
+        $statement->execute();
+        $usersProfiles = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($usersProfiles as $userProfile)
+        {
+            $result[] = new UserProfile(
+                $userProfile['image'],
+                $userProfile['name'],
+                $userProfile['surname'],
+                $userProfile['about_me'],
+                $userProfile['mainLanguage'],
+                $userProfile['country'],
+                $userProfile['city'],
+                $userProfile['followers_amount'],
+                $userProfile['following_amount']
+            );
+        }
+
+        return $result;
     }
 }

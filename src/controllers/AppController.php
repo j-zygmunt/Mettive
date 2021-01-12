@@ -21,7 +21,6 @@ class AppController
 
     protected function render(string $template = null, array $variables = []): void
     {
-        
         $templatePath = 'public/views/'.$template.'.php';
         $output = 'File not found';
 
@@ -32,8 +31,8 @@ class AppController
             ob_start();
             include $templatePath;
             $output = ob_get_clean();
+            ob_end_clean();
         }
-
         print $output;
     }
 }

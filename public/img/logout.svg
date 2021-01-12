@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+    <g id="Icon_ionic-md-log-out" data-name="Icon ionic-md-log-out" transform="translate(-3.375 -3.375)">
+        <path id="Path_237" data-name="Path 237" d="M13.5,22.056H30.96L26.947,26.17,29.7,28.922l8.836-8.836L29.7,11.25,26.846,14l4.114,4.114H13.5Z" transform="translate(2.84 2.289)" fill="#fff"/>
+        <g id="Group_143" data-name="Group 143" transform="translate(3.375 3.375)">
+            <path id="Path_238" data-name="Path 238" d="M22.323,37.475A15.112,15.112,0,0,1,11.677,11.7a15.028,15.028,0,0,1,21.274-.018l2.764-2.768a20.169,20.169,0,0,0-2.527-2.119A18.986,18.986,0,1,0,22.323,41.375,18.949,18.949,0,0,0,35.705,35.83L32.95,33.072A14.922,14.922,0,0,1,22.323,37.475Z" transform="translate(-3.375 -3.375)" fill="#fff"/>
+            <path id="Path_239" data-name="Path 239" d="M31.458,17.958h.11v.11h-.11Z" transform="translate(5.014 0.987)" fill="#fff"/>
+        </g>
+    </g>
+</svg>

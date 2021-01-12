@@ -32,6 +32,7 @@ main {
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
     grid-gap: 3em;
     padding: 2em;
     width: 68vw;
@@ -119,10 +120,7 @@ label {
     width: 35%;
     color: #525252;
     padding: 0.7em 1em;
-}
-
-.date > form > input[type="text"] {
-    font-size: 1em;
+    font-size: 0.8em;
     letter-spacing: 2px;
 }
 
@@ -153,7 +151,7 @@ div > p{
 }
 
 div > h2{
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .message-button, .follow-button{
@@ -177,11 +175,13 @@ div > h2{
     width: 100%
 }
 
-div[id*="profile"] > div{
+#profile > div{
     display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     width: 80%;
+
 }
 
 @media only screen and (max-width: 2000px) {
@@ -260,6 +260,7 @@ div[id*="profile"] > div{
         width: 100%;
         margin-left: 0;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
         grid-gap: 1.5em;
         padding: 1.5em;
     }
@@ -273,7 +274,7 @@ div[id*="profile"] > div{
     }
 
     div > h2{
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .message-button, .follow-button{

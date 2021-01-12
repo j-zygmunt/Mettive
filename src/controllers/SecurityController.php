@@ -7,6 +7,7 @@ require_once __DIR__.'/../repository/UserRepository.php';
 class SecurityController extends AppController
 {
     private UserRepository $userRepository;
+    private LanguageRepository $languageRepository;
 
     public function __construct()
     {
@@ -35,6 +36,7 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ["Wrong email or password!"]]);
         }
 
+        //return $this->render('home');
         $url = "http://$_SERVER[HTTP_HOST]";
         header ("Location: {$url}/home");
     }
@@ -47,6 +49,7 @@ class SecurityController extends AppController
         }
 
         $name = $_POST["name"];
+        $language = $_POST["language"];
         $surname = $_POST["surname"];
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -65,8 +68,10 @@ class SecurityController extends AppController
             );
         }
 
+        $language = new Lang($language);
+        //$this->languageRepository->addLanguage($language);
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT));
-        $userProfile = new UserProfile($email, 'default.jpg', $name, $surname, null, null, null);
+        $userProfile = new UserProfile($email, 'default.jpg', $name, $surname, $language, null, null);
         $this->userRepository->addUserProfile($user, $userProfile);
 
         $url = "http://$_SERVER[HTTP_HOST]";

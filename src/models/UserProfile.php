@@ -3,24 +3,47 @@
 
 class UserProfile
 {
-    private string $email;
     private string $photo;
     private string $name;
     private string $surname;
     private ?string $aboutMe;
+    private string $mainLanguage;
     private ?int $followers_amount;
     private ?int $following_amount;
-    private array $availableDates = [];
+    private ?string $country;
+    private ?string $city;
 
-    public function __construct($email, $photo, $name, $surname, $about_me, $followers_amount, $following_amount)
+    public function __construct(
+        string $photo,
+        string $name,
+        string $surname,
+        ?string $about_me,
+        string $mainLanguage,
+        string $country = "country",
+        string $city = "city",
+        int $followers_amount = 0,
+        int $following_amount = 0
+    )
     {
-        $this->email = $email;
         $this->photo = $photo;
         $this->name = $name;
         $this->surname = $surname;
         $this->aboutMe = $about_me;
+        $this->mainLanguage = $mainLanguage;
+        $this->country = $country;
+        $this->city = $city;
         $this->followers_amount = $followers_amount;
         $this->following_amount = $following_amount;
+    }
+
+    public function getMainLanguage(): string
+    {
+        return $this->mainLanguage;
+    }
+
+    public function setMainLanguage(string $mainLanguage): void
+    {
+        $this->mainLanguage = $mainLanguage;
     }
 
     public function getPhoto(): string
@@ -63,16 +86,6 @@ class UserProfile
         $this->aboutMe = $aboutMe;
     }
 
-    public function addAvailableDate($availableDate)
-    {
-        $this->availableDates = $availableDate;
-    }
-
-    public function deleteAvailableDate($availableDate)
-    {
-        $this->availableDates = array_diff($this->availableDates, $availableDate);
-    }
-
     public function getEmail(): string
     {
         return $this->email;
@@ -101,6 +114,26 @@ class UserProfile
     public function setFollowingAmount($following_amount)
     {
         $this->following_amount = $following_amount;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): void
+    {
+        $this->country = $country;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): void
+    {
+        $this->city = $city;
     }
 
 }

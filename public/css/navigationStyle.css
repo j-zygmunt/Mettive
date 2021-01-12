@@ -8,10 +8,6 @@ nav {
     display: flex;
 }
 
-nav > .toggle {
-    display: none;
-}
-
 nav > .logo {
     height: 80%;
     margin-top: auto;
@@ -45,20 +41,7 @@ li {
         margin-left: 2em;
     }
 
-    .button > img {
-        width: 10vw;
-    }
-
-    nav > .toggle {
-        display: block;
-        background: none;
-        border: none;
-        color: #FFFFFF;
-        padding: 0;
-        margin-left: calc(50vw - 30vw - 3em);
-    }
-
-    .toggle > i {
-        font-size: 2.2em;
+    .button > img{
+        width: 2em;
     }
 }

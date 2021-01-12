@@ -7,11 +7,11 @@ $path = parse_url($path, PHP_URL_PATH);
 
 Router::get('index', 'DefaultController');
 Router::get('', 'DefaultController');
-Router::get('home', 'DefaultController');
+Router::get('home', 'UserController');
 Router::get('profile', 'DefaultController');
-Router::get('my_profile', 'DefaultController');
+Router::get('myProfile', 'DefaultController');
 Router::get('register', 'SecurityController');
 Router::post('login', 'SecurityController');
-Router::post('editProfile', 'EditController');
+Router::post('editProfile', 'UserController');
 
 Router::run($path);

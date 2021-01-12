@@ -10,19 +10,14 @@ class DefaultController extends AppController
         $this->render('login');
     }
 
-    public function home(): void
-    {
-        $this->render('home');
-    }
-
     public function profile(): void
     {
         $this->render('profile');
     }
 
-    public function my_profile(): void
+    public function myProfile(): void
     {
-        $this->render('my_profile');
+        $this->render('my-profile');
     }
 
     public function register(): void
@@ -30,9 +25,9 @@ class DefaultController extends AppController
         $this->render('register');
     }
 
-    public function edit_profile(): void
+    public function editProfile(): void
     {
-        $this->render('edit_profile');
+        $this->render('edit-profile');
     }
 
 }

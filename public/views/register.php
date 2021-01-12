@@ -2,7 +2,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
     <link rel="stylesheet" type="text/css" href="public/css/registerStyle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="./public/js/script.js" defer></script>
     <title>REGISTER PAGE</title>
 </head>
 <body>
@@ -23,6 +24,7 @@
                 </div>
                 <input name="name" type="text" placeholder="name">
                 <input name="surname" type="text" placeholder="surname">
+                <input name="language" type="text" placeholder="language">
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
                 <input name="repeat-password" type="password" placeholder="password">
