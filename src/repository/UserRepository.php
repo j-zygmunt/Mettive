@@ -31,8 +31,7 @@ class UserRepository extends Repository
     public function getUserProfile(string $email): ?UserProfile
     {
         $statement = $this->database->connect()->prepare('
-            SELECT email, name, surname, about_me, followers_amount, following_amount FROM public.users u 
-            JOIN public.users_details ud ON u.id_user_details=ud.id_user_details WHERE u.email = :email
+            SELECT * FROM v_users_profiles WHERE email = :email
         ');
         $statement->bindParam(':email', $email, PDO::PARAM_INT);
         $statement->execute();
@@ -58,29 +57,42 @@ class UserRepository extends Repository
 
     public function addUserProfile(User $user, UserProfile $userProfile)
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+        try {
+            $statement = $db->prepare('
             INSERT INTO public.users_details (name, surname, about_me, image)
             VALUES (?, ?, ?, ?)
         ');
 
-        $statement->execute([
-            $userProfile->getName(),
-            $userProfile->getSurname(),
-            $userProfile->getAboutMe(),
-            $userProfile->getPhoto()
-        ]);
+            $db->beginTransaction();
 
-        $id = $this->database->connect()->lastInsertId();
+            $statement->execute([
+                $userProfile->getName(),
+                $userProfile->getSurname(),
+                $userProfile->getAboutMe(),
+                $userProfile->getPhoto()
+            ]);
 
-        $statement = $this->database->connect()->prepare('
+            $id = $db->lastInsertId();
+
+            $statement = $db->prepare('
             INSERT INTO public.users (email, password, id_user_details)
             VALUES (?, ?, ?)
         ');
 
-        $statement->execute([
-            $user->getEmail(),
-            $user->getPassword(),
-            $id
-        ]);
+            $statement->execute([
+                $user->getEmail(),
+                $user->getPassword(),
+                $id
+            ]);
+
+            $db->commit();
+        }
+        catch(PDOException $error){
+            if($db->inTransaction()){
+                $db->rollBack();
+            }
+            throw $error;
+        }
     }
 }

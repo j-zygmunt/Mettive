@@ -65,7 +65,7 @@ class SecurityController extends AppController
             );
         }
 
-        $user = new User($email, password_hash($password, PASSWORD_DEFAULT, ["cost" => 20]));
+        $user = new User($email, password_hash($password, PASSWORD_DEFAULT));
         $userProfile = new UserProfile($email, 'default.jpg', $name, $surname, null, null, null);
         $this->userRepository->addUserProfile($user, $userProfile);
 
