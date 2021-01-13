@@ -35,4 +35,13 @@ class AppController
         }
         print $output;
     }
+
+    public function checkCookie()
+    {
+        if(!isset($_COOKIE['user']))
+        {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+    }
 }

@@ -99,6 +99,7 @@ input{
 @media only screen and (max-device-width: 420px){
     div.container {
         flex-direction: column;
+        width: 100%;
     }
 
     * {
@@ -115,6 +116,10 @@ input{
         height: 20vh;
     }
 
+    form.login {
+        height: 45vh;
+        border-radius: 90px;
+    }
 
     form.login, div.register {
         margin: auto;
@@ -123,8 +128,8 @@ input{
     input, #login-button,#register-button {
         border-radius: 45px;
         margin: 1em;
-        padding-top: 1em;
-        padding-bottom: 1em;
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
     }
 
     #login-button{
@@ -132,6 +137,7 @@ input{
     }
     #register-button {
         width: 70%;
+        margin-top: 2em;
     }
 
     div.logo > img {

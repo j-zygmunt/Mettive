@@ -23,12 +23,15 @@ class UserController extends AppController
 
     public function home()
     {
+        $this->checkCookie();
         $usersProfiles = $this->userRepository->getUsersProfiles();
         $this->render('home', ['usersProfiles' => $usersProfiles]);
     }
 
     public function search()
     {
+        $this->checkCookie();
+
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : "";
 
         if($contentType === "application/json")
@@ -45,6 +48,8 @@ class UserController extends AppController
 
     public function editProfile()
     {
+        $this->checkCookie();
+
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file']))
         {
             //$userProfile = $this->userRepository->getUserProfile()

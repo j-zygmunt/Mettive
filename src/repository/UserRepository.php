@@ -63,10 +63,20 @@ class UserRepository extends Repository
         $db = $this->database->connect();
 
         try {
+            $language = $userProfile->getMainLanguage();
+
             $statement = $db->prepare('
-            INSERT INTO public.users_details (name, surname, about_me, image)
-            VALUES (?, ?, ?, ?)
-        ');
+                SELECT id_language FROM public.languages WHERE language = :language
+            ');
+            $statement->bindParam(':language', $language, PDO::PARAM_STR);
+            $statement->execute();
+
+            $language_id = $statement->fetch(PDO::FETCH_ASSOC);
+
+            $statement = $db->prepare('
+            INSERT INTO public.users_details (name, surname, about_me, image, id_main_language)
+            VALUES (?, ?, ?, ?, ?)
+            ');
 
             $db->beginTransaction();
 
@@ -74,7 +84,8 @@ class UserRepository extends Repository
                 $userProfile->getName(),
                 $userProfile->getSurname(),
                 $userProfile->getAboutMe(),
-                $userProfile->getPhoto()
+                $userProfile->getPhoto(),
+                $language_id,
             ]);
 
             $id = $db->lastInsertId();
@@ -107,7 +118,6 @@ class UserRepository extends Repository
         $statement = $this->database->connect()->prepare('
             SELECT * FROM public.v_users_profiles
         ');
-
         $statement->execute();
         $usersProfiles = $statement->fetchAll(PDO::FETCH_ASSOC);
 

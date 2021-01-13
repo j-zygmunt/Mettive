@@ -19,15 +19,4 @@ class DefaultController extends AppController
     {
         $this->render('my-profile');
     }
-
-    public function register(): void
-    {
-        $this->render('register');
-    }
-
-    public function editProfile(): void
-    {
-        $this->render('edit-profile');
-    }
-
 }

@@ -3,8 +3,7 @@ const searchInput = searchForm.querySelector('input');
 const searchButton = searchForm.querySelector('button');
 const profileContainer = document.querySelector(".profiles-panel");
 
-searchButton.addEventListener('click', function() {
-
+function search() {
     const data = {searchInput: searchInput.value};
 
     fetch("/search", {
@@ -19,10 +18,6 @@ searchButton.addEventListener('click', function() {
         profileContainer.innerHTML = "";
         loadProfiles(profiles)
     })
-});
-
-function search() {
-
 }
 
 function loadProfiles(profiles) {
@@ -38,7 +33,6 @@ function createProfile(profile) {
     const clone = template.content.cloneNode(true);
     const div = clone.querySelector("div");
     div.id = profile.id_user;
-
     const image = clone.querySelector("img");
     image.src = `/public/uploads/${profile.image}`;
     const name = clone.querySelector("h2");
@@ -48,3 +42,16 @@ function createProfile(profile) {
 
     profileContainer.appendChild(clone);
 }
+
+
+searchButton.addEventListener('click', function() {
+    search();
+});
+
+searchInput.addEventListener('keyup', function (event) {
+   if(event.key === "Enter")
+   {
+       event.preventDefault();
+       search();
+   }
+});

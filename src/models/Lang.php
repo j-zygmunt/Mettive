@@ -6,7 +6,7 @@ class Lang
     private string $name;
     private int $numberOfUsers;
 
-    public function __construct(string $name, int $numberOfUsers = 0)
+    public function __construct(string $name, int $numberOfUsers = 1)
     {
         $this->name = $name;
         $this->numberOfUsers = $numberOfUsers;

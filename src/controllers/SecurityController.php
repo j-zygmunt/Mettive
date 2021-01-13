@@ -4,6 +4,7 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/UserProfile.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../repository/LanguageRepository.php';
 require_once __DIR__.'/../models/Lang.php';
 
 class SecurityController extends AppController
@@ -15,6 +16,13 @@ class SecurityController extends AppController
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        $this->languageRepository = new LanguageRepository();
+    }
+
+    public function index(): void
+    {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header ("Location: {$url}/login");
     }
 
     public function login()
@@ -38,9 +46,20 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ["Wrong email or password!"]]);
         }
 
-        //return $this->render('home');
+        setcookie("user", $user->getEmail(), time() + 900);
+        //TODO change enable flag
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header ("Location: {$url}/home");
+    }
+
+    public function logout()
+    {
+        $this->checkCookie();
+        setcookie('user', "", time() - 900);
+        //TODO change enable flag
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/");
     }
 
     public function register()
@@ -56,9 +75,14 @@ class SecurityController extends AppController
         $email = $_POST["email"];
         $password = $_POST["password"];
         $repeatedPassword = $_POST["repeat-password"];
-        $checkbox = $_POST["checkbox"];
 
-        echo $checkbox;
+        if(!$name || !$surname || !$language || !$email){
+            return $this->render('register', ['messages' => ["Missing input data"]]);
+        }
+
+        if(!isset($_POST["accept"])){
+            return $this->render('register', ['messages' => ["You have to accept terms and conditions"]]);
+        }
 
         if($repeatedPassword !== $password)
         {
@@ -74,10 +98,12 @@ class SecurityController extends AppController
         }
 
         $languageObj = new Lang($language);
-        //$this->languageRepository->addLanguage($language);
+        $this->languageRepository->addLanguage($languageObj);
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT));
         $userProfile = new UserProfile('default.jpg', $name, $surname, $language, null);
         $this->userRepository->addUserProfile($user, $userProfile);
+
+        //TODO change enable flag
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header ("Location: {$url}/home");
