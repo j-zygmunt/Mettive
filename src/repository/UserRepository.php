@@ -128,4 +128,17 @@ class UserRepository extends Repository
 
         return $result;
     }
+
+    public function getUserByName(string $searchString): array
+    {
+        $searchString = '%'.strtolower($searchString).'%';
+
+        $statement = $this->database->connect()->prepare('
+            SELECT * FROM v_users_profiles WHERE LOWER(name) LIKE :search OR LOWER(surname) LIKE :search
+        ');
+        $statement->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

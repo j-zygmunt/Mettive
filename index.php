@@ -13,5 +13,6 @@ Router::get('myProfile', 'DefaultController');
 Router::get('register', 'SecurityController');
 Router::post('login', 'SecurityController');
 Router::post('editProfile', 'UserController');
+Router::post('search', 'UserController');
 
 Router::run($path);

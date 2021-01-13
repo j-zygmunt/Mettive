@@ -2,7 +2,9 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../models/UserProfile.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../models/Lang.php';
 
 class SecurityController extends AppController
 {
@@ -49,11 +51,14 @@ class SecurityController extends AppController
         }
 
         $name = $_POST["name"];
-        $language = $_POST["language"];
         $surname = $_POST["surname"];
+        $language = $_POST["language"];
         $email = $_POST["email"];
         $password = $_POST["password"];
         $repeatedPassword = $_POST["repeat-password"];
+        $checkbox = $_POST["checkbox"];
+
+        echo $checkbox;
 
         if($repeatedPassword !== $password)
         {
@@ -68,10 +73,10 @@ class SecurityController extends AppController
             );
         }
 
-        $language = new Lang($language);
+        $languageObj = new Lang($language);
         //$this->languageRepository->addLanguage($language);
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT));
-        $userProfile = new UserProfile($email, 'default.jpg', $name, $surname, $language, null, null);
+        $userProfile = new UserProfile('default.jpg', $name, $surname, $language, null);
         $this->userRepository->addUserProfile($user, $userProfile);
 
         $url = "http://$_SERVER[HTTP_HOST]";

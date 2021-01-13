@@ -7,7 +7,7 @@ class UserProfile
     private string $name;
     private string $surname;
     private ?string $aboutMe;
-    private string $mainLanguage;
+    private ?string $mainLanguage;
     private ?int $followers_amount;
     private ?int $following_amount;
     private ?string $country;
@@ -17,8 +17,8 @@ class UserProfile
         string $photo,
         string $name,
         string $surname,
+        ?string $mainLanguage,
         ?string $about_me,
-        string $mainLanguage,
         string $country = "country",
         string $city = "city",
         int $followers_amount = 0,

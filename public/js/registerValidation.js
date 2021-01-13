@@ -1,5 +1,6 @@
 const form = document.querySelector("form");
 const emailInput = form.querySelector('input[name="email"]');
+const passwordInput = form.querySelector('input[name="password"]');
 const confirmedPasswordInput = form.querySelector('input[name="repeat-password"]');
 
 function isEmail(email) {
@@ -11,11 +12,15 @@ function arePasswordsSame(password, confirmedPassword) {
 }
 
 function arePasswordSafe(password) {
-    return
+    return /^(?=.*\d)(?=.*[A-Z])(?=.{6,100})/.test(password)
 }
 
 function markValidation(element, condition) {
-    !condition ? element.classList.add('no-valid') : element.classList.remove('no-valid');
+    if(!condition){
+        element.classList.add('no-valid')
+    }else {
+        element.classList.remove('no-valid');
+    }
 }
 
 function validateEmail () {
@@ -26,10 +31,10 @@ function validateEmail () {
     );
 }
 
-function validatePassword() {
-    setTimeout( function (){
+function validatePasswordMatching () {
+    setTimeout( function () {
             const condition = arePasswordsSame(
-                confirmedPasswordInput.previousElementSibling.value,
+                passwordInput.value,
                 confirmedPasswordInput.value
             );
             markValidation(confirmedPasswordInput, condition);
@@ -38,7 +43,20 @@ function validatePassword() {
     );
 }
 
+function validatePasswordSafety () {
+    setTimeout( function () {
+            const condition = arePasswordSafe(
+                passwordInput.value
+            );
+            markValidation(passwordInput, condition);
+        },
+        1000
+    );
+}
+
 
 emailInput.addEventListener('keyup', validateEmail);
 
-confirmedPasswordInput.addEventListener('keyup', validatePassword);
+passwordInput.addEventListener('keyup', validatePasswordSafety);
+
+confirmedPasswordInput.addEventListener('keyup', validatePasswordMatching);

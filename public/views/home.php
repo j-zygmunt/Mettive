@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/homeStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>HOME PAGE</title>
 </head>
 <body>
@@ -14,12 +15,12 @@
         </nav>
         <main>
             <section class="search-panel">
-                <form class="search">
+                <div class="search">
                     <input placeholder="search profile">
                     <button class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
-                </form>
+                </div>
                 <div class="langauge-select">
                     <select id="langauge" name="langauge" data-placeholder="langauge">
                         <option disabled selected>langauge</option>
@@ -70,3 +71,21 @@
         </main>
     </div>
 </body>
+
+<template id="profile-template">
+    <div id="">
+        <img src="">
+        <div>
+            <h2>Name Surname</h2>
+            <p>Country City Langauge</p>
+            <div class="social">
+                <button class="message-button">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <button class="follow-button">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</template>

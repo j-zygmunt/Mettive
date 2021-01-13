@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
     <link rel="stylesheet" type="text/css" href="public/css/registerStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="./public/js/script.js" defer></script>
+    <script type="text/javascript" src="./public/js/registerValidation.js" defer></script>
     <title>REGISTER PAGE</title>
 </head>
 <body>
