@@ -24,6 +24,7 @@ class UserRepository extends Repository
         }
 
         return new User(
+            $user['id_user'],
             $user['email'],
             $user['password']
         );
@@ -46,11 +47,12 @@ class UserRepository extends Repository
         }
 
         return new UserProfile(
+            $userProfile['email'],
             $userProfile['image'],
             $userProfile['name'],
             $userProfile['surname'],
             $userProfile['about_me'],
-            $userProfile['mainLanguage'],
+            $userProfile['language'],
             $userProfile['country'],
             $userProfile['city'],
             $userProfile['followers_amount'],
@@ -124,11 +126,12 @@ class UserRepository extends Repository
         foreach ($usersProfiles as $userProfile)
         {
             $result[] = new UserProfile(
+                $userProfile['email'],
                 $userProfile['image'],
                 $userProfile['name'],
                 $userProfile['surname'],
                 $userProfile['about_me'],
-                $userProfile['mainLanguage'],
+                $userProfile['language'],
                 $userProfile['country'],
                 $userProfile['city'],
                 $userProfile['followers_amount'],
@@ -139,16 +142,76 @@ class UserRepository extends Repository
         return $result;
     }
 
-    public function getUserByName(string $searchString): array
+    public function getUserProfileByName(string $searchString): array
     {
         $searchString = '%'.strtolower($searchString).'%';
 
         $statement = $this->database->connect()->prepare('
-            SELECT * FROM v_users_profiles WHERE LOWER(name) LIKE :search OR LOWER(surname) LIKE :search
+            SELECT id_user FROM v_users_profiles_fullname WHERE LOWER(name) LIKE :search
         ');
         $statement->bindParam(':search', $searchString, PDO::PARAM_STR);
         $statement->execute();
+        $temp = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        $ids = [];
+
+        foreach ($temp as $item) {
+            $ids[] = $item['id_user'];
+        }
+        $ids = array_values($ids);
+        $ids = implode(', ', $ids);
+
+        $sql = ('SELECT * FROM v_users_profiles where id_user in ('.$ids.')');
+
+        return $this->database->connect()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getUserProfileById(int $id): ?UserProfile
+    {
+        $statement = $this->database->connect()->prepare('
+            SELECT * FROM v_users_profiles WHERE id_user = :id
+        ');
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $userProfile = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($userProfile == false)
+        {
+            //TODO optional exception
+            return null;
+        }
+
+        return new UserProfile(
+            $userProfile['email'],
+            $userProfile['image'],
+            $userProfile['name'],
+            $userProfile['surname'],
+            $userProfile['about_me'],
+            $userProfile['language'],
+            $userProfile['country'],
+            $userProfile['city'],
+            $userProfile['followers_amount'],
+            $userProfile['following_amount']
+        );
+    }
+
+    public function editUserProfile(int $id_user, string $image, string $aboutMe): void
+    {
+        $statement = $this->database->connect()->prepare('
+            SELECT id_user_details FROM public.users WHERE id_user = :id
+        ');
+        $statement->bindParam(':id', $id_user, PDO::PARAM_INT);
+        $statement->execute();
+
+        $profileId = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $statement = $this->database->connect()->prepare('
+            UPDATE users_details SET image = :image, about_me = :aboutMe WHERE id_user_details = :profileId
+        ');
+        $statement->bindParam(':image', $image, PDO::PARAM_STR);
+        $statement->bindParam(':aboutMe', $aboutMe, PDO::PARAM_STR);
+        $statement->bindParam(':profileId', $profileId['id_user_details'], PDO::PARAM_STR);
+        $statement->execute();
     }
 }

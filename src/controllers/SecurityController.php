@@ -27,6 +27,13 @@ class SecurityController extends AppController
 
     public function login()
     {
+        if(isset($_COOKIE['user']))
+        {
+            setcookie('user', "", time() - 900);
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+
         if(!$this->isPost())
         {
             return $this->render('login');
@@ -46,7 +53,7 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ["Wrong email or password!"]]);
         }
 
-        setcookie("user", $user->getEmail(), time() + 900);
+        setcookie("user", $user->getId(), time() + 900);
         //TODO change enable flag
 
         $url = "http://$_SERVER[HTTP_HOST]";

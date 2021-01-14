@@ -33,6 +33,9 @@ li {
     margin-right: 2em;
 }
 
+#mg {
+    display: none;
+}
 
 
 @media only screen and (max-device-width: 420px) {
@@ -43,5 +46,9 @@ li {
 
     .button > img{
         width: 2em;
+    }
+
+    #mg {
+        display: block;
     }
 }

@@ -6,19 +6,19 @@ class Review
     private int $rating;
     private string $reviewedLanguage;
     private string $message;
-    private string $reviewedAt;
-    private string $reviewerPhoto;
-    private string $reviewerName;
-    private string $reviewerSurname;
+    private ?string $reviewedAt;
+    private ?string $reviewerPhoto;
+    private ?string $reviewerName;
+    private ?string $reviewerSurname;
 
     public function __construct(
         int $rating,
         string $reviewedLanguage,
         string $message,
-        string $reviewedAt,
-        string $reviewerPhoto,
-        string $reviewerName,
-        string $reviewerSurname
+        ?string $reviewedAt,
+        ?string $reviewerPhoto,
+        ?string $reviewerName,
+        ?string $reviewerSurname
     )
     {
         $this->rating = $rating;

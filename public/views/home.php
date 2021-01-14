@@ -33,13 +33,17 @@
                 <div class="country-select">
                     <select id="country" name="country" data-placeholder="country">
                         <option disabled selected>country</option>
-                        <option value="poland">Poland</option>
+                        <?php foreach($addresses as $address): ?>
+                        <option value="<?= $address->getCountry() ?>"><?= $address->getCountry() ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="city-select">
                     <select id="city" name="city" data-placeholder="city">
                         <option disabled selected>city</option>
-                        <option value="krakow">Krakow</option>
+                        <?php foreach($addresses as $address): ?>
+                        <option value="<?= $address->getCity() ?>"><?= $address->getCity() ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="date">
@@ -56,7 +60,7 @@
                     <img src="public/uploads/<?= $userProfile->getPhoto() ?>">
                     <div>
                         <h2><?= $userProfile->getName(); ?> <?= $userProfile->getSurname(); ?></h2>
-                        <p>Country City Langauge</p>
+                        <p><?= $userProfile->getCountry(); ?> <?= $userProfile->getCity(); ?> <?= $userProfile->getMainLanguage(); ?></p>
                         <div class="social">
                             <button class="message-button">
                                 <i class="fas fa-user-circle"></i>

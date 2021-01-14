@@ -3,37 +3,50 @@
 
 class UserProfile
 {
+    private string $email;
     private string $photo;
     private string $name;
     private string $surname;
     private ?string $aboutMe;
-    private ?string $mainLanguage;
-    private ?int $followers_amount;
-    private ?int $following_amount;
+    private string $mainLanguage;
+    private ?int $followersAmount;
+    private ?int $followingAmount;
     private ?string $country;
     private ?string $city;
 
     public function __construct(
+        string $email,
         string $photo,
         string $name,
         string $surname,
-        ?string $mainLanguage,
-        ?string $about_me,
+        ?string $aboutMe,
+        string $mainLanguage,
         string $country = "country",
         string $city = "city",
-        int $followers_amount = 0,
-        int $following_amount = 0
+        int $followersAmount = 0,
+        int $followingAmount = 0
     )
     {
+        $this->email = $email;
         $this->photo = $photo;
         $this->name = $name;
         $this->surname = $surname;
-        $this->aboutMe = $about_me;
+        $this->aboutMe = $aboutMe;
         $this->mainLanguage = $mainLanguage;
         $this->country = $country;
         $this->city = $city;
-        $this->followers_amount = $followers_amount;
-        $this->following_amount = $following_amount;
+        $this->followersAmount = $followersAmount;
+        $this->followingAmount = $followingAmount;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getMainLanguage(): string
@@ -86,34 +99,24 @@ class UserProfile
         $this->aboutMe = $aboutMe;
     }
 
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
-
     public function getFollowersAmount(): ?int
     {
-        return $this->followers_amount;
+        return $this->followersAmount;
     }
 
-    public function setFollowersAmount($followers_amount)
+    public function setFollowersAmount($followersAmount)
     {
-        $this->followers_amount = $followers_amount;
+        $this->followersAmount = $followersAmount;
     }
 
     public function getFollowingAmount(): ?int
     {
-        return $this->following_amount;
+        return $this->followingAmount;
     }
 
-    public function setFollowingAmount($following_amount)
+    public function setFollowingAmount($followingAmount)
     {
-        $this->following_amount = $following_amount;
+        $this->followingAmount = $followingAmount;
     }
 
     public function getCountry(): ?string

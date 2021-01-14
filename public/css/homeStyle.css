@@ -32,7 +32,7 @@ main {
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 50vh;
+    grid-auto-rows: 46vh;
     grid-gap: 3em;
     padding: 2em;
     width: 68vw;
@@ -136,8 +136,8 @@ label {
 
 .profiles-panel > div > img {
     clip-path: circle(50% at center);
-    width: 60%;
-    height: auto;
+    width: 13em;
+    height: 13em;
     margin-top: 2%;
 }
 

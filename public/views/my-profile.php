@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/profilePanel.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/myProfile.js" defer></script>
     <title>MY PROFILE</title>
 </head>
 <body>
@@ -19,36 +20,19 @@
             <div class="info">
                 <div class="stats">
                     <h2>19</h2>
-                    <h2>140</h2>
-                    <h2>24</h2>
+                    <h2><?= $userProfile->getFollowersAmount()?></h2>
+                    <h2><?= $userProfile->getFollowingAmount()?></h2>
                     <p>meetings</p>
                     <p>followers</p>
                     <p>following</p>
                 </div>
-                <h2>Name Surname</h2>
+                <h2><?= $userProfile->getName()?> <?= $userProfile->getSurname()?></h2>
+                <h2><?= $userProfile->getEmail()?></h2>
             </div>
             <div class="ratings">
-                <h2>my ratings</h2>
+                <h2>my rating</h2>
                 <div class="star-rating">
-                    langauge
-                    <span>★★★★★</span>
-                    <br>
-                    langauge
-                    <span>★★★★★</span>
-                    <br>
-                    langauge
-                    <span>★★★★★</span>
-                    <br>
-                    langauge
-                    <span>★★★★★</span>
-                    <br>
-                    langauge
-                    <span>★★★★★</span>
-                    <br>
-                    langauge
-                    <span>★★★★★</span>
-                    <br>
-                    langauge
+                    <?= $userProfile->getMainLanguage()?>
                     <span>★★★★★</span>
                     <br>
                 </div>
@@ -67,9 +51,6 @@
             </div>
             <div class="header">
                 <h2>messages</h2>
-                <button class="new-msg-button">
-                    <i class="fas fa-plus"></i>
-                </button>
             </div>
             <div class="message-1">
                 <div class="msginfo">
@@ -171,7 +152,7 @@
                 <p>
                     <?= $userProfile->getAboutMe()?>
                 </p>
-                <h2>country, city</h2>
+                <h2><?= $userProfile->getCountry(); ?>, <?= $userProfile->getCity(); ?></h2>
             </div>
         </section>
     </main>

@@ -1,6 +1,11 @@
 <img class="logo" src="public/img/logo.svg">
 <ul>
     <li>
+        <a href="/home" class="button" id="mg">
+            <img src="public/img/home.svg">
+        </a>
+    </li>
+    <li>
         <a href="/home" class="button">
             <img src="public/img/home.svg">
         </a>
