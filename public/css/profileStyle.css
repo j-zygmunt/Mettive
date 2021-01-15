@@ -1,0 +1,106 @@
+* {
+    font-family: Segoe UI;
+    font-weight: bold;
+    color: #888888;
+}
+
+body{
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.base-container{
+    background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    height: 90vh;
+    margin-top: 10vh;
+}
+
+.ratings-panel{
+    position: fixed;
+    width: 24vw;
+    height: 90%;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat fixed;
+}
+
+.reviews {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100%;
+    align-items: center;
+    overflow-y: auto;
+    margin: 0 3% 0 3%;
+    padding-right: 2%;
+}
+
+.reviews > :last-child{
+    margin-bottom: 2em;
+}
+
+.reviews > :first-child{
+    margin-top: 2em;
+}
+
+
+.rating {
+    background: #FFFFFF99 0 0 no-repeat padding-box;
+    box-shadow: 0 3px 6px #00000029;
+    max-height: 25vh;
+    width: 90%;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.info {
+    display: flex;
+}
+
+.info > div > h2 {
+    font-size: 1em;
+}
+
+.info > img {
+    clip-path: circle(50% at center);
+    width: 3em;
+    height: 3em;
+}
+
+.rating > p {
+
+}
+
+.rating > .message {
+    margin: 7%;
+    padding-right: 2%;
+    overflow-y: auto;
+}
+
+
+.about-panel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 3em;
+    padding: 2em;
+    width: 76vw;
+    height: 100%;
+    margin-left: 24vw;
+}
+
+.about-me{
+    grid-row-start: 0;
+    grid-row-end: 2;
+}
+
+.available-dates {
+    overflow-y: auto;
+}

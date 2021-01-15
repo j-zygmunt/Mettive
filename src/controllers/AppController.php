@@ -1,5 +1,9 @@
 <?php
 
+require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../models/UserProfile.php';
+require_once __DIR__.'/../repository/UserRepository.php';
+
 class AppController
 {
     private string $request;

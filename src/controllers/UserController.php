@@ -52,4 +52,18 @@ class UserController extends AppController
         $userProfile = $this->userRepository->getUserProfileById($id_user);
         $this->render('my-profile', ['userProfile' => $userProfile]);
     }
+
+    public function profile($id_profile)
+    {
+        $this->checkCookie();
+        if(is_int($id_profile))
+        {
+            $profile = $this->userRepository->getUserProfileById($id_profile);
+            $this->render('profile', ['user' => $id_profile]);
+        }
+        else{
+            $message = 'error';
+            $this->render('home', ['messages' => $message]);
+        }
+    }
 }
