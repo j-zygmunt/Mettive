@@ -2,6 +2,7 @@ const searchForm = document.querySelector('.search');
 const searchInput = searchForm.querySelector('input');
 const searchButton = searchForm.querySelector('button');
 const profileContainer = document.querySelector(".profiles-panel");
+const userButtons = document.querySelectorAll('.user-button');
 
 function search() {
     const data = {searchInput: searchInput.value};
@@ -55,3 +56,7 @@ searchInput.addEventListener('keyup', function (event) {
        search();
    }
 });
+
+userButtons.forEach(button=> button.addEventListener("click", function (){
+    location.href = `/profile/${button.value}`
+}))

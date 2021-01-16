@@ -3,6 +3,7 @@
 require_once 'Repository.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/UserProfile.php';
+require_once __DIR__.'/../models/UserStats.php';
 
 class UserRepository extends Repository
 {
@@ -47,6 +48,7 @@ class UserRepository extends Repository
         }
 
         return new UserProfile(
+            $userProfile['id_user'],
             $userProfile['email'],
             $userProfile['image'],
             $userProfile['name'],
@@ -54,9 +56,7 @@ class UserRepository extends Repository
             $userProfile['about_me'],
             $userProfile['language'],
             $userProfile['country'],
-            $userProfile['city'],
-            $userProfile['followers_amount'],
-            $userProfile['following_amount']
+            $userProfile['city']
         );
     }
 
@@ -126,6 +126,7 @@ class UserRepository extends Repository
         foreach ($usersProfiles as $userProfile)
         {
             $result[] = new UserProfile(
+                $userProfile['id_user'],
                 $userProfile['email'],
                 $userProfile['image'],
                 $userProfile['name'],
@@ -133,9 +134,7 @@ class UserRepository extends Repository
                 $userProfile['about_me'],
                 $userProfile['language'],
                 $userProfile['country'],
-                $userProfile['city'],
-                $userProfile['followers_amount'],
-                $userProfile['following_amount']
+                $userProfile['city']
             );
         }
 
@@ -183,6 +182,7 @@ class UserRepository extends Repository
         }
 
         return new UserProfile(
+            $userProfile['id_user'],
             $userProfile['email'],
             $userProfile['image'],
             $userProfile['name'],
@@ -190,9 +190,7 @@ class UserRepository extends Repository
             $userProfile['about_me'],
             $userProfile['language'],
             $userProfile['country'],
-            $userProfile['city'],
-            $userProfile['followers_amount'],
-            $userProfile['following_amount']
+            $userProfile['city']
         );
     }
 
@@ -213,5 +211,23 @@ class UserRepository extends Repository
         $statement->bindParam(':aboutMe', $aboutMe, PDO::PARAM_STR);
         $statement->bindParam(':profileId', $profileId['id_user_details'], PDO::PARAM_STR);
         $statement->execute();
+    }
+
+    public function getUserStats(int $idUser): UserStats
+    {
+        $statement = $this->database->connect()->prepare('
+        SELECT * FROM v_users_stats WHERE id_user = :id_user
+        ');
+        $statement->bindParam(':id_user', $idUser, PDO::PARAM_INT);
+        $statement->execute();
+        $stats = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return new UserStats(
+            $stats['avg'],
+            $stats['followers_amount'],
+            $stats['following_amount'],
+            $stats['sum'],
+            $stats['created_at']
+        );
     }
 }

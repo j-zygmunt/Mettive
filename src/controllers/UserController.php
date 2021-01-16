@@ -3,20 +3,24 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/UserProfile.php';
+require_once __DIR__.'/../models/UserStats.php';
 require_once __DIR__.'/../models/Address.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../repository/AddressRepository.php';
+require_once __DIR__.'/../repository/ReviewRepository.php';
 
 class UserController extends AppController
 {
     private UserRepository $userRepository;
     private AddressRepository $addressRepository;
+    private ReviewRepository $reviewRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
         $this->addressRepository = new AddressRepository();
+        $this->reviewRepository = new ReviewRepository();
     }
 
     public function home()
@@ -50,16 +54,19 @@ class UserController extends AppController
         $this->checkCookie();
         $id_user = intval($_COOKIE["user"]);
         $userProfile = $this->userRepository->getUserProfileById($id_user);
-        $this->render('my-profile', ['userProfile' => $userProfile]);
+        $stats = $this->userRepository->getUserStats($id_user);
+        $this->render('my-profile', ['userProfile' => $userProfile, 'stats' => $stats]);
     }
 
-    public function profile($id_profile)
+    public function profile($email)
     {
         $this->checkCookie();
-        if(is_int($id_profile))
+        if(is_string($email))
         {
-            $profile = $this->userRepository->getUserProfileById($id_profile);
-            $this->render('profile', ['user' => $id_profile]);
+            $visitor = intval($_COOKIE["user"]);
+            $profile = $this->userRepository->getUserProfile($email);
+            $stats = $this->userRepository->getUserStats($profile->getId());
+            $this->render('profile', ['profile' => $profile, 'stats' => $stats, 'visitor' => $visitor]);
         }
         else{
             $message = 'error';

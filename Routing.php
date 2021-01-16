@@ -21,7 +21,9 @@ class Router
 
     public static function run (string $url)
     {
-        $action = explode("/", $url)[0];
+        $result = explode("/", $url);
+        $action = $result[0];
+        $id = $result[1];
 
         if(!array_key_exists($action, self::$routes))
         {
@@ -30,9 +32,10 @@ class Router
         
         $controller = self::$routes[$action];
         $object = new $controller;
+        $id = $id ?: '';
         $action = $action ?: 'index';
 
-        $object->$action();
+        $object->$action($id);
     }
 
 }

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/navigationStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/homeStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/navigationStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
@@ -62,7 +62,7 @@
                         <h2><?= $userProfile->getName(); ?> <?= $userProfile->getSurname(); ?></h2>
                         <p><?= $userProfile->getCountry(); ?> <?= $userProfile->getCity(); ?> <?= $userProfile->getMainLanguage(); ?></p>
                         <div class="social">
-                            <button class="message-button">
+                            <button class="user-button" value=<?= $userProfile->getEmail()?>>
                                 <i class="fas fa-user-circle"></i>
                             </button>
                             <button class="follow-button">

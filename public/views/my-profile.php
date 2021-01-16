@@ -19,9 +19,9 @@
             <img src="public/uploads/<?= $userProfile->getPhoto()?>">
             <div class="info">
                 <div class="stats">
-                    <h2>19</h2>
-                    <h2><?= $userProfile->getFollowersAmount()?></h2>
-                    <h2><?= $userProfile->getFollowingAmount()?></h2>
+                    <h2><?= $stats->getReviewsAmount()?></h2>
+                    <h2><?= $stats->getFollowersAmount()?></h2>
+                    <h2><?= $stats->getFollowingAmount()?></h2>
                     <p>meetings</p>
                     <p>followers</p>
                     <p>following</p>

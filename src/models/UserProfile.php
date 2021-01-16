@@ -3,30 +3,29 @@
 
 class UserProfile
 {
+    private int $id;
     private string $email;
     private string $photo;
     private string $name;
     private string $surname;
-    private ?string $aboutMe;
+    private string $aboutMe;
     private string $mainLanguage;
-    private ?int $followersAmount;
-    private ?int $followingAmount;
-    private ?string $country;
-    private ?string $city;
+    private string $country;
+    private string $city;
 
     public function __construct(
+        int $id,
         string $email,
         string $photo,
         string $name,
         string $surname,
-        ?string $aboutMe,
+        string $aboutMe,
         string $mainLanguage,
-        string $country = "country",
-        string $city = "city",
-        int $followersAmount = 0,
-        int $followingAmount = 0
+        string $country,
+        string $city
     )
     {
+        $this->id = $id;
         $this->email = $email;
         $this->photo = $photo;
         $this->name = $name;
@@ -35,8 +34,16 @@ class UserProfile
         $this->mainLanguage = $mainLanguage;
         $this->country = $country;
         $this->city = $city;
-        $this->followersAmount = $followersAmount;
-        $this->followingAmount = $followingAmount;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getEmail(): string
@@ -99,42 +106,22 @@ class UserProfile
         $this->aboutMe = $aboutMe;
     }
 
-    public function getFollowersAmount(): ?int
-    {
-        return $this->followersAmount;
-    }
-
-    public function setFollowersAmount($followersAmount)
-    {
-        $this->followersAmount = $followersAmount;
-    }
-
-    public function getFollowingAmount(): ?int
-    {
-        return $this->followingAmount;
-    }
-
-    public function setFollowingAmount($followingAmount)
-    {
-        $this->followingAmount = $followingAmount;
-    }
-
-    public function getCountry(): ?string
+    public function getCountry(): string
     {
         return $this->country;
     }
 
-    public function setCountry(?string $country): void
+    public function setCountry(string $country): void
     {
         $this->country = $country;
     }
 
-    public function getCity(): ?string
+    public function getCity(): string
     {
         return $this->city;
     }
 
-    public function setCity(?string $city): void
+    public function setCity(string $city): void
     {
         $this->city = $city;
     }

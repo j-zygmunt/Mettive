@@ -136,6 +136,7 @@ label {
 
 .profiles-panel > div > img {
     clip-path: circle(50% at center);
+    object-fit: cover;
     width: 13em;
     height: 13em;
     margin-top: 2%;
@@ -154,7 +155,7 @@ div > h2{
     font-size: 1.3em;
 }
 
-.message-button, .follow-button{
+.user-button, .follow-button{
     background: #E943FE;
     box-shadow: 0 3px 6px #00000029;
     border-radius: 12px;    
@@ -222,7 +223,7 @@ div > h2{
         font-size: 1.4em;
     }
 
-    .message-button, .follow-button{
+    .user-button, .follow-button{
         width: 4em;
         height: 2em;
     }
@@ -237,7 +238,7 @@ div > h2{
         font-size: 1.1em;
     }
 
-    .message-button, .follow-button{
+    .user-button, .follow-button{
         width: 5em;
         height: 2.5em;
     }
@@ -277,7 +278,7 @@ div > h2{
         font-size: 1em;
     }
 
-    .message-button, .follow-button{
+    .user-button, .follow-button{
         font-size: 0.7em;
     }
 

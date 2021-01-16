@@ -90,6 +90,7 @@ main {
 .msginfo > img {
     width: 3em;
     height: 3em;
+    object-fit: cover;
     box-shadow: 0 3px 6px #00000029;
     border: 1px solid #707070;
     border-radius: 8px;
@@ -185,6 +186,8 @@ main {
     font-weight: normal;
     padding: 0 2em;
     overflow-y: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .edit-panel > form {
