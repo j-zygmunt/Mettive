@@ -274,13 +274,15 @@ class UserRepository extends Repository
         ]);
 
         $statement = $this->database->connect()->prepare('
-            UPDATE users_details SET "followers_amount" = "followers_amount" + 1 FROM users_details JOIN users ON users.id_user_details = users_details.id_user_details WHERE id_user = :id
+            UPDATE users_details ud SET followers_amount = followers_amount + 1 WHERE ud.id_user_details = (
+            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
         $statement->execute();
 
         $statement = $this->database->connect()->prepare('
-            UPDATE users_details SET "following_amount" = "following_amount" + 1 FROM users_details JOIN users ON users.id_user_details = users_details.id_user_details WHERE id_user = :id
+            UPDATE users_details ud SET following_amount = following_amount + 1 WHERE ud.id_user_details = (
+            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollower, PDO::PARAM_INT);
         $statement->execute();
@@ -296,13 +298,15 @@ class UserRepository extends Repository
         $statement->execute();
 
         $statement = $this->database->connect()->prepare('
-            UPDATE users_details SET "followers_amount" = "followers_amount" - 1 FROM users_details JOIN users ON users.id_user_details = users_details.id_user_details WHERE id_user = :id
+            UPDATE users_details ud SET followers_amount = followers_amount - 1 WHERE ud.id_user_details = (
+            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
         $statement->execute();
 
         $statement = $this->database->connect()->prepare('
-            UPDATE users_details SET "following_amount" = "following_amount" - 1 FROM users_details JOIN users ON users.id_user_details = users_details.id_user_details WHERE id_user = :id
+            UPDATE users_details ud SET following_amount = following_amount - 1 WHERE ud.id_user_details = (
+            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollower, PDO::PARAM_INT);
         $statement->execute();

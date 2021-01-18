@@ -5,27 +5,7 @@ const aboutPanel = document.querySelector('.about-panel');
 const reviewWindow = document.querySelector('.add-review');
 const addButton = document.querySelector('.add');
 
-rateButton.addEventListener('click', function (){
-    nav.classList.add('blur');
-    reviewPanel.classList.add('blur');
-    aboutPanel.classList.add('blur');
-    reviewWindow.classList.add('window-review-open');
-});
-
-addButton.addEventListener('click', function (){
-    addReview();
-    nav.classList.remove('blur');
-    reviewPanel.classList.remove('blur');
-    aboutPanel.classList.remove('blur');
-    reviewWindow.classList.remove('window-review-open');
-    window.location.reload(true);
-})
-
 function addReview() {
-    //const message = document.querySelector('textarea').value;
-    //const rating = document.querySelector('#rate').value;
-    //const idRewiewee = document.querySelector('.about-panel').getAttribute("id");
-
     const data =
         {message: document.querySelector('textarea').value,
             rating: document.querySelector('#rate').value,
@@ -44,3 +24,15 @@ function addReview() {
         reviewWindow.classList.remove('window-review-open');
     });
 }
+
+rateButton.addEventListener('click', function (){
+    nav.classList.add('blur');
+    reviewPanel.classList.add('blur');
+    aboutPanel.classList.add('blur');
+    reviewWindow.classList.add('window-review-open');
+});
+
+addButton.addEventListener('click', function (){
+    addReview();
+    window.location.reload(true);
+})
