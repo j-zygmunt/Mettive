@@ -3,6 +3,7 @@
 
 class Review
 {
+
     private int $rating;
     private string $reviewedLanguage;
     private string $message;

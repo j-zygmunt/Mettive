@@ -29,6 +29,7 @@ class EditProfileController extends AppController
         $this->checkCookie();
         $id_user = intval($_COOKIE["user"]);
         $userProfile = $this->userRepository->getUserProfileById($id_user);
+        $stats = $this->userRepository->getUserStats($id_user);
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validateFile($_FILES['file']))
         {
             move_uploaded_file(
@@ -37,7 +38,7 @@ class EditProfileController extends AppController
             );
             if(strlen($_POST['new-about-me'])>=800){
                 $this->message[] = "Description contains too many characters";
-                $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message]);
+                $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message, 'stats' => $stats]);
             }
 
             $this->userRepository->editUserProfile($id_user, $_FILES['file']['name'], $_POST['new-about-me']);
@@ -46,7 +47,7 @@ class EditProfileController extends AppController
             header ("Location: {$url}/myProfile");
             return;
         }
-        $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message]);
+        $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message, 'stats' => $stats]);
     }
 
     private function validateFile(array $file): bool

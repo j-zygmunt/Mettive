@@ -23,7 +23,7 @@ class Router
     {
         $result = explode("/", $url);
         $action = $result[0];
-        $id = $result[1];
+        $sub = $result[1];
 
         if(!array_key_exists($action, self::$routes))
         {
@@ -32,10 +32,10 @@ class Router
         
         $controller = self::$routes[$action];
         $object = new $controller;
-        $id = $id ?: '';
+        $sub = $sub ?? '';
         $action = $action ?: 'index';
 
-        $object->$action($id);
+        $object->$action($sub);
     }
 
 }

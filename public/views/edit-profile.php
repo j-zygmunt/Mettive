@@ -16,27 +16,7 @@
     </nav>
     <main>
         <section class="profile-panel">
-            <img src="public/uploads/<?= $userProfile->getPhoto()?>">
-            <div class="info">
-                <div class="stats">
-                    <h2>19</h2>
-                    <h2><?= $userProfile->getFollowersAmount()?></h2>
-                    <h2><?= $userProfile->getFollowingAmount()?></h2>
-                    <p>meetings</p>
-                    <p>followers</p>
-                    <p>following</p>
-                </div>
-                <h2><?= $userProfile->getName()?> <?= $userProfile->getSurname()?></h2>
-                <h2><?= $userProfile->getEmail()?></h2>
-            </div>
-            <div class="ratings">
-                <h2>my ratings</h2>
-                <div class="star-rating">
-                    <?= $userProfile->getMainLanguage()?>
-                    <span>★★★★★</span>
-                    <br>
-                </div>
-            </div>
+            <?php include("profile-panel.php")?>
             <button class="save-profile-button" type="submit">save changes</button>
         </section>
         <section class="edit-panel">

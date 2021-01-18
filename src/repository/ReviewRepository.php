@@ -33,10 +33,33 @@ class ReviewRepository extends Repository
         return $result;
     }
 
-    public function addReview(Review $review, int $id, string $email): void
+    public function addReview(Review $review, int $idReviewer, int $idReviewee, string $email): void
     {
         $statement = $this->database->connect()->prepare('
-            //TODO
+            SELECT id_language FROM languages WHERE language = :language
         ');
-    }
+        $lang = $review->getReviewedLanguage();
+        $statement->bindParam(':language', $lang, PDO::PARAM_STR);
+        $statement->execute();
+        $langId = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $statement = $this->database->connect()->prepare('
+            INSERT INTO public.users_reviews(rating, message, id_language, id_reviewer, id_reviewee)
+            VALUES (?, ?, ?, ?, ?)
+        ');
+        $statement->execute([
+            $review->getRating(),
+            $review->getMessage(),
+            $langId,
+            $idReviewer,
+            $idReviewee
+        ]);
+   }
+
+   public function deleteReview(): void
+   {
+       $statement = $this->database->connect()->prepare('
+            
+       ');
+   }
 }

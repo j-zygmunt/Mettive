@@ -3,14 +3,14 @@
 
 class UserStats
 {
-    private int $AVGRating;
+    private float $AVGRating;
     private int $followersAmount;
     private int $followingAmount;
     private int $reviewsAmount;
     private string $createdAt;
 
 
-    public function __construct(int $AVGRating, int $followersAmount, int $followingAmount, int $reviewsAmount, string $createdAt)
+    public function __construct(float $AVGRating, int $followersAmount, int $followingAmount, int $reviewsAmount, string $createdAt)
     {
         $this->AVGRating = $AVGRating;
         $this->followersAmount = $followersAmount;
@@ -19,12 +19,12 @@ class UserStats
         $this->createdAt = $createdAt;
     }
 
-    public function getAVGRating(): int
+    public function getAVGRating(): float
     {
-        return $this->AVGRating;
+        return number_format($this->AVGRating, 2, '.','');
     }
 
-    public function setAVGRating(int $AVGRating): void
+    public function setAVGRating(float $AVGRating): void
     {
         $this->AVGRating = $AVGRating;
     }

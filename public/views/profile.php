@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/profileStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/./public/js/follow.js" defer></script>
     <title>PROFILE</title>
 </head>
 <body>
@@ -14,122 +15,16 @@
     </nav>
     <main>
         <section class="ratings-panel">
+            <div class="header">
+                <h2>reviews</h2>
+            </div>
             <div class="reviews">
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
-                <div class="rating">
-                    <div class="info">
-                        <div>
-                            <p>22,11,2020</p>
-                            <h2>Name Surname</h2>
-                        </div>
-                        <img src="/public/img/uploads/indeks.jpg">
-                    </div>
-                    <div class="message">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            et dolore magna aliqua.
-                        </p>
-                    </div>
-                    <p>rate: <span>★★★★★</span></p>
-                </div>
+                <?php foreach ($reviews as $review): ?>
+                    <?php include("review.php")?>
+                <?php endforeach; ?>
             </div>
         </section>
-        <section class="about-panel">
+        <section class="about-panel" id=<?= $profile->getId()?>>
             <div class="about-me">
                 <h2>about <?=$profile->getName()?> <?=$profile->getSurname()?></h2>
                 <p><?=$profile->getAboutMe()?></p>
@@ -143,8 +38,9 @@
                         <i class="fas fa-envelope"></i>
                     </button>
                     <button class="rate-button">rate</button>
-                    <button class="follow-button">
-                        <i class="fas fa-plus-circle"></i>
+                    <button class="follow-button" value="<?= $profile->getIsFriend()?>">
+                        <i id="follow" class="fas fa-plus-circle"></i>
+                        <i id="unfollow" class="fas fa-minus-circle"></i>
                     </button>
                 </div>
             </div>
@@ -152,7 +48,7 @@
                 <h2>stats</h2>
                 <div class="star-rating">
                     <?= $profile->getMainLanguage()?>
-                    <span>★★★★★</span>
+                    <span><?= $stats->getAVGRating()?></span>
                 </div>
                 <div class="stats">
                     <h2><?= $stats->getReviewsAmount()?></h2>

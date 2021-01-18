@@ -16,27 +16,7 @@
     </nav>
     <main>
         <section class="profile-panel">
-            <img src="public/uploads/<?= $userProfile->getPhoto()?>">
-            <div class="info">
-                <div class="stats">
-                    <h2><?= $stats->getReviewsAmount()?></h2>
-                    <h2><?= $stats->getFollowersAmount()?></h2>
-                    <h2><?= $stats->getFollowingAmount()?></h2>
-                    <p>meetings</p>
-                    <p>followers</p>
-                    <p>following</p>
-                </div>
-                <h2><?= $userProfile->getName()?> <?= $userProfile->getSurname()?></h2>
-                <h2><?= $userProfile->getEmail()?></h2>
-            </div>
-            <div class="ratings">
-                <h2>my rating</h2>
-                <div class="star-rating">
-                    <?= $userProfile->getMainLanguage()?>
-                    <span>★★★★★</span>
-                    <br>
-                </div>
-            </div>
+            <?php include("profile-panel.php")?>
             <button class="edit-profile-button" type="submit">edit profile</button>
         </section>
         <section class="messages-panel">
@@ -50,82 +30,11 @@
                 ?>
             </div>
             <div class="header">
-                <h2>messages</h2>
+                <h2>reviews</h2>
             </div>
-            <div class="message-1">
-                <div class="msginfo">
-                    <div class="sender-info">
-                        <p>22 11 2020</p>
-                        <h2>Name Surname</h2>
-                    </div>
-                    <img src="public/img/uploads/indeks.jpg">
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <button class="reply-button">
-                    <i class="fas fa-reply"></i>
-                </button>
-            </div>
-            <div class="message-1">
-                <div class="msginfo">
-                    <div class="sender-info">
-                        <p>22 11 2020</p>
-                        <h2>Name Surname</h2>
-                    </div>
-                    <img src="public/img/uploads/indeks.jpg">
-                </div>
-                <p>
-                    Lorem orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <button class="reply-button">
-                    <i class="fas fa-reply"></i>
-                </button>
-            </div>
-            <div class="message-1">
-                <div class="msginfo">
-                    <div class="sender-info">
-                        <p>22 11 2020</p>
-                        <h2>Name Surname</h2>
-                    </div>
-                    <img src="public/img/uploads/indeks.jpg">
-                </div>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    t laborum.
-                </p>
-                <button class="reply-button">
-                    <i class="fas fa-reply"></i>
-                </button>
-            </div>
-            <div class="message-1">
-                <div class="msginfo">
-                    <div class="sender-info">
-                        <p>22 11 2020</p>
-                        <h2>Name Surname</h2>
-                    </div>
-                    <img src="public/img/uploads/indeks.jpg">
-                </div>
-                <p>
-                    aute irure dolor in reprehenderit in voluptate velit esse
-                </p>
-                <button class="reply-button">
-                    <i class="fas fa-reply"></i>
-                </button>
-            </div>
+            <?php foreach ($reviews as $review): ?>
+                <?php include("review.php")?>
+            <?php endforeach; ?>
         </section>
         <section class="about-panel">
             <div class="available-dates">

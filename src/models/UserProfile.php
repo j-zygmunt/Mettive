@@ -12,6 +12,7 @@ class UserProfile
     private string $mainLanguage;
     private string $country;
     private string $city;
+    private ?bool $isFriend;
 
     public function __construct(
         int $id,
@@ -22,7 +23,8 @@ class UserProfile
         string $aboutMe,
         string $mainLanguage,
         string $country,
-        string $city
+        string $city,
+        ?bool $isFriend = false
     )
     {
         $this->id = $id;
@@ -34,6 +36,17 @@ class UserProfile
         $this->mainLanguage = $mainLanguage;
         $this->country = $country;
         $this->city = $city;
+        $this->isFriend= $isFriend ?? 0;
+    }
+
+    public function getIsFriend(): int
+    {
+        return $this->isFriend;
+    }
+
+    public function setIsFriend($isFriend): void
+    {
+        $this->isFriend = $isFriend;
     }
 
     public function getId(): int

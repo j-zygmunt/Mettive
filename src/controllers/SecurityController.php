@@ -53,7 +53,7 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ["Wrong email or password!"]]);
         }
 
-        setcookie("user", $user->getId(), time() + 900);
+        setcookie("user", $user->getId(), time() + 3600);
         //TODO change enable flag
 
         $url = "http://$_SERVER[HTTP_HOST]";
@@ -63,7 +63,7 @@ class SecurityController extends AppController
     public function logout()
     {
         $this->checkCookie();
-        setcookie('user', "", time() - 900);
+        setcookie('user', "", time() - 3600);
         //TODO change enable flag
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/");
@@ -103,11 +103,16 @@ class SecurityController extends AppController
                 ['messages' => ["Password must be at least 6 characters long and must contain one digit and one capital letter"]]
             );
         }
-
+        if($this->userRepository->checkMailAvailability($email)){
+            return $this->render(
+                'register',
+                ['messages' => ["User witch this email already exist"]]
+            );
+        }
         $languageObj = new Lang($language);
         $this->languageRepository->addLanguage($languageObj);
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT));
-        $userProfile = new UserProfile('default.jpg', $name, $surname, $language, null);
+        $userProfile = new UserProfile($email,'default.jpg', $name, $surname, null, $language, null, null, null);
         $this->userRepository->addUserProfile($user, $userProfile);
 
         //TODO change enable flag

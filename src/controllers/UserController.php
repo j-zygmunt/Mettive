@@ -26,7 +26,8 @@ class UserController extends AppController
     public function home()
     {
         $this->checkCookie();
-        $usersProfiles = $this->userRepository->getUsersProfiles();
+        $id = intval($_COOKIE['user']);
+        $usersProfiles = $this->userRepository->getUsersProfiles($id);
         $addresses = $this->addressRepository->getAddresses();
         $this->render('home', ['usersProfiles' => $usersProfiles, 'addresses' => $addresses]);
     }
@@ -34,6 +35,7 @@ class UserController extends AppController
     public function search()
     {
         $this->checkCookie();
+        $id = intval($_COOKIE['user']);
 
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : "";
 
@@ -45,32 +47,55 @@ class UserController extends AppController
             header('Content-type: application/json');
             http_response_code(200);
 
-            echo json_encode($this->userRepository->getUserProfileByName($decoded['searchInput']));
+            echo json_encode($this->userRepository->getUserProfileByName($decoded['searchInput'], $id));
         }
     }
 
-    public function myProfile()
+    public function myProfile(): void
     {
         $this->checkCookie();
         $id_user = intval($_COOKIE["user"]);
         $userProfile = $this->userRepository->getUserProfileById($id_user);
         $stats = $this->userRepository->getUserStats($id_user);
-        $this->render('my-profile', ['userProfile' => $userProfile, 'stats' => $stats]);
+        $reviews = $this->reviewRepository->getReviews($id_user);
+        $this->render('my-profile', ['userProfile' => $userProfile, 'stats' => $stats, 'reviews' => $reviews]);
     }
 
-    public function profile($email)
+    public function profile($email): void
     {
         $this->checkCookie();
         if(is_string($email))
         {
             $visitor = intval($_COOKIE["user"]);
-            $profile = $this->userRepository->getUserProfile($email);
-            $stats = $this->userRepository->getUserStats($profile->getId());
-            $this->render('profile', ['profile' => $profile, 'stats' => $stats, 'visitor' => $visitor]);
+            $profile = $this->userRepository->getUserProfile($email, $visitor);
+            $id = $profile->getId();
+            if($id == $visitor){
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header ("Location: {$url}/home");
+            }
+            $stats = $this->userRepository->getUserStats($id);
+            $reviews = $this->reviewRepository->getReviews($id);
+            $this->render('profile', ['profile' => $profile, 'stats' => $stats, 'visitor' => $visitor, 'reviews' => $reviews]);
         }
         else{
-            $message = 'error';
-            $this->render('home', ['messages' => $message]);
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header ("Location: {$url}/home");
         }
+    }
+
+    public function follow(int $idAddressee): void
+    {
+        $this->checkCookie();
+        $idUser = intval($_COOKIE["user"]);
+        $this->userRepository->follow($idUser, $idAddressee);
+        http_response_code(200);
+    }
+
+    public function unfollow(int $idAddressee): void
+    {
+        $this->checkCookie();
+        $idUser = intval($_COOKIE["user"]);
+        $this->userRepository->unfollow($idUser, $idAddressee);
+        http_response_code(200);
     }
 }

@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./public/js/follow.js" defer></script>
     <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>HOME PAGE</title>
 </head>
@@ -56,7 +57,7 @@
             </section>
             <section class="profiles-panel">
                 <?php foreach($usersProfiles as $userProfile): ?>
-                <div id="profile">
+                <div id=<?= $userProfile->getId()?>>
                     <img src="public/uploads/<?= $userProfile->getPhoto() ?>">
                     <div>
                         <h2><?= $userProfile->getName(); ?> <?= $userProfile->getSurname(); ?></h2>
@@ -65,8 +66,9 @@
                             <button class="user-button" value=<?= $userProfile->getEmail()?>>
                                 <i class="fas fa-user-circle"></i>
                             </button>
-                            <button class="follow-button">
-                                <i class="fas fa-plus-circle"></i>
+                            <button class="follow-button" value="<?= $userProfile->getIsFriend()?>">
+                                <i id="follow" class="fas fa-plus-circle"></i>
+                                <i id="unfollow" class="fas fa-minus-circle"></i>
                             </button>
                         </div>
                     </div>
@@ -83,7 +85,7 @@
             <h2>Name Surname</h2>
             <p>Country City Langauge</p>
             <div class="social">
-                <button class="message-button">
+                <button class="user-button">
                     <i class="fas fa-user-circle"></i>
                 </button>
                 <button class="follow-button">
