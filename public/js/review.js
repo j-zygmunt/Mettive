@@ -4,12 +4,13 @@ const reviewPanel = document.querySelector('.ratings-panel');
 const aboutPanel = document.querySelector('.about-panel');
 const reviewWindow = document.querySelector('.add-review');
 const addButton = document.querySelector('.add');
+const cancelButton = document.querySelector('.cancel');
 
 function addReview() {
     const data =
         {message: document.querySelector('textarea').value,
             rating: document.querySelector('#rate').value,
-            idReviewee: document.querySelector('.about-panel').getAttribute("id")}
+            idReviewee: document.querySelector('.about-panel').getAttribute("id")};
 
     fetch("/addReview", {
         method: "POST",
@@ -35,4 +36,11 @@ rateButton.addEventListener('click', function (){
 addButton.addEventListener('click', function (){
     addReview();
     window.location.reload(true);
-})
+});
+
+cancelButton.addEventListener('click', function (){
+    nav.classList.remove('blur');
+    reviewPanel.classList.remove('blur');
+    aboutPanel.classList.remove('blur');
+    reviewWindow.classList.remove('window-review-open');
+});

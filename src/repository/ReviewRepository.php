@@ -22,6 +22,7 @@ class ReviewRepository extends Repository
             $result[] = new Review(
                 $review['rating'],
                 $review['message'],
+                $review['id_review'],
                 $review['reviewed_at'],
                 $review['reviewer_photo'],
                 $review['reviewer_name'],

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/navigationStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/myProfileStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/profilePanel.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/navigationStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/myProfileStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/profilePanel.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./public/js/myProfile.js" defer></script>
+    <script type="text/javascript" src="/./public/js/myProfile.js" defer></script>
+    <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
     <title>MY PROFILE</title>
 </head>
 <body>
@@ -36,34 +37,7 @@
                 <?php include("review.php")?>
             <?php endforeach; ?>
         </section>
-        <section class="about-panel">
-            <div class="available-dates">
-                <h2>my available dates</h2>
-                <div class="date">
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                    <p>month:day</p>
-                    <p>hour-hour</p>
-                </div>
-            </div>
-            <div class="about-me">
-                <h2>about me</h2>
-                <p>
-                    <?= $userProfile->getAboutMe()?>
-                </p>
-                <h2><?= $userProfile->getCountry(); ?>, <?= $userProfile->getCity(); ?></h2>
-            </div>
-        </section>
+        <?php include("about-panel.php")?>
     </main>
 </div>
 </body>

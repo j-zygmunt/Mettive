@@ -12,12 +12,12 @@ function arePasswordsSame(password, confirmedPassword) {
 }
 
 function arePasswordSafe(password) {
-    return /^(?=.*\d)(?=.*[A-Z])(?=.{6,100})/.test(password)
+    return /^(?=.*\d)(?=.*[A-Z])(?=.{6,100})/.test(password);
 }
 
 function markValidation(element, condition) {
     if(!condition){
-        element.classList.add('no-valid')
+        element.classList.add('no-valid');
     }else {
         element.classList.remove('no-valid');
     }

@@ -3,9 +3,9 @@
 
 class Review
 {
-
     private int $rating;
     private string $message;
+    private ?int $id;
     private ?string $reviewedAt;
     private ?string $reviewerPhoto;
     private ?string $reviewerName;
@@ -14,6 +14,7 @@ class Review
     public function __construct(
         int $rating,
         string $message,
+        ?int $id,
         ?string $reviewedAt,
         ?string $reviewerPhoto,
         ?string $reviewerName,
@@ -22,6 +23,7 @@ class Review
     {
         $this->rating = $rating;
         $this->message = $message;
+        $this->id = $id;
         $this->reviewedAt = $reviewedAt;
         $this->reviewerPhoto = $reviewerPhoto;
         $this->reviewerName = $reviewerName;
@@ -46,6 +48,16 @@ class Review
     public function setMessage(string $message): void
     {
         $this->message = $message;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getReviewedAt(): string

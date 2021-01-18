@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+    <g id="Group_143" data-name="Group 143" transform="translate(-1223 -114)">
+        <g id="Ellipse_231" data-name="Ellipse 231" transform="translate(1223 114)" fill="rgba(255,255,255,0)" stroke="#fff" stroke-width="4">
+            <circle cx="19" cy="19" r="19" stroke="none"/>
+            <circle cx="19" cy="19" r="17" fill="none"/>
+        </g>
+        <path id="Icon_open-magnifying-glass" data-name="Icon open-magnifying-glass" d="M8.557-.021a8.557,8.557,0,0,0,0,17.114,8.458,8.458,0,0,0,4.058-1,2.445,2.445,0,0,0,.318.318l2.445,2.445A2.494,2.494,0,1,0,18.9,15.333l-2.445-2.445a2.445,2.445,0,0,0-.391-.318,8.442,8.442,0,0,0,1.076-4.058A8.566,8.566,0,0,0,8.581-.045Zm0,2.445a6.083,6.083,0,0,1,6.112,6.112,6.131,6.131,0,0,1-1.614,4.205l-.073.073a2.445,2.445,0,0,0-.318.318,6.118,6.118,0,0,1-4.132,1.54,6.112,6.112,0,0,1,0-12.224Z" transform="translate(1232.214 122.955)" fill="#fff" stroke="#fff" stroke-width="1"/>
+    </g>
+</svg>

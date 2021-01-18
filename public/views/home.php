@@ -5,8 +5,9 @@
     <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./public/js/follow.js" defer></script>
-    <script type="text/javascript" src="./public/js/search.js" defer></script>
+    <script type="text/javascript" src="/./public/js/follow.js" defer></script>
+    <script type="text/javascript" src="/./public/js/search.js" defer></script>
+    <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
     <title>HOME PAGE</title>
 </head>
 <body>
@@ -25,10 +26,9 @@
                 <div class="langauge-select">
                     <select id="langauge" name="langauge" data-placeholder="langauge">
                         <option disabled selected>langauge</option>
-                        <option value="english">English</option>
-                        <option value="spanish">Spanish</option>
-                        <option value="polish">Polish</option>
-                        <option value="german">German</option>
+                        <?php foreach($languages as $language): ?>
+                            <option value="<?= $language->getName(); ?>"><?= $language->getName(); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="country-select">
@@ -50,8 +50,8 @@
                 <div class="date">
                     <label>date:</label>
                     <form>
-                        <input placeholder="from" type="text" onclick="(this.type = 'date')" onblur="(this.type='text')" id="from">
-                        <input placeholder="to" type="text" onclick="(this.type = 'date')" onblur="(this.type='text')" id="to">
+                        <input placeholder="from" type="text" id="from">
+                        <input placeholder="to" type="text" id="to">
                     </form>
                 </div>
             </section>

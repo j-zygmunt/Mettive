@@ -9,6 +9,7 @@ class ReviewController extends AppController
 
     public function __construct()
     {
+        parent::__construct();
         $this->reviewRepository = new ReviewRepository();
     }
 
@@ -21,7 +22,7 @@ class ReviewController extends AppController
         {
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content, true);
-            $review = new Review($decoded['rating'], $decoded['message'], null, null, null, null);
+            $review = new Review($decoded['rating'], $decoded['message'], null, null, null, null, null);
             $this->reviewRepository->addReview($review, $idUser, $decoded['idReviewee']);
 
             http_response_code(200);

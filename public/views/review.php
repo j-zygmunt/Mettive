@@ -1,4 +1,4 @@
-<div class="review">
+<div class="review" id="<?= $review->getId(); ?>">
     <div class="msginfo">
         <div class="sender-info">
             <p><?= $review->getReviewedAt() ?></p>

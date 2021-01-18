@@ -214,3 +214,10 @@ main {
     font-weight: normal;
     resize: none;
 }
+
+@media only screen and (max-device-width: 420px) {
+
+    * {
+        font-size: 35px;
+    }
+}

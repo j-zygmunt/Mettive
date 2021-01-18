@@ -6,6 +6,9 @@ nav {
     background: #D549FB 0 0 no-repeat padding-box;
     box-shadow: 0 3px 6px #00000029;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
 
 nav > .logo {
@@ -13,6 +16,10 @@ nav > .logo {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 3em;
+}
+
+nav > .mobile-logo {
+    display: none;
 }
 
 ul {
@@ -23,32 +30,89 @@ ul {
     color: #ffffff;
 }
 
-li {
-    align-self: center;
-}
-
 .button {
     text-decoration: none;
     display: inline-block;
     margin-right: 2em;
 }
 
-#mg {
+#mg, #hamburger {
+    margin: auto 2em;
     display: none;
 }
 
+.show-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+li > label {
+    display: none;
+}
 
 @media only screen and (max-device-width: 420px) {
-    nav > .logo {
-        width: 30vw;
-        margin-left: 2em;
+    *{
+        font-size: 35px;
     }
 
-    .button > img{
+    nav {
+        justify-content: space-between;
+    }
+
+    nav > .mobile-logo {
+        display: block;
+        height: 7vh;
+        margin: auto 2em;
+    }
+
+    nav > .logo {
+        display: none;
+    }
+
+    #mg > img {
+        width: 3em;
+    }
+
+    #hamburger > img {
+        width: 2.5em;
+    }
+
+    ul {
+        position: absolute;
+        top: 10vh;
+        display: none;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        background: #E78fff;
+        z-index: 2;
+        height: 16vh;
+    }
+
+    li > a > img, li > a, li {
+        height: 2em;
         width: 2em;
     }
 
-    #mg {
+    li {
+        padding-right: 0.2em;
+        margin: auto 0;
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        justify-content: space-between;
+    }
+
+    li > label {
+        display: block;
+        color: white;
+        font-weight: normal;
+        font-size: 1.6em;
+        margin: 0;
+    }
+
+    #mg , #hamburger{
         display: block;
     }
 }

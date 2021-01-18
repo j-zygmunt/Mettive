@@ -30,7 +30,7 @@ function checkFollowers(){
     });
 }
 
-window.onload = checkFollowers
+window.onload = checkFollowers;
 
 followButton.forEach(button=>button.addEventListener('click', function (){
     followAction(button);

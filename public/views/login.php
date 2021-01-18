@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/loginStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/loginStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
     <title>LOGIN PAGE</title>
-    <script type="text/javascript" src="./public/js/login.js" defer></script>
+    <script type="text/javascript" src="/./public/js/login.js" defer></script>
 </head>
 <body>
     <div class="container">

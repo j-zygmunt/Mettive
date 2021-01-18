@@ -8,12 +8,14 @@ require_once __DIR__.'/../models/Address.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 require_once __DIR__.'/../repository/AddressRepository.php';
 require_once __DIR__.'/../repository/ReviewRepository.php';
+require_once __DIR__.'/../repository/LanguageRepository.php';
 
 class UserController extends AppController
 {
     private UserRepository $userRepository;
     private AddressRepository $addressRepository;
     private ReviewRepository $reviewRepository;
+    private LanguageRepository $languageRepository;
 
     public function __construct()
     {
@@ -21,6 +23,7 @@ class UserController extends AppController
         $this->userRepository = new UserRepository();
         $this->addressRepository = new AddressRepository();
         $this->reviewRepository = new ReviewRepository();
+        $this->languageRepository = new LanguageRepository();
     }
 
     public function home()
@@ -29,7 +32,8 @@ class UserController extends AppController
         $id = intval($_COOKIE['user']);
         $usersProfiles = $this->userRepository->getUsersProfiles($id);
         $addresses = $this->addressRepository->getAddresses();
-        $this->render('home', ['usersProfiles' => $usersProfiles, 'addresses' => $addresses]);
+        $languages = $this->languageRepository->getLanguages();
+        $this->render('home', ['usersProfiles' => $usersProfiles, 'addresses' => $addresses, 'languages' => $languages]);
     }
 
     public function search()

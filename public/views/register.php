@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/scrollbarStyle.css">
-    <link rel="stylesheet" type="text/css" href="public/css/registerStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/registerStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="./public/js/registerValidation.js" defer></script>
+    <script type="text/javascript" src="/./public/js/registerValidation.js" defer></script>
     <title>REGISTER PAGE</title>
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <img src="public/img/logo.svg">
+            <img src="/public/img/logo.svg">
         </div>
         <div class="register-container">
             <form class="register" action="register" method="POST">

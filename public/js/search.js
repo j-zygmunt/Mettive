@@ -1,7 +1,9 @@
 const searchForm = document.querySelector('.search');
 const searchInput = searchForm.querySelector('input');
-const searchButton = searchForm.querySelector('button');
+const searchButton = searchForm.querySelector('.search-button');
 const profileContainer = document.querySelector(".profiles-panel");
+const fromInput = document.querySelector('#from');
+const toInput = document.querySelector('#to');
 
 function search() {
     const data = {searchInput: searchInput.value};
@@ -66,4 +68,20 @@ searchInput.addEventListener('keyup', function (event) {
        event.preventDefault();
        search();
    }
+});
+
+fromInput.addEventListener('click', function (){
+    this.type = 'date';
+});
+
+toInput.addEventListener('click', function (){
+    this.type = 'date';
+});
+
+fromInput.addEventListener('blur', function (){
+    this.type = 'text';
+});
+
+toInput.addEventListener('blur', function (){
+    this.type = 'text';
 });

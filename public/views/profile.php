@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/./public/js/follow.js" defer></script>
     <script type="text/javascript" src="/./public/js/review.js" defer></script>
+    <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
     <title>PROFILE</title>
 </head>
 <body>
@@ -85,6 +86,7 @@
                     <option value="5">5</option>
                 </select>
                 <button class="add">add</button>
+                <button class="cancel">cancel</button>
             </div>
         </div>
     </main>

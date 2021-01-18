@@ -251,25 +251,6 @@ div > h2{
     }
 }
 
-@media only screen and (max-width: 1100px) {
-    div > p{
-        font-size: 1.1em;
-    }
-
-    .user-button, .follow-button{
-        width: 5em;
-        height: 2.5em;
-    }
-
-    .social> button > i{
-        font-size: 1.6em;
-    }
-
-    .profiles-panel {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media only screen and (max-device-width: 420px) {
     * {
         font-size: 35px;
