@@ -12,6 +12,7 @@ Router::get('profile', 'UserController');
 Router::get('myProfile', 'UserController');
 Router::get('follow', 'UserController');
 Router::get('unfollow', 'UserController');
+Router::post('addReview', 'ReviewController');
 Router::post('register', 'SecurityController');
 Router::post('login', 'SecurityController');
 Router::post('editProfile', 'EditProfileController');

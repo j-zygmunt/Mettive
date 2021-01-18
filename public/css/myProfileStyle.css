@@ -204,7 +204,7 @@ main {
     width: 70%;
 }
 
-.edit-panel > form > textarea{
+.edit-panel > form > textarea, input[type="text"]{
     background-color: transparent;
     border: none;
     border-bottom: 2px solid gray;

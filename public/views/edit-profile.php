@@ -32,7 +32,10 @@
                     ?>
                 </div>
                 <textarea name="new-about-me" rows="5" placeholder="about me"></textarea>
+                <label for="myfile">Select a file:</label>
                 <input type="file" accept="image/png, image/jpeg" name='file'><br/>
+                <input type="text" name='city' placeholder="city"><br/>
+                <input type="text" name='country' placeholder="country"><br/>
             </form>
         </section>
         <section class="about-panel">
@@ -60,9 +63,7 @@
             </div>
             <div class="about-me">
                 <h2>about me</h2>
-                <p>
-                    <?= $userProfile->getAboutMe()?>
-                </p>
+                <p><?= $userProfile->getAboutMe(); ?></p>
                 <h2><?= $userProfile->getCountry(); ?>, <?= $userProfile->getCity(); ?></h2>
             </div>
         </section>

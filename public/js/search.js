@@ -16,15 +16,19 @@ function search() {
         return response.json();
     }).then(function (profiles) {
         profileContainer.innerHTML = "";
-        loadProfiles(profiles)
+        if(profiles == null){
+            return;
+        }
+        loadProfiles(profiles);
+        checkFollowers();
     })
 }
 
 function loadProfiles(profiles) {
     profiles.forEach(profile => {
-        console.log(profile);
         createProfile(profile);
-    })
+        console.log(profile);
+    });
 }
 
 function createProfile(profile) {
@@ -41,11 +45,16 @@ function createProfile(profile) {
     details.innerHTML = profile.country + " " + profile.city + " " + profile.language;
     const profButton = clone.querySelector(".user-button");
     profButton.value = profile.email;
-    linkToProfile(profButton);
-
+    profButton.addEventListener('click', function (){
+        linkToProfile(profButton.value)
+    });
+    const followButton = clone.querySelector('.follow-button');
+    (profile.is_friend === null) ? followButton.value = 0 : followButton.value = 1;
+    followButton.addEventListener('click', function (){
+        followAction(followButton);
+    });
     profileContainer.appendChild(clone);
 }
-
 
 searchButton.addEventListener('click', function() {
     search();

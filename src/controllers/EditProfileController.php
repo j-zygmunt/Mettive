@@ -39,9 +39,18 @@ class EditProfileController extends AppController
             if(strlen($_POST['new-about-me'])>=800){
                 $this->message[] = "Description contains too many characters";
                 $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message, 'stats' => $stats]);
+                return;
             }
+            if($_POST['country'] == '' || $_POST['city'] == '')
+            {
+                $this->message[] = "Inappropriate address";
+                $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message, 'stats' => $stats]);
+                return;
+            }
+            $address = new Address($_POST['country'], $_POST['city']);
+            $idAddress = $this->addressRepository->addAddress($address);
 
-            $this->userRepository->editUserProfile($id_user, $_FILES['file']['name'], $_POST['new-about-me']);
+            $this->userRepository->editUserProfile($id_user, $_FILES['file']['name'], $_POST['new-about-me'], $idAddress);
 
             $url = "http://$_SERVER[HTTP_HOST]";
             header ("Location: {$url}/myProfile");

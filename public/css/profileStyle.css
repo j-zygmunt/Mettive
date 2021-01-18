@@ -20,6 +20,68 @@ main {
     margin-top: 10vh;
 }
 
+.add-review{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 25%;
+    margin: 0 30%;
+    visibility: hidden;
+    background-color: #ffffffa9;
+    box-shadow: 0 3px 6px #00000029;
+    border-radius: 18px;
+}
+
+.add-review > textarea {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid gray;
+    width: 85%;
+    padding-right: 1em;
+    font-size: 1.2em;
+    font-weight: normal;
+    resize: none;
+}
+
+.add-review > .action {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin-top: 0.5em;
+}
+
+.add-review > .action > .add {
+    background: #E943FE;
+    border-radius: 8px;
+    border: none;
+    height: 2.5em;
+    width: 3.5em;
+    box-shadow: 0 3px 6px #00000029;
+    color: #ffffff;
+}
+
+select {
+    color: #888888;
+    font-size: 1.1em;
+    padding: 0.1em 0.5em;
+    box-shadow: 0 3px 6px #00000029;
+    border: 4px solid #FFFFFF80;
+    border-radius: 8px;
+    width: 20%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #FFFFFF80 url(../img/arrow.svg) no-repeat right 0.05em top 0.2em;
+    background-size: 1.5em;
+}
+
+select option{
+    background: #FFFFFF80 0 0 no-repeat padding-box;
+}
+
 .ratings-panel{
     position: fixed;
     width: 24vw;
@@ -289,6 +351,10 @@ span {
     color: #ffffff;
 }
 
+.add-review {
+
+}
+
 .follow-button #follow,
 .follow-button #unfollow{
     display: none;
@@ -304,4 +370,41 @@ span {
 
 .follow-button.unfollow #unfollow{
     display: inline;
+}
+
+.window-review-open{
+
+    animation: add-review-animation 0.5s forwards;
+    animation-delay: 0.3s;
+}
+
+.blur {
+    pointer-events: none;
+    overflow: hidden;
+    animation: blur-animation 0.5s forwards;
+}
+
+@keyframes blur-animation {
+    0% {
+
+    }
+    100% {
+        transform: scale(1.015);
+        filter: blur(2px) brightness(80%);
+    }
+}
+
+html{
+    overflow: hidden;
+}
+
+@keyframes add-review-animation {
+    0% {
+
+    }
+    100% {
+        visibility: visible;
+        opacity: 100%;
+        transform: translateY(10vh);
+    }
 }

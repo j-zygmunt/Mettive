@@ -1,21 +1,31 @@
 const followButton = document.querySelectorAll('.follow-button');
 const userButtons = document.querySelectorAll('.user-button');
 
-function linkToProfile(button) {
-    button.addEventListener('click', function(){
-        location.href = `/profile/${button.value}`;
-    })
+function linkToProfile(val) {
+    location.href = `/profile/${val}`;
 }
 
 function followAction(button) {
-
+    const container = button.parentElement.parentElement.parentElement;
+    const id = container.getAttribute("id");
+    if(button.classList.contains('unfollow')){
+        fetch(`/unfollow/${id}`)
+            .then(function (){
+                button.classList.remove('unfollow');
+            });
+    }
+    else{
+        fetch(`/follow/${id}`)
+            .then(function (){
+                button.classList.add('unfollow');
+            });
+    }
 }
 
 function checkFollowers(){
-
-    followButton.forEach(button => {
+    document.querySelectorAll('.follow-button').forEach(button => {
        if(button.value == 1){
-           button.classList.add('unfollow')
+           button.classList.add('unfollow');
        }
     });
 }
@@ -23,29 +33,9 @@ function checkFollowers(){
 window.onload = checkFollowers
 
 followButton.forEach(button=>button.addEventListener('click', function (){
-    if(button.classList.contains('unfollow')){
-        const flag = this
-        const container = flag.parentElement.parentElement.parentElement;
-        const id = container.getAttribute("id")
-        fetch(`/unfollow/${id}`)
-            .then(function (){
-                button.classList.remove('unfollow')
-                console.log('unfollow')
-                console.log(button.value)
-            });
-    }
-    else{
-        const flag = this
-        const container = flag.parentElement.parentElement.parentElement;
-        const id = container.getAttribute("id")
-        console.log(id)
-        fetch(`/follow/${id}`)
-            .then(function (){
-                button.classList.add('unfollow')
-                console.log('follow')
-            });
-    }
-}))
+    followAction(button);
+}));
 
-
-userButtons.forEach(button=> linkToProfile(button))
+userButtons.forEach(button=> button.addEventListener('click', function (){
+    linkToProfile(button.value);
+}));

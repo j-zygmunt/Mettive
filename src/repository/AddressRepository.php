@@ -47,9 +47,11 @@ class AddressRepository extends Repository
         );
     }
 
-    public function addAddress(Address $address): void
+    public function addAddress(Address $address): int
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
         INSERT INTO public.address (country, city) VALUES (?, ?) ON CONFLICT DO NOTHING 
         ');
         $statement->execute([
@@ -57,6 +59,7 @@ class AddressRepository extends Repository
             $address->getCity()
         ]);
 
+        return $db->lastInsertId();
     }
 
 }

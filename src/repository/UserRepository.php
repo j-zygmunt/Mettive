@@ -124,7 +124,7 @@ class UserRepository extends Repository
         $statement = $this->database->connect()->prepare('
             SELECT * FROM v_users_profiles u left join
                 (SELECT f.id_addressee as is_friend FROM (users JOIN followers f ON ((users.id_user = f.id_addressee)))
-                WHERE (f.id_requester = :id)) t on u.id_user = t.is_friend WHERE u.id_user != :id;
+                WHERE (f.id_requester = :id)) t on u.id_user = t.is_friend WHERE u.id_user <> :id;
         ');
         $statement->bindParam(':id', $idCurrentUser, PDO::PARAM_INT);
         $statement->execute();
@@ -149,16 +149,21 @@ class UserRepository extends Repository
         return $result;
     }
 
-    public function getUserProfileByName(string $searchString, int $idCurrentUser): array
+    public function getUserProfileByName(string $searchString, int $idCurrentUser): ?array
     {
         $searchString = '%'.strtolower($searchString).'%';
 
         $statement = $this->database->connect()->prepare('
-            SELECT id_user FROM v_users_profiles_fullname WHERE LOWER(name) LIKE :search
+            SELECT id_user FROM v_users_profiles_fullname WHERE LOWER(name) LIKE :search AND id_user <> :id
         ');
+        $statement->bindParam(':id', $idCurrentUser, PDO::PARAM_INT);
         $statement->bindParam(':search', $searchString, PDO::PARAM_STR);
         $statement->execute();
         $temp = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if($temp == false){
+            return null;
+        }
 
         $ids = [];
 
@@ -168,9 +173,10 @@ class UserRepository extends Repository
         $ids = array_values($ids);
         $ids = implode(', ', $ids);
 
+
         $sql = ('SELECT * FROM v_users_profiles u left join
                 (SELECT f.id_addressee as is_friend FROM (users JOIN followers f ON ((users.id_user = f.id_addressee)))
-                WHERE (f.id_requester = '.$idCurrentUser.')) t on u.id_user = t.is_friend where id_user in ('.$ids.')');
+                WHERE (f.id_requester = ' . $idCurrentUser . ')) t on u.id_user = t.is_friend where id_user in (' . $ids . ')');
 
         return $this->database->connect()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -204,7 +210,7 @@ class UserRepository extends Repository
         );
     }
 
-    public function editUserProfile(int $id_user, string $image, string $aboutMe): void
+    public function editUserProfile(int $id_user, string $image, string $aboutMe, int $idAddress): void
     {
         $statement = $this->database->connect()->prepare('
             SELECT id_user_details FROM public.users WHERE id_user = :id
@@ -215,11 +221,12 @@ class UserRepository extends Repository
         $profileId = $statement->fetch(PDO::FETCH_ASSOC);
 
         $statement = $this->database->connect()->prepare('
-            UPDATE users_details SET image = :image, about_me = :aboutMe WHERE id_user_details = :profileId
+            UPDATE users_details SET image = :image, about_me = :aboutMe, id_address = :idAddress WHERE id_user_details = :profileId
         ');
         $statement->bindParam(':image', $image, PDO::PARAM_STR);
         $statement->bindParam(':aboutMe', $aboutMe, PDO::PARAM_STR);
         $statement->bindParam(':profileId', $profileId['id_user_details'], PDO::PARAM_STR);
+        $statement->bindParam(':idAddress', $idAddress, PDO::PARAM_STR);
         $statement->execute();
     }
 

@@ -5,7 +5,6 @@ class Review
 {
 
     private int $rating;
-    private string $reviewedLanguage;
     private string $message;
     private ?string $reviewedAt;
     private ?string $reviewerPhoto;
@@ -14,7 +13,6 @@ class Review
 
     public function __construct(
         int $rating,
-        string $reviewedLanguage,
         string $message,
         ?string $reviewedAt,
         ?string $reviewerPhoto,
@@ -23,7 +21,6 @@ class Review
     )
     {
         $this->rating = $rating;
-        $this->reviewedLanguage = $reviewedLanguage;
         $this->message = $message;
         $this->reviewedAt = $reviewedAt;
         $this->reviewerPhoto = $reviewerPhoto;
@@ -39,16 +36,6 @@ class Review
     public function setRating(int $rating): void
     {
         $this->rating = $rating;
-    }
-
-    public function getReviewedLanguage(): string
-    {
-        return $this->reviewedLanguage;
-    }
-
-    public function setReviewedLanguage(string $reviewedLanguage): void
-    {
-        $this->reviewedLanguage = $reviewedLanguage;
     }
 
     public function getMessage(): string

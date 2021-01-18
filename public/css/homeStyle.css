@@ -34,6 +34,7 @@ main {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 46vh;
     grid-gap: 3em;
+    grid-row-gap: 2em;
     padding: 2em;
     width: 68vw;
     margin-left: 25vw;

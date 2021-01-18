@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/./public/js/follow.js" defer></script>
+    <script type="text/javascript" src="/./public/js/review.js" defer></script>
     <title>PROFILE</title>
 </head>
 <body>
@@ -72,6 +73,20 @@
                 </div>
             </div>
         </section>
+        <div class="add-review">
+            <textarea name="message" rows="5" placeholder="message"></textarea>
+            <div class="action">
+                <select id="rate" name="rate" data-placeholder="rate">
+                    <option disabled selected>rate</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button class="add">add</button>
+            </div>
+        </div>
     </main>
 </div>
 </body>

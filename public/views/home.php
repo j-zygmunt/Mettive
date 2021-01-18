@@ -89,7 +89,8 @@
                     <i class="fas fa-user-circle"></i>
                 </button>
                 <button class="follow-button">
-                    <i class="fas fa-plus-circle"></i>
+                    <i id="follow" class="fas fa-plus-circle"></i>
+                    <i id="unfollow" class="fas fa-minus-circle"></i>
                 </button>
             </div>
         </div>
