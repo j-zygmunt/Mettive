@@ -11,8 +11,8 @@
     </div>
     <div class="action">
         <p>rate: <span><?= $review->getRating() ?></span></p>
-        <button class="report-button">
-            <i class="fas fa-flag"></i>
+        <button class="delete-button">
+            <i class="fas fa-trash-alt"></i>
         </button>
     </div>
 </div>

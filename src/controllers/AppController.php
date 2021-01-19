@@ -45,7 +45,7 @@ class AppController
         if(!isset($_COOKIE['user']))
         {
             $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/");
+            header("Location: {$url}/login");
         }
     }
 }

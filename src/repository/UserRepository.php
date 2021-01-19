@@ -10,7 +10,9 @@ class UserRepository extends Repository
 
     public function getUser(string  $email): ?User
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM public.users WHERE email = :email
         ');
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -27,13 +29,16 @@ class UserRepository extends Repository
         return new User(
             $user['email'],
             $user['password'],
-            $user['id_user']
+            $user['id_user'],
+            $user['id_role']
         );
     }
 
     public function getUserProfile(string $email, int $idCurrentUser): ?UserProfile
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM v_users_profiles u left join
                 (SELECT f.id_addressee as is_friend FROM (users JOIN followers f ON ((users.id_user = f.id_addressee)))
                 WHERE (f.id_requester = :id)) t on u.id_user = t.is_friend WHERE email = :email;
@@ -117,11 +122,12 @@ class UserRepository extends Repository
         }
     }
 
-    public function getUsersProfiles(int $idCurrentUser): array
+    public function getUsersProfiles(int $idCurrentUser): ?array
     {
+        $db = $this->database->connect();
         $result = [];
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             SELECT * FROM v_users_profiles u left join
                 (SELECT f.id_addressee as is_friend FROM (users JOIN followers f ON ((users.id_user = f.id_addressee)))
                 WHERE (f.id_requester = :id)) t on u.id_user = t.is_friend WHERE u.id_user <> :id;
@@ -129,6 +135,12 @@ class UserRepository extends Repository
         $statement->bindParam(':id', $idCurrentUser, PDO::PARAM_INT);
         $statement->execute();
         $usersProfiles = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if($usersProfiles == false)
+        {
+            //TODO optional exception
+            return null;
+        }
 
         foreach ($usersProfiles as $userProfile)
         {
@@ -151,9 +163,10 @@ class UserRepository extends Repository
 
     public function getUserProfileByName(string $searchString, int $idCurrentUser): ?array
     {
+        $db = $this->database->connect();
         $searchString = '%'.strtolower($searchString).'%';
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             SELECT id_user FROM v_users_profiles_fullname WHERE LOWER(name) LIKE :search AND id_user <> :id
         ');
         $statement->bindParam(':id', $idCurrentUser, PDO::PARAM_INT);
@@ -161,7 +174,9 @@ class UserRepository extends Repository
         $statement->execute();
         $temp = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        if($temp == false){
+        if($temp == false)
+        {
+            //TODO optional exception
             return null;
         }
 
@@ -178,12 +193,14 @@ class UserRepository extends Repository
                 (SELECT f.id_addressee as is_friend FROM (users JOIN followers f ON ((users.id_user = f.id_addressee)))
                 WHERE (f.id_requester = ' . $idCurrentUser . ')) t on u.id_user = t.is_friend where id_user in (' . $ids . ')');
 
-        return $this->database->connect()->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getUserProfileById(int $id): ?UserProfile
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM v_users_profiles WHERE id_user = :id
         ');
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
@@ -212,7 +229,9 @@ class UserRepository extends Repository
 
     public function editUserProfile(int $id_user, string $image, string $aboutMe, int $idAddress): void
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT id_user_details FROM public.users WHERE id_user = :id
         ');
         $statement->bindParam(':id', $id_user, PDO::PARAM_INT);
@@ -220,7 +239,7 @@ class UserRepository extends Repository
 
         $profileId = $statement->fetch(PDO::FETCH_ASSOC);
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             UPDATE users_details SET image = :image, about_me = :aboutMe, id_address = :idAddress WHERE id_user_details = :profileId
         ');
         $statement->bindParam(':image', $image, PDO::PARAM_STR);
@@ -230,14 +249,22 @@ class UserRepository extends Repository
         $statement->execute();
     }
 
-    public function getUserStats(int $idUser): UserStats
+    public function getUserStats(int $idUser): ?UserStats
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
         SELECT * FROM v_users_stats WHERE id_user = :id_user
         ');
         $statement->bindParam(':id_user', $idUser, PDO::PARAM_INT);
         $statement->execute();
         $stats = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if($stats == false)
+        {
+            //TODO optional exception
+            return null;
+        }
 
         return new UserStats(
             $stats['avg'],
@@ -250,7 +277,9 @@ class UserRepository extends Repository
 
     public function checkMailAvailability(string $email): bool
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM users WHERE email = :email
         ');
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -264,7 +293,9 @@ class UserRepository extends Repository
 
     public function follow(int $idFollower, int $idFollowee): void
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             INSERT INTO followers (id_requester, id_addressee)
             VALUES (?, ?)
         ');
@@ -273,14 +304,14 @@ class UserRepository extends Repository
             $idFollowee
         ]);
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             UPDATE users_details ud SET followers_amount = followers_amount + 1 WHERE ud.id_user_details = (
             SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
         $statement->execute();
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             UPDATE users_details ud SET following_amount = following_amount + 1 WHERE ud.id_user_details = (
             SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
@@ -290,25 +321,47 @@ class UserRepository extends Repository
 
     public function unfollow(int $idFollower, int $idFollowee): void
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             DELETE FROM followers WHERE id_requester = :id_requester AND id_addressee = :id_addressee
         ');
         $statement->bindParam(':id_requester', $idFollower, PDO::PARAM_INT);
         $statement->bindParam(':id_addressee', $idFollowee, PDO::PARAM_INT);
         $statement->execute();
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             UPDATE users_details ud SET followers_amount = followers_amount - 1 WHERE ud.id_user_details = (
             SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
         $statement->execute();
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             UPDATE users_details ud SET following_amount = following_amount - 1 WHERE ud.id_user_details = (
             SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
         ');
         $statement->bindParam(':id', $idFollower, PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function login(int $idUser): void
+    {
+        $db = $this->database->connect();
+        $statement = $db->prepare('
+            UPDATE users SET enabled = true WHERE id_user = :idUser
+        ');
+        $statement->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function logout(int $idUser): void
+    {
+        $db = $this->database->connect();
+        $statement = $db->prepare('
+            UPDATE users SET enabled = false WHERE id_user = :idUser
+        ');
+        $statement->bindParam(':idUser', $idUser, PDO::PARAM_INT);
         $statement->execute();
     }
 }

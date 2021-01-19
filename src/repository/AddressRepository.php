@@ -8,9 +8,10 @@ class AddressRepository extends Repository
 
     public function getAddresses(): array
     {
+        $db = $this->database->connect();
         $result = [];
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             SELECT * FROM public.address
         ');
         $statement->execute();
@@ -29,7 +30,9 @@ class AddressRepository extends Repository
 
     public function getAddress(string $country, string $city): ?Address
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM public.address WHERE country = :country AND city = :city
         ');
         $statement->bindParam(':country', $country, PDO::PARAM_STR);

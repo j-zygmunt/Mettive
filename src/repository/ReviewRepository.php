@@ -8,7 +8,9 @@ class ReviewRepository extends Repository
 
     public function getReviews(string $userId): array
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM v_reviews WHERE id_reviewee = :userId
         ');
         $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
@@ -35,7 +37,9 @@ class ReviewRepository extends Repository
 
     public function addReview(Review $review, int $idReviewer, int $idReviewee): void
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             INSERT INTO public.users_reviews(rating, message, id_reviewer, id_reviewee)
             VALUES (?, ?, ?, ?)
         ');
@@ -47,10 +51,14 @@ class ReviewRepository extends Repository
         ]);
    }
 
-   public function deleteReview(): void
+   public function deleteReview(int $idReview): void
    {
-       $statement = $this->database->connect()->prepare('
-            
+       $db = $this->database->connect();
+
+       $statement = $db->prepare('
+            DELETE FROM users_reviews WHERE id_review = :idReview
        ');
+       $statement->bindParam(':idReview', $idReview, PDO::PARAM_INT);
+       $statement->execute();
    }
 }

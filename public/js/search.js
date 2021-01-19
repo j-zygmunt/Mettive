@@ -29,7 +29,6 @@ function search() {
 function loadProfiles(profiles) {
     profiles.forEach(profile => {
         createProfile(profile);
-        console.log(profile);
     });
 }
 

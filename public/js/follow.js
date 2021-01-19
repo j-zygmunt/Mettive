@@ -43,8 +43,9 @@ userButtons.forEach(button=> button.addEventListener('click', function (){
 const prev = window.onload;
 
 window.onload = function(){
+    checkFollowers();
+    checkUserRole()
     if(prev){
         prev();
     }
-    checkFollowers();
 };

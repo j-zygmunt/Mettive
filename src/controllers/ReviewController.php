@@ -13,7 +13,8 @@ class ReviewController extends AppController
         $this->reviewRepository = new ReviewRepository();
     }
 
-    function addReview(){
+    function addReview(): void
+    {
         $this->checkCookie();
         $idUser = intval($_COOKIE["user"]);
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : "";
@@ -27,5 +28,12 @@ class ReviewController extends AppController
 
             http_response_code(200);
         }
+    }
+
+    function deleteReview($idReview): void
+    {
+        $this->checkCookie();
+        $this->reviewRepository->deleteReview($idReview);
+        http_response_code(200);
     }
 }

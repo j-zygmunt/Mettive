@@ -8,8 +8,10 @@ class LanguageRepository extends Repository
 
     public function addLanguage(Lang $lang)
     {
+        $db = $this->database->connect();
+
         try{
-            $statement = $this->database->connect()->prepare('
+            $statement = $db->prepare('
             INSERT INTO public.languages (language, number_of_users) VALUES (?, ?) ON CONFLICT (language) DO UPDATE SET number_of_users = languages.number_of_users + 1;
             ');
             $statement->execute([
@@ -24,9 +26,10 @@ class LanguageRepository extends Repository
 
     public function getLanguages(): array
     {
+        $db = $this->database->connect();
         $result = [];
 
-        $statement = $this->database->connect()->prepare('
+        $statement = $db->prepare('
             SELECT * FROM public.languages
         ');
         $statement->execute();
@@ -45,7 +48,9 @@ class LanguageRepository extends Repository
 
     public function getLanguage(string $languageName): ?Lang
     {
-        $statement = $this->database->connect()->prepare('
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
             SELECT * FROM public.languages WHERE language = :language
         ');
         $statement->bindParam(':language', $languageName, PDO::PARAM_STR);
