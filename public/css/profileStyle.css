@@ -54,13 +54,8 @@ main {
 }
 
 .add-review > .action > .add, .cancel {
-    background: #E943FE;
-    border-radius: 8px;
-    border: none;
     height: 2.5em;
     width: 3.5em;
-    box-shadow: 0 3px 6px #00000029;
-    color: #ffffff;
 }
 
 select {
@@ -196,10 +191,6 @@ span {
 }
 
 .report-button-active {
-    background: #E943FE;
-    border-radius: 8px;
-    border: none;
-    box-shadow: 0 3px 6px #00000029;
     padding: 0.3em 0.7em;
 }
 
@@ -356,11 +347,6 @@ span {
 }
 
 .user > .buttons > button {
-    background: #E943FE;
-    box-shadow: 0 3px 6px #00000029;
-    color: #ffffff;
-    border-radius: 15px;
-    border: none;
     height: 80%;
     width: 25%;
     font-size: 1.5em;
@@ -433,5 +419,17 @@ html{
 
     * {
         font-size: 35px;
+    }
+
+    .ratings-panel{
+        display: none;
+    }
+
+    .base-container{
+        height: auto;
+    }
+
+    main{
+        overflow-y: auto;
     }
 }

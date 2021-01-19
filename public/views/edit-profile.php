@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/navigationStyle.css">
     <link rel="stylesheet" type="text/css" href="/public/css/myProfileStyle.css">
     <link rel="stylesheet" type="text/css" href="/public/css/profilePanel.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/./public/js/editProfile.js" defer></script>

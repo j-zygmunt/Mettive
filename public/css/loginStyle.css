@@ -1,6 +1,5 @@
 * {
     font-family: Segoe UI;
-
 }
 
 body{
@@ -12,7 +11,6 @@ div.container{
     width: 100vw;
     height: 100vh;
     background: transparent linear-gradient(180deg, #EC43FF 0%, #0090E3 100%) 0 0 no-repeat padding-box;
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -59,12 +57,7 @@ div.register{
 }
 
 #login-button,#register-button{
-    background: #E943FE 0 0 no-repeat padding-box;
-    box-shadow: 0 3px 6px #00000029;
-    border-radius: 15px;    
-    border: none;
     outline: none;
-    color: #ffffff;
     line-height: 2em;
     padding-top: 0.2em;
     padding-bottom: 0.2em;

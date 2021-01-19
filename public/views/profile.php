@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
     <link rel="stylesheet" type="text/css" href="/public/css/navigationStyle.css">
     <link rel="stylesheet" type="text/css" href="/public/css/profileStyle.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/./public/js/follow.js" defer></script>

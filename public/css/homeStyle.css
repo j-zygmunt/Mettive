@@ -18,8 +18,11 @@ main {
     margin-top: 10vh;
 }
 
+/*search panel elements style*/
+
 .search-panel {
-    position: fixed;
+    position: absolute;
+    top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,25 +32,13 @@ main {
     background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) no-repeat fixed 0 0;
 }
 
-.profiles-panel {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 46vh;
-    grid-gap: 3em;
-    grid-row-gap: 2em;
-    padding: 2em;
-    width: 68vw;
-    margin-left: 25vw;
-    overflow-y: auto;
-}
-
 .search{
     display: flex;
     margin: 20% 0;
     width: 75%;
 }
 
-.search input{ 
+.search input{
     padding: 0.7em 3em 0.7em 1em;
     color: #525252;
     font-size: 1em;
@@ -63,6 +54,7 @@ main {
 
 .search button {
     color: #8233C5;
+    box-shadow: none;
     border: none;
     background: none;
     font-size: 1.2em;
@@ -95,7 +87,8 @@ select option{
     background: #FFFFFF80 0 0 no-repeat padding-box;
 }
 
-label {
+
+.date-label {
     color: #ffffff;
     font-size: 1.5em;
     margin-left: 0.5em;
@@ -125,6 +118,22 @@ label {
     letter-spacing: 2px;
 }
 
+/*profile panel style*/
+
+.profiles-panel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 46vh;
+    grid-gap: 3em;
+    grid-row-gap: 2em;
+    padding: 2em;
+    width: 68vw;
+    margin-left: 25vw;
+    overflow-y: auto;
+}
+
+/*profile style*/
+
 .profiles-panel > div {
     display: flex;
     flex-direction: column;
@@ -145,16 +154,35 @@ label {
 
 div > h2, p{
     color: #888888;
+    margin: 5% 0 0 0;
+}
+
+.user-button, .follow-button{
+    width: 6em;
+    height: 3em;
     margin: 5% 0;
 }
 
-div > p{
-    font-size: 1.1em;
+.social > button > i{
+    font-size: 2em;
 }
 
-div > h2{
-    font-size: 1.3em;
+.social {
+    display: flex;
+    justify-content: space-around;
+    width: 100%
 }
+
+.profiles-panel > div > div{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+
+/*follow button click*/
 
 .follow-button #follow,
 .follow-button #unfollow{
@@ -173,35 +201,6 @@ div > h2{
     display: inline;
 }
 
-.user-button, .follow-button{
-    background: #E943FE;
-    box-shadow: 0 3px 6px #00000029;
-    border-radius: 12px;    
-    border: none;
-    color: #ffffff;
-    width: 6em;
-    height: 3em;
-    margin-bottom: 5%;
-}
-
-.social> button > i{
-    font-size: 2em;
-}
-
-.social {
-    display: flex;
-    justify-content: space-around;
-    width: 100%
-}
-
-.profiles-panel > div > div{
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-
-}
 
 @media only screen and (max-width: 2000px) {
     div > p{
@@ -256,6 +255,11 @@ div > h2{
         font-size: 35px;
     }
 
+    /*show search on mobile*/
+    .search-panel.show-search{
+        display: flex;
+    }
+
     .profiles-panel {
         width: 100%;
         margin-left: 0;
@@ -282,10 +286,20 @@ div > h2{
     }
 
     .search-panel {
+        width: 70%;
+        height: 90%;
+        margin: 0;
+        z-index: 3;
         display: none;
+        background: #D549FB 0 0 no-repeat padding-box;
     }
 
-    ::-webkit-scrollbar {
-        display: none;
+    .search > input {
+        width: calc(100% - 3em - 41px);
+    }
+
+    .profiles-panel > div > img {
+        width: 9em;
+        height: 9em;
     }
 }

@@ -30,7 +30,7 @@ main {
     background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat fixed;
 }
 
-.available-dates, .about-me ,div[class*="review"]{
+.available-dates, .about-me ,.review{
     background: #FFFFFF99 0 0 no-repeat padding-box;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@ main {
     align-items: center;
 }
 
-.messages-panel > div[class*="review"] {
+.messages-panel > .review {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,7 +59,7 @@ main {
     margin-bottom: 2em;
 }
 
-.messages-panel > div[class*="review"] > .action {
+.messages-panel > .review > .action {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -67,7 +67,7 @@ main {
     width: 90%
 }
 
-.messages-panel > div[class*="review"] > .action > p {
+.messages-panel > .review > .action > p {
     margin: 0 0 0.4em 0;
 }
 
@@ -79,21 +79,17 @@ main {
     justify-content: space-between;
 }
 
-.messages-panel > div[class*="review"] > .message {
+.messages-panel > .review > .message {
     width: 90%;
     overflow-y: auto;
     margin-top: 0.4em;
 }
 
-.messages-panel > div[class*="review"] > .message >p {
+.messages-panel > .review > .message >p {
     font-weight: normal;
 }
 
 .report-button {
-    background: #E943FE;
-    border-radius: 8px;
-    border: none;
-    box-shadow: 0 3px 6px #00000029;
     padding: 0.3em 0.7em;
 }
 
@@ -168,16 +164,6 @@ main {
     padding-right: 2em;
 }
 
-.available-dates > .edit-button {
-    background: #E943FE;
-    border-radius: 8px;
-    border: none;
-    height: 2.5em;
-    width: 3.5em;
-    box-shadow: 0 3px 6px #00000029;
-    margin-bottom: 0.8em;
-}
-
 .date > p {
     margin: 0.2em 0;
     font-weight: normal;
@@ -219,5 +205,74 @@ main {
 
     * {
         font-size: 35px;
+    }
+
+    main {
+        flex-direction: column;
+        overflow-y: auto;
+        height: auto;
+    }
+
+    /*about panel mobile style*/
+
+    .about-panel{
+        position: static;
+        width: 90%;
+        height: auto;
+        margin: 0 auto 1em auto;
+        background: none;
+    }
+
+    .about-panel > .about-me, .available-dates {
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .about-me {
+        margin-bottom: 1em;
+        max-height: 20em;
+    }
+
+    .about-me > h2, .available-dates > h2 {
+        font-size: 1.4em;
+    }
+
+    .available-dates {
+        max-height: 12em;
+    }
+
+    /*messages panel mobile style*/
+
+    .messages-panel {
+        width: 90%;
+        margin: 0 auto;
+        overflow-y: auto;
+        order: 2;
+        display: block;
+    }
+
+    .messages-panel > .header {
+        width: 100%;
+    }
+
+    .messages-panel > .header > h2 {
+        margin-top: 0;
+    }
+
+    .messages-panel > .review {
+        border-radius: 30px;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    /*edit profile panel mobile style*/
+
+    .edit-panel {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .edit-panel > form {
+        width: 90%
     }
 }

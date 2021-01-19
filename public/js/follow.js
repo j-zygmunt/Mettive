@@ -30,7 +30,6 @@ function checkFollowers(){
     });
 }
 
-window.onload = checkFollowers;
 
 followButton.forEach(button=>button.addEventListener('click', function (){
     followAction(button);
@@ -39,3 +38,13 @@ followButton.forEach(button=>button.addEventListener('click', function (){
 userButtons.forEach(button=> button.addEventListener('click', function (){
     linkToProfile(button.value);
 }));
+
+
+const prev = window.onload;
+
+window.onload = function(){
+    if(prev){
+        prev();
+    }
+    checkFollowers();
+};

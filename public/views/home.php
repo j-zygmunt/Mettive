@@ -3,11 +3,12 @@
     <link rel="stylesheet" type="text/css" href="/public/css/scrollbarStyle.css">
     <link rel="stylesheet" type="text/css" href="/public/css/navigationStyle.css">
     <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/./public/js/follow.js" defer></script>
     <script type="text/javascript" src="/./public/js/search.js" defer></script>
     <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
+    <script type="text/javascript" src="/./public/js/follow.js" defer></script>
     <title>HOME PAGE</title>
 </head>
 <body>
@@ -48,7 +49,7 @@
                     </select>
                 </div>
                 <div class="date">
-                    <label>date:</label>
+                    <label class="date-label">date:</label>
                     <form>
                         <input placeholder="from" type="text" id="from">
                         <input placeholder="to" type="text" id="to">

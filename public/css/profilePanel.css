@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-.info, .ratings, .profile-panel > img, .edit-profile-button, .save-profile-button {
+.info, .ratings, .profile-panel > img{
     width: 76%;
     box-shadow: 0 3px 6px #00000029;
     border-radius: 9px;
@@ -29,7 +29,7 @@
 }
 
 .info > h2 {
-    margin: 2% 0 5% 0;
+    margin: 3% 0;
     font-size: 1.3em;
 }
 
@@ -37,18 +37,20 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-row-gap: -2em;
     grid-template-columns: repeat(3, 1fr);
     margin: auto;
     width: 90%;
 }
 
-.info > .stats > h2 {
-    font-size: 1.8em;
-    margin: 20% 10% 0 10%;
+span, .info > .stats > h2{
     background: -webkit-linear-gradient(270deg, #EC43FF 0%, #0090E3 100%) 0 0 no-repeat padding-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.info > .stats > h2 {
+    font-size: 1.8em;
+    margin: 20% 10% 0 10%;
 }
 
 .info > .stats > p {
@@ -57,13 +59,9 @@
 }
 
 .edit-profile-button, .save-profile-button {
-    background: #E943FE;
-    border-radius: 18px;
-    border: none;
     font-size: 1.15em;
-    font-weight: normal;
-    color: #ffffff;
     height: 6%;
+    width: 76%;
 }
 
 .ratings > h2 {
@@ -83,7 +81,72 @@
 span {
     font-size: 1.3em;
     padding-left: 0.5em;
-    background: -webkit-linear-gradient(270deg, #EC43FF 0%, #0090E3 100%) 0 0 no-repeat padding-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+}
+
+@media only screen and (max-device-width: 420px) {
+
+    * {
+        font-size: 35px;
+    }
+
+    .profile-panel {
+        position: static;
+        width: 90%;
+        height: 20em;
+        background: none;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 1em;
+        margin: 2em auto 1em auto;
+        grid-template-rows: 6em 6em 8em;
+    }
+
+    .profile-panel > img {
+        height: 90%;
+        width: 100%;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        align-self: baseline;
+        border-radius: 30px;
+    }
+
+    .profile-panel > .info {
+        grid-row-start: 3;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .info > .stats > h2 {
+        margin-top: 0;
+        font-size: 2.2em;
+    }
+
+    .info > .stats > p {
+        font-size: 1em;
+    }
+
+    .info > h2{
+        margin: 0.1em;
+    }
+
+    .profile-panel > .ratings{
+        width: 100%;
+        align-self: self-start;
+        height: 100%;
+        border-radius: 30px;
+    }
+
+    .edit-profile-button, .save-profile-button {
+        height: 3em;
+        width: 100%;
+        margin-top: 0.2em;
+        border-radius: 30px;
+    }
 }
