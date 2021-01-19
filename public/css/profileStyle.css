@@ -1,13 +1,4 @@
-* {
-    font-family: Segoe UI;
-    font-weight: bold;
-    color: #888888;
-}
-
-body{
-    margin: 0;
-    background-color: #ffffff;
-}
+/*profile page style*/
 
 .base-container{
     background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
@@ -20,6 +11,7 @@ main {
     margin-top: 10vh;
 }
 
+/*add review popup style*/
 .add-review{
     position: absolute;
     display: flex;
@@ -77,6 +69,7 @@ select option{
     background: #FFFFFF80 0 0 no-repeat padding-box;
 }
 
+/*reviews panel style*/
 .ratings-panel{
     position: fixed;
     width: 24vw;
@@ -116,96 +109,11 @@ select option{
     margin-top: 2em;
 }
 
-
 .review {
-    background: #FFFFFF99 0 0 no-repeat padding-box;
-    box-shadow: 0 3px 6px #00000029;
-    max-height: 25vh;
-    width: 90%;
-    border-radius: 9px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     margin: 1em 0;
 }
 
-.msginfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 86%;
-}
-
-.msginfo > div > h2 {
-    font-size: 1em;
-    margin-top: 0;
-}
-
-.msginfo > div > p {
-    font-weight: normal;
-    font-size: 0.9em;
-    margin-bottom: 0;
-}
-
-.msginfo > img {
-    clip-path: circle(50% at center);
-    object-fit: cover;
-    width: 3em;
-    height: 3em;
-}
-
-.review > .action > p {
-    margin: 0.5em 0;
-}
-
-span, .stats > h2{
-    background: -webkit-linear-gradient(270deg, #EC43FF 0%, #0090E3 100%) 0 0 no-repeat padding-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-span {
-    font-size: 1.3em;
-    padding-left: 0.5em;
-}
-
-.review > .message {
-    margin: 0 7% 0 7%;
-    padding-right: 5%;
-    width: 81%;
-    overflow-y: auto;
-}
-
-.review > .action {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%
-}
-
-.delete-button{
-    display: none;
-}
-
-.delete-button.delete-button-active {
-    padding: 0.3em 0.7em;
-    display: block;
-}
-
-.delete-button > i {
-    color: white;
-}
-
-.review > .message > p {
-    font-weight: normal;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    font-size: 1em;
-}
-
+/*about panel style*/
 .about-panel {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -216,11 +124,13 @@ span {
     width: 76vw;
     margin-left: 24vw;
 }
+
 .about-me, .user-info, .available-dates {
     background: #FFFFFF99 0 0 no-repeat padding-box;
     box-shadow: 0 3px 6px #00000029;
     border-radius: 18px;
 }
+
 .about-me, .user{
     grid-row-start: 1;
     grid-row-end: 3;
@@ -358,10 +268,7 @@ span {
     color: #ffffff;
 }
 
-.add-review {
-
-}
-
+/*animated components*/
 .follow-button #follow,
 .follow-button #unfollow{
     display: none;
@@ -380,7 +287,6 @@ span {
 }
 
 .window-review-open{
-
     animation: add-review-animation 0.5s forwards;
     animation-delay: 0.3s;
 }
@@ -417,10 +323,6 @@ html{
 }
 
 @media only screen and (max-device-width: 420px) {
-
-    * {
-        font-size: 35px;
-    }
 
     .ratings-panel{
         display: none;

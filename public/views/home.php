@@ -79,6 +79,7 @@
     </div>
 </body>
 
+
 <template id="profile-template">
     <div id="">
         <img src="">

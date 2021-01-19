@@ -1,3 +1,5 @@
+/*profile panel style*/
+
 .profile-panel{
     position: fixed;
     display: flex;
@@ -42,12 +44,6 @@
     width: 90%;
 }
 
-span, .info > .stats > h2{
-    background: -webkit-linear-gradient(270deg, #EC43FF 0%, #0090E3 100%) 0 0 no-repeat padding-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .info > .stats > h2 {
     font-size: 1.8em;
     margin: 20% 10% 0 10%;
@@ -78,17 +74,9 @@ span, .info > .stats > h2{
     overflow-y: auto;
 }
 
-span {
-    font-size: 1.3em;
-    padding-left: 0.5em;
-}
-
 @media only screen and (max-device-width: 420px) {
 
-    * {
-        font-size: 35px;
-    }
-
+    /*profile panel mobile style*/
     .profile-panel {
         position: static;
         width: 90%;

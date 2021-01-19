@@ -1,13 +1,4 @@
-* {
-    font-family: Segoe UI;
-    font-weight: bold;
-    color: #888888;
-}
-
-body{
-    margin: 0;
-    background-color: #ffffff;
-}
+/*my profile page style*/
 
 .base-container{
     background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
@@ -20,27 +11,7 @@ main {
     margin-top: 10vh;
 }
 
-.about-panel{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 90%;
-    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat fixed;
-}
-
-.available-dates, .about-me ,.review{
-    background: #FFFFFF99 0 0 no-repeat padding-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 76%;
-    box-shadow: 0 3px 6px #00000029;
-    border-radius: 9px;
-}
-
+/*message panel styles*/
 .messages-panel, .edit-panel {
     width: 48vw;
     margin-left: 24vw;
@@ -50,83 +21,8 @@ main {
     align-items: center;
 }
 
-.messages-panel > .review {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 25vh;
+.review {
     margin-bottom: 2em;
-}
-
-.messages-panel > .review > .action {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%
-}
-
-.messages-panel > .review > .action > p {
-    margin: 0 0 0.4em 0;
-}
-
-.msginfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 90%;
-    justify-content: space-between;
-}
-
-.messages-panel > .review > .message {
-    width: 90%;
-    overflow-y: auto;
-    margin-top: 0.4em;
-}
-
-.messages-panel > .review > .message >p {
-    font-weight: normal;
-}
-
-.report-button {
-    padding: 0.3em 0.7em;
-}
-
-.report-button > i, .edit-button > i  {
-    color: #FFFFFF;
-    font-size: 1em;
-}
-
-.msginfo > img {
-    width: 3em;
-    height: 3em;
-    object-fit: cover;
-    box-shadow: 0 3px 6px #00000029;
-    border: 1px solid #707070;
-    border-radius: 8px;
-    margin-top: 2%;
-}
-
-.sender-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.sender-info > p {
-    margin-bottom: 0;
-    font-weight: normal;
-    font-size: 1em;
-}
-
-.sender-info > h2 {
-    margin: 0;
-    font-size: 1.2em;
-}
-
-.about-panel {
-    margin-left: 73vw;
-    width: 27vw;
 }
 
 .header {
@@ -138,13 +34,32 @@ main {
     margin-left: 4vw;
 }
 
-.new-msg-button > i{
-    color: #FFFFFF;
-    font-size: 2em;
-}
-
 .header > h2 {
     font-size: 1.8em;
+}
+
+/*about panel style*/
+.about-panel{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 73vw;
+    width: 27vw;
+    height: 90%;
+    background: transparent linear-gradient(180deg, #D749FCb2 0%, #018FE3b2 100%) 0 0 no-repeat fixed;
+}
+
+.available-dates, .about-me {
+    background: #FFFFFF99 0 0 no-repeat padding-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 76%;
+    box-shadow: 0 3px 6px #00000029;
+    border-radius: 9px;
 }
 
 .available-dates > h2, .about-me > h2{
@@ -182,6 +97,7 @@ main {
     word-break: break-word;
 }
 
+/*edit panel styles*/
 .edit-panel > form {
     display: flex;
     flex-direction: column;
@@ -203,18 +119,17 @@ main {
 
 @media only screen and (max-device-width: 420px) {
 
-    * {
-        font-size: 35px;
-    }
-
     main {
         flex-direction: column;
         overflow-y: auto;
         height: auto;
     }
 
-    /*about panel mobile style*/
+    main > ::-webkit-scrollbar {
+        display: none;
+    }
 
+    /*about panel mobile style*/
     .about-panel{
         position: static;
         width: 90%;
@@ -242,7 +157,6 @@ main {
     }
 
     /*messages panel mobile style*/
-
     .messages-panel {
         width: 90%;
         margin: 0 auto;
@@ -263,10 +177,10 @@ main {
         border-radius: 30px;
         width: 100%;
         margin-bottom: 1em;
+        max-height: 13em;
     }
 
     /*edit profile panel mobile style*/
-
     .edit-panel {
         width: 90%;
         margin: 0 auto;

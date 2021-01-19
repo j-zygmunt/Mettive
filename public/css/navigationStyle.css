@@ -1,3 +1,5 @@
+/*navigation style*/
+
 nav {
     position: fixed;
     top: 0;
@@ -36,6 +38,7 @@ ul {
     margin-right: 2em;
 }
 
+/*hamburger menu and search button on mobile*/
 #mg, #hamburger {
     margin: auto 2em;
     display: none;
@@ -52,9 +55,6 @@ li > label {
 }
 
 @media only screen and (max-device-width: 420px) {
-    *{
-        font-size: 35px;
-    }
 
     nav {
         justify-content: space-between;

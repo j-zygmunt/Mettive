@@ -1,11 +1,4 @@
-* {
-    font-family: Segoe UI;
-}
-
-body{
-    margin: 0;
-    background-color: #ffffff;
-}
+/*register page style*/
 
 div.container{
     width: 100vw;
@@ -92,10 +85,6 @@ div.checkbox{
     div.container {
         flex-direction: column;
         width: 100%;
-    }
-
-    * {
-        font-size: 35px;
     }
 
     div.register-container {

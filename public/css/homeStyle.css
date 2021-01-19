@@ -1,11 +1,4 @@
-* {
-    font-family: Segoe UI;
-}
-
-body{
-    margin: 0;
-    background-color: #ffffff;
-}
+/*home page style*/
 
 .base-container{
     background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
@@ -19,7 +12,6 @@ main {
 }
 
 /*search panel elements style*/
-
 .search-panel {
     position: absolute;
     top: 10vh;
@@ -81,12 +73,12 @@ select {
     background: #FFFFFF80 url(../img/arrow.svg) no-repeat right 0.1em top 100%;
     background-size: 2.5em;
     margin: 10% 0;
+    outline: none;
 }
 
 select option{
     background: #FFFFFF80 0 0 no-repeat padding-box;
 }
-
 
 .date-label {
     color: #ffffff;
@@ -119,7 +111,6 @@ select option{
 }
 
 /*profile panel style*/
-
 .profiles-panel {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -133,7 +124,6 @@ select option{
 }
 
 /*profile style*/
-
 .profiles-panel > div {
     display: flex;
     flex-direction: column;
@@ -183,7 +173,6 @@ div > h2, p{
 
 
 /*follow button click*/
-
 .follow-button #follow,
 .follow-button #unfollow{
     display: none;
@@ -201,58 +190,10 @@ div > h2, p{
     display: inline;
 }
 
-
-@media only screen and (max-width: 2000px) {
-    div > p{
-        font-size: 1.4em;
-    }
-
-    div > h2{
-        font-size: 2em;
-    }
-}
-
-@media only screen and (max-width: 1500px) {
-    div > p{
-        font-size: 1.2em;
-    }
-
-    div > h2{
-        font-size: 1.6em;
-    }
-
-    .user-button, .follow-button{
-        width: 5em;
-        height: 2.5em;
-    }
-
-    .social> button > i{
-        font-size: 1.6em;
-    }
-}
-
-@media only screen and (max-width: 1300px) {
-    div > p{
-        font-size: 1em;
-    }
-
-    div > h2{
-        font-size: 1.4em;
-    }
-
-    .user-button, .follow-button{
-        width: 4em;
-        height: 2em;
-    }
-
-    .social> button > i{
-        font-size: 1.4em;
-    }
-}
-
 @media only screen and (max-device-width: 420px) {
-    * {
-        font-size: 35px;
+
+    main > ::-webkit-scrollbar {
+        display: none;
     }
 
     /*show search on mobile*/
@@ -260,6 +201,7 @@ div > h2, p{
         display: flex;
     }
 
+    /*profiles panel style on mobile*/
     .profiles-panel {
         width: 100%;
         margin-left: 0;
@@ -285,6 +227,7 @@ div > h2, p{
         font-size: 0.7em;
     }
 
+    /*search panel style on mobile*/
     .search-panel {
         width: 70%;
         height: 90%;
@@ -301,5 +244,9 @@ div > h2, p{
     .profiles-panel > div > img {
         width: 9em;
         height: 9em;
+    }
+
+    select > option {
+        font-size: 0.4em;
     }
 }

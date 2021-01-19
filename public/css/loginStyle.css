@@ -1,11 +1,4 @@
-* {
-    font-family: Segoe UI;
-}
-
-body{
-    margin: 0;
-    background-color: #ffffff;
-}
+/*login style*/
 
 div.container{
     width: 100vw;
@@ -17,6 +10,7 @@ div.container{
     align-items: center;
 }
 
+/*logo container style*/
 div.logo{
     width: 50%;
     height: 30vh;
@@ -27,6 +21,7 @@ div.logo > img{
     width: 30vw;
 }
 
+/*login container style*/
 div.login-container{
     width: 50%;
 }
@@ -49,30 +44,6 @@ form > .messages {
     text-align: center;
 }
 
-div.register{
-    width: 80%;
-    height: 10vh;
-    border: 10px solid #00000000;
-    text-align: center;
-}
-
-#login-button,#register-button{
-    outline: none;
-    line-height: 2em;
-    padding-top: 0.2em;
-    padding-bottom: 0.2em;
-    font-size: larger;
-    margin: 1em;
-}
-
-#login-button{
-    width: 30%;
-}
-
-#register-button{
-    width: 50%;
-}
-
 input{
     background: #FFF 0 0 no-repeat padding-box;
     box-shadow: 0 3px 6px #00000029;
@@ -89,14 +60,35 @@ input{
     margin: 1.5em;
 }
 
+#login-button,#register-button{
+    outline: none;
+    line-height: 2em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    font-size: larger;
+    margin: 1em;
+}
+
+#login-button{
+    width: 30%;
+}
+
+div.register{
+    width: 80%;
+    height: 10vh;
+    border: 10px solid #00000000;
+    text-align: center;
+}
+
+#register-button{
+    width: 50%;
+}
+
 @media only screen and (max-device-width: 420px){
+
     div.container {
         flex-direction: column;
         width: 100%;
-    }
-
-    * {
-        font-size: 35px;
     }
 
     div.login-container {

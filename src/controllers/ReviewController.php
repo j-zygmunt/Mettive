@@ -33,6 +33,9 @@ class ReviewController extends AppController
     function deleteReview($idReview): void
     {
         $this->checkCookie();
+        if(intval($_COOKIE['role']) != 2){
+            return;
+        }
         $this->reviewRepository->deleteReview($idReview);
         http_response_code(200);
     }

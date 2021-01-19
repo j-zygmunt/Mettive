@@ -1,3 +1,5 @@
+/*custom scrollbars*/
+
 ::-webkit-scrollbar {
     width: 20px;
     margin-right: 10px;
@@ -22,11 +24,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #B12EBF;
-}
-
-@media only screen and (max-device-width: 420px) {
-
-    ::-webkit-scrollbar {
-        display: none;
-    }
 }
