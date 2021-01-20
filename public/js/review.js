@@ -5,6 +5,7 @@ const aboutPanel = document.querySelector('.about-panel');
 const reviewWindow = document.querySelector('.add-review');
 const addButton = document.querySelector('.add');
 const cancelButton = document.querySelector('.cancel');
+const mailButton = document.querySelector('.message-button');
 
 
 function addReview() {
@@ -51,4 +52,8 @@ addButton.addEventListener('click', function (){
 
 cancelButton.addEventListener('click', function (){
     removeBlur();
+});
+
+mailButton.addEventListener('click', function (){
+    window.open('mailto:' + mailButton.value);
 });

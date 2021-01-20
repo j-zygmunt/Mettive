@@ -22,12 +22,10 @@ class Database
 
     public function connect(): PDO
     {
-        if($this->connection !=  null)
-        {
+        if($this->connection !=  null) {
             return $this->connection;
         }
-        try
-        {
+        try {
             $this->connection = new PDO(
                 "pgsql:host=$this->host;port=5432;dbname=$this->database",
                 $this->username,
@@ -37,16 +35,14 @@ class Database
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->connection;
 
-        } catch (PDOException $error)
-        {
+        } catch (PDOException $error) {
             die("Connection failure" . $error->getMessage());
         }
     }
 
     public function getInstance(): Database
     {
-        if(!self::$instance)
-        {
+        if(!self::$instance) {
             self::$instance = new Database();
         }
 

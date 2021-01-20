@@ -39,7 +39,7 @@
             <div class="user">
                 <img src="/public/uploads/<?=$profile->getPhoto()?>">
                 <div class="buttons">
-                    <button class="message-button">
+                    <button class="message-button" value="<?=$profile->getEmail()?>">
                         <i class="fas fa-envelope"></i>
                     </button>
                     <button class="rate-button">rate</button>
