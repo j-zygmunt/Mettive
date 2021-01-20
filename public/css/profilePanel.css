@@ -87,11 +87,9 @@
         height: 20em;
         background: none;
         display: grid;
-        justify-items: center;
-        align-items: center;
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 1em;
-        margin: 2em auto 1em auto;
+        margin: 1.5em auto 1em auto;
         grid-template-rows: 6em 6em 8em;
     }
 

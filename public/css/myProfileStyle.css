@@ -160,9 +160,7 @@ main {
     .messages-panel {
         width: 90%;
         margin: 0 auto;
-        overflow-y: auto;
-        order: 2;
-        display: block;
+        order: 1;
     }
 
     .messages-panel > .header {
@@ -171,13 +169,6 @@ main {
 
     .messages-panel > .header > h2 {
         margin-top: 0;
-    }
-
-    .messages-panel > .review {
-        border-radius: 30px;
-        width: 100%;
-        margin-bottom: 1em;
-        max-height: 13em;
     }
 
     /*edit profile panel mobile style*/

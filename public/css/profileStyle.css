@@ -329,15 +329,115 @@ html{
 
 @media only screen and (max-device-width: 420px) {
 
-    .ratings-panel{
+    main{
+        flex-direction: column;
+        overflow-y: auto;
+        min-height: 90%;
+    }
+
+    .base-container > ::-webkit-scrollbar {
         display: none;
     }
 
-    .base-container{
+    .about-panel{
+        width: 90%;
+        margin: 1.5em auto 1em auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        height: auto;
+        grid-gap: 1em;
+    }
+
+    .user{
+        flex-direction: row;
+        order: -1;
+        height: 10.8em;
+        justify-content: center;
+    }
+
+    .user > img {
+        height: 100%;
+        width: 66%;
+        border-radius: 30px;
+    }
+
+    .user > .buttons {
+        flex-direction: column;
+        height: 100%;
+        width: 34%
+    }
+
+    .user > .buttons > button {
+        height: 2.5em;
+        width: 85%;
+        font-size: 1.15em;
+        line-height: 100%;
+        border-radius: 30px;
+    }
+
+    .user > .buttons > button > i {
+        font-size: 1.2em;
+    }
+
+    .ratings-panel{
+        order: 1;
+        width: 90%;
+        position: static;
+        margin: 0 auto 1em auto;
+        background: none;
         height: auto;
     }
 
-    main{
-        overflow-y: auto;
+    .ratings-panel > ::-webkit-scrollbar{
+        display: none;
+    }
+
+    .user-info {
+        order: -1;
+        border-radius: 30px;
+        padding: 0.5em 2em;
+    }
+
+    .available-dates {
+        max-height: 12em;
+        border-radius: 30px;
+        align-items: center;
+    }
+
+    .about-me > h2, .available-dates > h2, .user-info > h2 {
+        font-size: 1.4em;
+    }
+
+    .about-me{
+        max-height: 20em;
+        align-items: center;
+    }
+
+    .reviews {
+        width: 100%;
+        overflow-y: hidden;
+        height: 100%;
+    }
+
+    .header > h2 {
+        margin: 0;
+        font-size: 1.8em;
+        color: #888888;
+    }
+
+    .add-review{
+        width: 80%;
+        margin: 0 10%;
+        border-radius: 30px;
+    }
+
+    .add-review > .action > select {
+        width: 30%;
+        border-radius: 30px;
+    }
+
+    .add-review > .action > button {
+        border-radius: 30px;
     }
 }
