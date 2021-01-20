@@ -1,5 +1,10 @@
 /*profile page style*/
 
+* {
+    font-weight: bold;
+    color: #888888;
+}
+
 .base-container{
     background: transparent linear-gradient(180deg, #D749FC4d 0%, #018FE34d 100%) no-repeat fixed 0 0;
 }

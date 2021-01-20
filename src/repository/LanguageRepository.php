@@ -30,7 +30,7 @@ class LanguageRepository extends Repository
         $result = [];
 
         $statement = $db->prepare('
-            SELECT * FROM public.languages
+            SELECT * FROM public.languages ORDER BY language
         ');
         $statement->execute();
         $languages = $statement->fetchAll(PDO::FETCH_ASSOC);

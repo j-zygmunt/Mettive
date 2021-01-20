@@ -3,27 +3,27 @@
 
 class UserProfile
 {
-    private int $id;
     private string $email;
     private string $photo;
     private string $name;
     private string $surname;
-    private string $aboutMe;
     private string $mainLanguage;
-    private string $country;
-    private string $city;
+    private ?string $aboutMe;
+    private ?string $country;
+    private ?string $city;
     private ?bool $isFriend;
+    private ?int $id;
 
     public function __construct(
-        int $id,
         string $email,
         string $photo,
         string $name,
         string $surname,
-        string $aboutMe,
+        ?string $aboutMe,
         string $mainLanguage,
-        string $country,
-        string $city,
+        ?string $country,
+        ?string $city,
+        ?int $id,
         ?bool $isFriend = false
     )
     {

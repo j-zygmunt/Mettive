@@ -9,6 +9,8 @@
     <script src="https://kit.fontawesome.com/6b1d99aa4c.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/./public/js/editProfile.js" defer></script>
     <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
+    <script type="text/javascript" src="/./public/js/role.js" defer></script>
+    <script type="text/javascript" src="/./public/js/script.js" defer></script>
     <title>EDIT PROFILE</title>
 </head>
 <body>

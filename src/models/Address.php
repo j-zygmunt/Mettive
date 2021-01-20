@@ -5,11 +5,13 @@ class Address
 {
     private string $country;
     private string $city;
+    private ?int $id;
 
-    public function __construct(string $country, string $city)
+    public function __construct(string $country, string $city, ?int $id)
     {
         $this->country = $country;
         $this->city = $city;
+        $this->id = $id;
     }
 
     public function getCountry(): string
@@ -32,5 +34,13 @@ class Address
         $this->city = $city;
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
+    public function setId(?int $id): void
+    {
+        $this->id = $id;
+    }
 }

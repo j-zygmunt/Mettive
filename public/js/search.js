@@ -5,8 +5,23 @@ const profileContainer = document.querySelector(".profiles-panel");
 const fromInput = document.querySelector('#from');
 const toInput = document.querySelector('#to');
 
+
 function search() {
-    const data = {searchInput: searchInput.value};
+    const languageOpt = document.querySelector('#language');
+    const countryOpt = document.querySelector('#country');
+    const cityOpt = document.querySelector('#city');
+    const data = {
+        searchInput: searchInput.value,
+        country: countryOpt.value,
+        city: cityOpt.value
+    };
+
+    if(languageOpt.value !== languageOpt.id){
+        data.language = languageOpt.value;
+    }
+    else{
+        data.language = "";
+    }
 
     fetch("/search", {
         method: "POST",
@@ -47,7 +62,7 @@ function createProfile(profile) {
     const profButton = clone.querySelector(".user-button");
     profButton.value = profile.email;
     profButton.addEventListener('click', function (){
-        linkToProfile(profButton.value)
+        linkToProfile(profButton.value);
     });
     const followButton = clone.querySelector('.follow-button');
     (profile.is_friend === null) ? followButton.value = 0 : followButton.value = 1;
@@ -62,8 +77,7 @@ searchButton.addEventListener('click', function() {
 });
 
 searchInput.addEventListener('keyup', function (event) {
-   if(event.key === "Enter")
-   {
+   if(event.key === "Enter") {
        event.preventDefault();
        search();
    }

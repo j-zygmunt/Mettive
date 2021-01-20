@@ -11,7 +11,7 @@ class ReviewRepository extends Repository
         $db = $this->database->connect();
 
         $statement = $db->prepare('
-            SELECT * FROM v_reviews WHERE id_reviewee = :userId
+            SELECT * FROM v_reviews WHERE id_reviewee = :userId ORDER BY reviewed_at DESC
         ');
         $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
         $statement->execute();

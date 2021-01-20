@@ -1,4 +1,8 @@
 /*profile panel style*/
+* {
+    font-weight: bold;
+    color: #888888;
+}
 
 .profile-panel{
     position: fixed;

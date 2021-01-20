@@ -30,25 +30,35 @@ class EditProfileController extends AppController
         $id_user = intval($_COOKIE["user"]);
         $userProfile = $this->userRepository->getUserProfileById($id_user);
         $stats = $this->userRepository->getUserStats($id_user);
-        if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validateFile($_FILES['file']))
+        if($this->isPost())
         {
-            move_uploaded_file(
-                $_FILES['file']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
-            );
+            if(is_uploaded_file($_FILES['file']['tmp_name']) && $this->validateFile($_FILES['file'])) {
+                move_uploaded_file(
+                    $_FILES['file']['tmp_name'],
+                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $_FILES['file']['name']
+                );
+            }
             if(strlen($_POST['new-about-me'])>=800){
                 $this->message[] = "Description contains too many characters";
                 $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message, 'stats' => $stats]);
                 return;
             }
-            if($_POST['country'] == '' || $_POST['city'] == '')
-            {
+            if(($_POST['country'] == '' && $_POST['city'] != '') || ($_POST['country'] != '' && $_POST['city'] == '')){
                 $this->message[] = "Inappropriate address";
                 $this->render('edit-profile', ['userProfile' => $userProfile, 'messages' => $this->message, 'stats' => $stats]);
                 return;
             }
-            $address = new Address($_POST['country'], $_POST['city']);
-            $idAddress = $this->addressRepository->addAddress($address);
+            if(!($_POST['country'] == '' || $_POST['city'] == '')) {
+                $address = $this->addressRepository->getAddress($_POST['country'], $_POST['city']);
+                if ($address == null) {
+                    $address = new Address($_POST['country'], $_POST['city'], null);
+                    $idAddress = $this->addressRepository->addAddress($address);
+                } else {
+                    $idAddress = $address->getId();
+                }
+            }else{
+                $idAddress = null;
+            }
 
             $this->userRepository->editUserProfile($id_user, $_FILES['file']['name'], $_POST['new-about-me'], $idAddress);
 

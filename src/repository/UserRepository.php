@@ -56,7 +56,6 @@ class UserRepository extends Repository
         }
 
         return new UserProfile(
-            $userProfile['id_user'],
             $userProfile['email'],
             $userProfile['image'],
             $userProfile['name'],
@@ -65,6 +64,7 @@ class UserRepository extends Repository
             $userProfile['language'],
             $userProfile['country'],
             $userProfile['city'],
+            $userProfile['id_user'],
             $userProfile['is_friend']
         );
     }
@@ -86,7 +86,7 @@ class UserRepository extends Repository
 
             $statement = $db->prepare('
             INSERT INTO public.users_details (name, surname, image, id_main_language)
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?)
             ');
 
             $db->beginTransaction();
@@ -94,9 +94,8 @@ class UserRepository extends Repository
             $statement->execute([
                 $userProfile->getName(),
                 $userProfile->getSurname(),
-                $userProfile->getAboutMe(),
                 $userProfile->getPhoto(),
-                $language_id,
+                $language_id['id_language'],
             ]);
 
             $id = $db->lastInsertId();
@@ -145,7 +144,6 @@ class UserRepository extends Repository
         foreach ($usersProfiles as $userProfile)
         {
             $result[] = new UserProfile(
-                $userProfile['id_user'],
                 $userProfile['email'],
                 $userProfile['image'],
                 $userProfile['name'],
@@ -154,6 +152,7 @@ class UserRepository extends Repository
                 $userProfile['language'],
                 $userProfile['country'],
                 $userProfile['city'],
+                $userProfile['id_user'],
                 $userProfile['is_friend']
             );
         }
@@ -161,16 +160,27 @@ class UserRepository extends Repository
         return $result;
     }
 
-    public function getUserProfileByName(string $searchString, int $idCurrentUser): ?array
+    public function getUserProfileByName(string $fullName, int $idCurrentUser, string $country, string $city, string $language): ?array
     {
         $db = $this->database->connect();
-        $searchString = '%'.strtolower($searchString).'%';
+        $fullName = '%'.strtolower($fullName).'%';
+        $country = '%'.strtolower($country).'%';
+        $city = '%'.strtolower($city).'%';
+        $language = '%'.strtolower($language).'%';
 
         $statement = $db->prepare('
-            SELECT id_user FROM v_users_profiles_fullname WHERE LOWER(name) LIKE :search AND id_user <> :id
+            SELECT id_user FROM v_users_profiles_fullname WHERE 
+            LOWER(name) LIKE :fullName AND
+            LOWER(country) LIKE :country AND
+            LOWER(city) LIKE :city AND
+            LOWER(language ) LIKE :language AND 
+            id_user <> :id
         ');
         $statement->bindParam(':id', $idCurrentUser, PDO::PARAM_INT);
-        $statement->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $statement->bindParam(':fullName', $fullName, PDO::PARAM_STR);
+        $statement->bindParam(':country', $country, PDO::PARAM_STR);
+        $statement->bindParam(':city', $city, PDO::PARAM_STR);
+        $statement->bindParam(':language', $language, PDO::PARAM_STR);
         $statement->execute();
         $temp = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -188,10 +198,10 @@ class UserRepository extends Repository
         $ids = array_values($ids);
         $ids = implode(', ', $ids);
 
-
         $sql = ('SELECT * FROM v_users_profiles u left join
-                (SELECT f.id_addressee as is_friend FROM (users JOIN followers f ON ((users.id_user = f.id_addressee)))
-                WHERE (f.id_requester = ' . $idCurrentUser . ')) t on u.id_user = t.is_friend where id_user in (' . $ids . ')');
+                (SELECT f.id_addressee as is_friend FROM 
+                (users JOIN followers f ON ((users.id_user = f.id_addressee))) WHERE (f.id_requester = ' . $idCurrentUser . ')) t on u.id_user = t.is_friend 
+                where id_user in (' . $ids . ')');
 
         return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -215,7 +225,6 @@ class UserRepository extends Repository
         }
 
         return new UserProfile(
-            $userProfile['id_user'],
             $userProfile['email'],
             $userProfile['image'],
             $userProfile['name'],
@@ -223,12 +232,17 @@ class UserRepository extends Repository
             $userProfile['about_me'],
             $userProfile['language'],
             $userProfile['country'],
-            $userProfile['city']
+            $userProfile['city'],
+            $userProfile['id_user'],
         );
     }
 
-    public function editUserProfile(int $id_user, string $image, string $aboutMe, int $idAddress): void
+    public function editUserProfile(int $id_user, ?string $image, ?string $aboutMe, ?int $idAddress): void
     {
+        if($image == null && $aboutMe == '' && $idAddress == null){
+            return;
+        }
+
         $db = $this->database->connect();
 
         $statement = $db->prepare('
@@ -238,15 +252,22 @@ class UserRepository extends Repository
         $statement->execute();
 
         $profileId = $statement->fetch(PDO::FETCH_ASSOC);
+        $id = $profileId['id_user_details'];
 
-        $statement = $db->prepare('
-            UPDATE users_details SET image = :image, about_me = :aboutMe, id_address = :idAddress WHERE id_user_details = :profileId
-        ');
-        $statement->bindParam(':image', $image, PDO::PARAM_STR);
-        $statement->bindParam(':aboutMe', $aboutMe, PDO::PARAM_STR);
-        $statement->bindParam(':profileId', $profileId['id_user_details'], PDO::PARAM_STR);
-        $statement->bindParam(':idAddress', $idAddress, PDO::PARAM_STR);
-        $statement->execute();
+        $query = "UPDATE users_details SET";
+
+        if($aboutMe!= '')
+            $query = $query." about_me = '".$aboutMe."'";
+
+        if($image != null)
+            $query = $query.", image = '".$image."' ";
+
+        if($idAddress != null)
+            $query = $query.', id_address = '.$idAddress.'';
+
+        $query = $query.' WHERE id_user_details = '.$id.'';
+
+        $db->query($query);
     }
 
     public function getUserStats(int $idUser): ?UserStats

@@ -51,7 +51,13 @@ class UserController extends AppController
             header('Content-type: application/json');
             http_response_code(200);
 
-            echo json_encode($this->userRepository->getUserProfileByName($decoded['searchInput'], $id));
+            echo json_encode($this->userRepository->getUserProfileByName(
+                $decoded['searchInput'],
+                $id,
+                $decoded['country'],
+                $decoded['city'],
+                $decoded['language']
+            ));
         }
     }
 

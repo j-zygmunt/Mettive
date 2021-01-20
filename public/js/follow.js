@@ -1,6 +1,7 @@
 const followButton = document.querySelectorAll('.follow-button');
 const userButtons = document.querySelectorAll('.user-button');
 
+
 function linkToProfile(val) {
     location.href = `/profile/${val}`;
 }
@@ -38,14 +39,3 @@ followButton.forEach(button=>button.addEventListener('click', function (){
 userButtons.forEach(button=> button.addEventListener('click', function (){
     linkToProfile(button.value);
 }));
-
-
-const prev = window.onload;
-
-window.onload = function(){
-    checkFollowers();
-    checkUserRole()
-    if(prev){
-        prev();
-    }
-};

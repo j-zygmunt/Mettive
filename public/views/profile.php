@@ -10,6 +10,7 @@
     <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
     <script type="text/javascript" src="/./public/js/follow.js" defer></script>
     <script type="text/javascript" src="/public/js/role.js" defer></script>
+    <script type="text/javascript" src="/./public/js/script.js" defer></script>
     <title>PROFILE</title>
 </head>
 <body>

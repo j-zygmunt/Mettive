@@ -6,11 +6,13 @@ const reviewWindow = document.querySelector('.add-review');
 const addButton = document.querySelector('.add');
 const cancelButton = document.querySelector('.cancel');
 
+
 function addReview() {
-    const data =
-        {message: document.querySelector('textarea').value,
-            rating: document.querySelector('#rate').value,
-            idReviewee: document.querySelector('.about-panel').getAttribute("id")};
+    const data = {
+        message: document.querySelector('textarea').value,
+        rating: document.querySelector('#rate').value,
+        idReviewee: document.querySelector('.about-panel').getAttribute("id")
+    };
 
     fetch("/addReview", {
         method: "POST",
@@ -25,6 +27,7 @@ function addReview() {
         reviewWindow.classList.remove('window-review-open');
     });
 }
+
 
 rateButton.addEventListener('click', function (){
     nav.classList.add('blur');

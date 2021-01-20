@@ -3,6 +3,7 @@ const emailInput = form.querySelector('input[name="email"]');
 const passwordInput = form.querySelector('input[name="password"]');
 const confirmedPasswordInput = form.querySelector('input[name="repeat-password"]');
 
+
 function isEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
 }

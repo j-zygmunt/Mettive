@@ -9,6 +9,7 @@
     <script type="text/javascript" src="/./public/js/search.js" defer></script>
     <script type="text/javascript" src="/./public/js/mobile.js" defer></script>
     <script type="text/javascript" src="/./public/js/follow.js" defer></script>
+    <script type="text/javascript" src="/./public/js/script.js" defer></script>
     <title>HOME PAGE</title>
 </head>
 <body>
@@ -24,27 +25,17 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-                <div class="langauge-select">
-                    <select id="langauge" name="langauge" data-placeholder="langauge">
-                        <option disabled selected>langauge</option>
-                        <?php foreach($languages as $language): ?>
-                            <option value="<?= $language->getName(); ?>"><?= $language->getName(); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
                 <div class="country-select">
-                    <select id="country" name="country" data-placeholder="country">
-                        <option disabled selected>country</option>
-                        <?php foreach($addresses as $address): ?>
-                        <option value="<?= $address->getCountry() ?>"><?= $address->getCountry() ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <input id="country" placeholder="country">
                 </div>
                 <div class="city-select">
-                    <select id="city" name="city" data-placeholder="city">
-                        <option disabled selected>city</option>
-                        <?php foreach($addresses as $address): ?>
-                        <option value="<?= $address->getCity() ?>"><?= $address->getCity() ?></option>
+                    <input id="city" placeholder="city">
+                </div>
+                <div class="language-select">
+                    <select id="language" name="language" data-placeholder="language">
+                        <option disabled selected>language</option>
+                        <?php foreach($languages as $language): ?>
+                            <option value="<?= $language->getName(); ?>"><?= $language->getName(); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

@@ -21,7 +21,8 @@ class AddressRepository extends Repository
         {
             $result[] = new Address(
                 $address['country'],
-                $address['city']
+                $address['city'],
+                $address['id_address']
             );
         }
 
@@ -33,7 +34,7 @@ class AddressRepository extends Repository
         $db = $this->database->connect();
 
         $statement = $db->prepare('
-            SELECT * FROM public.address WHERE country = :country AND city = :city
+            SELECT * FROM public.address WHERE country = :country AND city = :city ORDER BY country, city
         ');
         $statement->bindParam(':country', $country, PDO::PARAM_STR);
         $statement->bindParam(':city', $city, PDO::PARAM_STR);
@@ -46,7 +47,8 @@ class AddressRepository extends Repository
 
         return new Address(
             $address['country'],
-            $address['city']
+            $address['city'],
+            $address['id_address']
         );
     }
 

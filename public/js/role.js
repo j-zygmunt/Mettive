@@ -1,5 +1,6 @@
 const deleteButtons = document.querySelectorAll('.delete-button');
 
+
 function checkUserRole(){
     const role = document.cookie.split(';')[1].substr(length-1);
     if(role == 2){
