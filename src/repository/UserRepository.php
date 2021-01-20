@@ -117,7 +117,7 @@ class UserRepository extends Repository
             if($db->inTransaction()){
                 $db->rollBack();
             }
-            throw $error;
+            //TODO
         }
     }
 
@@ -239,7 +239,7 @@ class UserRepository extends Repository
 
     public function editUserProfile(int $id_user, ?string $image, ?string $aboutMe, ?int $idAddress): void
     {
-        if($image == null && $aboutMe == '' && $idAddress == null){
+        if ($image == null && $aboutMe == '' && $idAddress == null) {
             return;
         }
 
@@ -256,16 +256,28 @@ class UserRepository extends Repository
 
         $query = "UPDATE users_details SET";
 
-        if($aboutMe!= '')
-            $query = $query." about_me = '".$aboutMe."'";
+        $flag = false;
 
-        if($image != null)
-            $query = $query.", image = '".$image."' ";
+        if ($aboutMe != '') {
+            $query = $query . " about_me = '" . $aboutMe . "'";
+            $flag = true;
+        }
 
-        if($idAddress != null)
-            $query = $query.', id_address = '.$idAddress.'';
+        if ($image != null){
+            if ($flag) {
+                $query = $query . ",";
+            }
+        $query = $query . " image = '" . $image . "' ";
+        }
 
-        $query = $query.' WHERE id_user_details = '.$id.'';
+        if($idAddress != null) {
+            if ($flag) {
+                $query = $query . ",";
+            }
+            $query = $query . ' id_address = ' . $idAddress . '';
+        }
+
+        $query = $query.' WHERE id_user_details =  ' . $id . '';
 
         $db->query($query);
     }
@@ -325,19 +337,7 @@ class UserRepository extends Repository
             $idFollowee
         ]);
 
-        $statement = $db->prepare('
-            UPDATE users_details ud SET followers_amount = followers_amount + 1 WHERE ud.id_user_details = (
-            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
-        ');
-        $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
-        $statement->execute();
-
-        $statement = $db->prepare('
-            UPDATE users_details ud SET following_amount = following_amount + 1 WHERE ud.id_user_details = (
-            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
-        ');
-        $statement->bindParam(':id', $idFollower, PDO::PARAM_INT);
-        $statement->execute();
+        $this->updateFollowersAmount($idFollower, $idFollowee, 1);
     }
 
     public function unfollow(int $idFollower, int $idFollowee): void
@@ -351,38 +351,48 @@ class UserRepository extends Repository
         $statement->bindParam(':id_addressee', $idFollowee, PDO::PARAM_INT);
         $statement->execute();
 
-        $statement = $db->prepare('
-            UPDATE users_details ud SET followers_amount = followers_amount - 1 WHERE ud.id_user_details = (
-            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
-        ');
-        $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
-        $statement->execute();
-
-        $statement = $db->prepare('
-            UPDATE users_details ud SET following_amount = following_amount - 1 WHERE ud.id_user_details = (
-            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
-        ');
-        $statement->bindParam(':id', $idFollower, PDO::PARAM_INT);
-        $statement->execute();
+        $this->updateFollowersAmount($idFollower, $idFollowee, -1);
     }
 
     public function login(int $idUser): void
     {
-        $db = $this->database->connect();
-        $statement = $db->prepare('
-            UPDATE users SET enabled = true WHERE id_user = :idUser
-        ');
-        $statement->bindParam(':idUser', $idUser, PDO::PARAM_INT);
-        $statement->execute();
+        $this->log($idUser, true);
+
     }
 
     public function logout(int $idUser): void
     {
+        $this->log($idUser, false);
+    }
+
+    public function log(int $idUser, bool $type): void{
         $db = $this->database->connect();
         $statement = $db->prepare('
-            UPDATE users SET enabled = false WHERE id_user = :idUser
+            UPDATE users SET enabled = :type WHERE id_user = :idUser
         ');
         $statement->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+        $statement->bindParam(':type', $type, PDO::PARAM_BOOL);
+        $statement->execute();
+    }
+
+    public function updateFollowersAmount(int $idFollower, int $idFollowee, $value): void
+    {
+        $db = $this->database->connect();
+
+        $statement = $db->prepare('
+            UPDATE users_details ud SET followers_amount = followers_amount + :value WHERE ud.id_user_details = (
+            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
+        ');
+        $statement->bindParam(':id', $idFollowee, PDO::PARAM_INT);
+        $statement->bindParam(':value', $value, PDO::PARAM_INT);
+        $statement->execute();
+
+        $statement = $db->prepare('
+            UPDATE users_details ud SET following_amount = following_amount + :value WHERE ud.id_user_details = (
+            SELECT u.id_user_details FROM users u WHERE u.id_user = :id)
+        ');
+        $statement->bindParam(':id', $idFollower, PDO::PARAM_INT);
+        $statement->bindParam(':value', $value, PDO::PARAM_INT);
         $statement->execute();
     }
 }

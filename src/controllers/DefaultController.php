@@ -4,19 +4,12 @@ require_once 'AppController.php';
 
 class DefaultController extends AppController
 {
-
     public function index(): void
     {
-        $this->render('login');
-    }
-
-    public function profile(): void
-    {
-        $this->render('profile');
-    }
-
-    public function myProfile(): void
-    {
-        $this->render('my-profile');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        if(isset($_COOKIE['user'])) {
+            header("Location: {$url}/home");
+        }
+        header("Location: {$url}/login");
     }
 }

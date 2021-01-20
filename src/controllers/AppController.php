@@ -28,10 +28,8 @@ class AppController
         $templatePath = 'public/views/'.$template.'.php';
         $output = 'File not found';
 
-        if (file_exists($templatePath))
-        {
+        if (file_exists($templatePath)) {
             extract($variables);
-
             ob_start();
             include $templatePath;
             $output = ob_get_clean();
@@ -42,8 +40,7 @@ class AppController
 
     public function checkCookie()
     {
-        if(!isset($_COOKIE['user']))
-        {
+        if(!isset($_COOKIE['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/login");
         }

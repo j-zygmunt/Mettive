@@ -24,7 +24,7 @@ class LanguageRepository extends Repository
         }
     }
 
-    public function getLanguages(): array
+    public function getLanguages(): ?array
     {
         $db = $this->database->connect();
         $result = [];
@@ -34,6 +34,12 @@ class LanguageRepository extends Repository
         ');
         $statement->execute();
         $languages = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if($languages == false)
+        {
+            //TODO optional exception
+            return null;
+        }
 
         foreach ($languages as $language)
         {

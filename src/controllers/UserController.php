@@ -43,8 +43,7 @@ class UserController extends AppController
 
         $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : "";
 
-        if($contentType === "application/json")
-        {
+        if($contentType === "application/json") {
             $content = trim(file_get_contents("php://input"));
             $decoded = json_decode($content, true);
 
@@ -74,23 +73,21 @@ class UserController extends AppController
     public function profile($email): void
     {
         $this->checkCookie();
-        if(is_string($email))
-        {
+        $url = "http://$_SERVER[HTTP_HOST]";
+
+        if(is_string($email)) {
             $visitor = intval($_COOKIE["user"]);
             $profile = $this->userRepository->getUserProfile($email, $visitor);
             $id = $profile->getId();
             if($id == $visitor){
-                $url = "http://$_SERVER[HTTP_HOST]";
                 header ("Location: {$url}/home");
             }
             $stats = $this->userRepository->getUserStats($id);
             $reviews = $this->reviewRepository->getReviews($id);
             $this->render('profile', ['profile' => $profile, 'stats' => $stats, 'visitor' => $visitor, 'reviews' => $reviews]);
+            return;
         }
-        else{
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header ("Location: {$url}/home");
-        }
+        header ("Location: {$url}/home");
     }
 
     public function follow(int $idAddressee): void

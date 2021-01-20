@@ -19,26 +19,14 @@ class SecurityController extends AppController
         $this->languageRepository = new LanguageRepository();
     }
 
-    public function index(): void
-    {
-        if(isset($_COOKIE['user'])) {
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/login");
-        }
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/login");
-    }
-
     public function login(): void
     {
-        if(isset($_COOKIE['user']))
-        {
-            $url = "http://$_SERVER[HTTP_HOST]";
+        $url = "http://$_SERVER[HTTP_HOST]";
+        if(isset($_COOKIE['user'])) {
             header("Location: {$url}/home");
         }
 
-        if(!$this->isPost())
-        {
+        if(!$this->isPost()) {
             $this->render('login');
             return;
         }
@@ -47,14 +35,12 @@ class SecurityController extends AppController
         $password = $_POST["password"];
         $user = $this->userRepository->getUser($email);
 
-        if(!$user)
-        {
+        if(!$user) {
             $this->render('login', ['messages' => ["User not exist"]]);
             return;
         }
 
-        if ($user->getEmail() !== $email || !password_verify($password, $user->getPassword()))
-        {
+        if ($user->getEmail() !== $email || !password_verify($password, $user->getPassword())) {
             $this->render('login', ['messages' => ["Wrong email or password!"]]);
             return;
         }
@@ -63,7 +49,6 @@ class SecurityController extends AppController
         setcookie("role", $user->getRole(), time() + 3600);
         $this->userRepository->login($user->getId());
 
-        $url = "http://$_SERVER[HTTP_HOST]";
         header ("Location: {$url}/home");
     }
 
@@ -82,8 +67,7 @@ class SecurityController extends AppController
 
     public function register(): void
     {
-        if(!$this->isPost())
-        {
+        if(!$this->isPost()) {
             $this->render('register');
             return;
         }
@@ -105,27 +89,23 @@ class SecurityController extends AppController
             return;
         }
 
-        if($repeatedPassword !== $password)
-        {
+        if($repeatedPassword !== $password) {
             $this->render('register', ['messages' => ["Passwords don't match"]]);
             return;
         }
 
-        if(!preg_match('/^(?=.*\d)(?=.*[A-Z]).{6,100}$/', $password))
-        {
-            $this->render(
-                'register',
-                ['messages' => ["Password must be at least 6 characters long and must contain one digit and one capital letter"]]
+        if(!preg_match('/^(?=.*\d)(?=.*[A-Z]).{6,100}$/', $password)) {
+            $this->render('register', ['messages' => ["Password must be at least 6 characters long and must contain one digit and one capital letter"]]
             );
             return;
         }
+
         if($this->userRepository->checkMailAvailability($email)){
-            $this->render(
-                'register',
-                ['messages' => ["User witch this email already exist"]]
+            $this->render('register', ['messages' => ["User witch this email already exist"]]
             );
             return;
         }
+
         $languageObj = new Lang($language);
         $this->languageRepository->addLanguage($languageObj);
         $user = new User($email, password_hash($password, PASSWORD_DEFAULT));

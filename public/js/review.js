@@ -21,19 +21,27 @@ function addReview() {
         },
         body: JSON.stringify(data)
     }).then(function (){
-        nav.classList.remove('blur');
-        reviewPanel.classList.remove('blur');
-        aboutPanel.classList.remove('blur');
-        reviewWindow.classList.remove('window-review-open');
+        removeBlur();
     });
 }
 
+function removeBlur(){
+    nav.classList.remove('blur');
+    reviewPanel.classList.remove('blur');
+    aboutPanel.classList.remove('blur');
+    reviewWindow.classList.remove('window-review-open');
+}
 
-rateButton.addEventListener('click', function (){
+function addBlur(){
     nav.classList.add('blur');
     reviewPanel.classList.add('blur');
     aboutPanel.classList.add('blur');
     reviewWindow.classList.add('window-review-open');
+}
+
+
+rateButton.addEventListener('click', function (){
+    addBlur();
 });
 
 addButton.addEventListener('click', function (){
@@ -42,8 +50,5 @@ addButton.addEventListener('click', function (){
 });
 
 cancelButton.addEventListener('click', function (){
-    nav.classList.remove('blur');
-    reviewPanel.classList.remove('blur');
-    aboutPanel.classList.remove('blur');
-    reviewWindow.classList.remove('window-review-open');
+    removeBlur();
 });

@@ -6,7 +6,7 @@ require_once __DIR__.'/../models/Address.php';
 class AddressRepository extends Repository
 {
 
-    public function getAddresses(): array
+    public function getAddresses(): ?array
     {
         $db = $this->database->connect();
         $result = [];
@@ -17,8 +17,12 @@ class AddressRepository extends Repository
         $statement->execute();
         $addresses = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($addresses as $address)
-        {
+        if(!$addresses){
+            //TODO optional exception
+            return null;
+        }
+
+        foreach ($addresses as $address) {
             $result[] = new Address(
                 $address['country'],
                 $address['city'],
@@ -42,6 +46,7 @@ class AddressRepository extends Repository
         $address = $statement->fetch(PDO::FETCH_ASSOC);
 
         if(!$address){
+            //TODO optional exception
             return null;
         }
 
